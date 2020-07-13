@@ -1,2 +1,19 @@
 Diem danh nao anh em
 Luu Dinh Hoan
+
+Nhật ký: 
+13/07/2020: Hoàn
+
+Tạo số trang cần thiết cho trang web. 
+1. Sử dụng mô hình MVC để kết nối load các trang -> Test bằng button -> DONE
+
+
+Phần tiếp
+
+2. Thêm html và css cho các trang
+
+3. Thiết kế hệ thống dữ liệu và tính năng cho trang web
+
+4. Kết nối các trang với nhau một cách trơn tru
+
+5. Chạy thử trang web
