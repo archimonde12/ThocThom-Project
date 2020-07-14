@@ -1,4 +1,4 @@
-let view={}
+let view = {}
 
 //Function dùng để hiển thị page theo <tên page>
 view.showPage = async function(namePage){
@@ -69,4 +69,24 @@ view.MakeAllButtonSwitchPageWork=function(){
     view.SetUpPageViewBtn("sign-up-btn","signUp")
     view.SetUpPageViewBtn("withdraw-page-btn","withdrawPage")
    
+}
+// kiểm tra nhập đẻ báo lỗi
+view.validate = function(condition, errortag, message) {
+    if (!condition) {
+        // document.getElementById(errortag).innerHTML = message
+        view.setText(errortag, message)
+        return false
+    } else {
+        // document.getElementById(errortag).innerHTML = ''
+        view.setText(errortag, '')
+        return true
+    }
+}
+
+view.setText = function(tagId, text) {
+    document.getElementById(tagId).innerHTML = text
+}
+
+view.setActive = function(tagId, active) {
+    document.getElementById(tagId).disabled = !active
 }

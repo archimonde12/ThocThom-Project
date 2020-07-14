@@ -1,4 +1,4 @@
-let components={};
+let components = {};
 
 components.sign_up=`
 SIGN UP PAGE - TRANG ĐĂNG KÍ
@@ -166,3 +166,4 @@ components.compose_page=`
 `;
 
 
+components.compose_page = `COMPOSE PAGE - TRANG ĐĂNG BÀI`;
