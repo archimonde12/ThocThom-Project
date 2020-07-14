@@ -6,6 +6,29 @@
     <title>THOC THOM PROJECT</title>
 
 
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBOcF7oTDlTkJxESdFL5fldIc10bOiJULk",
+            authDomain: "thocthom-project.firebaseapp.com",
+            databaseURL: "https://thocthom-project.firebaseio.com",
+            projectId: "thocthom-project",
+            storageBucket: "thocthom-project.appspot.com",
+            messagingSenderId: "422845301830",
+            appId: "1:422845301830:web:d6e12b5e08d6a7d6853647"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    
     <!-- Add scripts -->
     <script src="./js/utils.js"></script>
     <script src="./js/components.js"></script>
