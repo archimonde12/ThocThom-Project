@@ -70,7 +70,7 @@ view.MakeAllButtonSwitchPageWork=function(){
     view.SetUpPageViewBtn("withdraw-page-btn","withdrawPage")
    
 }
-// kiểm tra nhập đẻ báo lỗi
+// Kiểm tra để báo lỗi
 view.validate = function(condition, errortag, message) {
     if (!condition) {
         // document.getElementById(errortag).innerHTML = message

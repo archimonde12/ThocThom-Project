@@ -1,5 +1,5 @@
 window.onload = function() {
-    let IsUserLogin=true;
+    let IsUserLogin=false;
     if(IsUserLogin){
         view.showPage("mainView")
     }
