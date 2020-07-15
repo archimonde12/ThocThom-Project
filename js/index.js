@@ -1,8 +1,9 @@
-window.onload = function() {
-    let IsUserLogin=false;
-    if(IsUserLogin){
-        view.showPage("mainView")
-    }
-    else
-    view.showPage("signIn")
+window.onload =  function() {
+    firebase.auth().onAuthStateChanged(async function(user) {
+        if (user != null) {
+            view.showPage("mainView")
+        } else {
+            view.showPage("signIn")
+        }
+    })
 }

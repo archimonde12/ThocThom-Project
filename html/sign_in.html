@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        SIGN IN PAGE - TRANG ĐĂNG NHẬP
+        <h1>Các Button chuyển trang chính</h1>
+        <br>
+        <button class="main-view-btn">Log In</button>
+        <br>
+        <button class="sign-up-btn">Bạn chưa có tài khoản?</button>
+        <h1>Các chức năng chính</h1>
+        <p>- Đăng nhập</p>
+        
+        <h1>Các hiển thị chính</h1>
+        <p>- Form đăng nhập</p>
+        <p>- Button đăng nhập </p>
+        
+        <h1>DEMO</h1>
+        <form class="signIn" id="signIn">
+            <h3>Welcome</br>Back !</h3>
+            <button class="fb" type="button">Log In With Facebook</button>
+            <p>- or -</p>
+        
+            <div class="input-wrapper">
+                <label for="email"><i class="fa fa-envelope"></i></label>
+                <input name="email" id="email" type="email" placeholder="Insert eMail" autocomplete='off' reqired />
+            </div>
+            <span class="message-error" id="sign-in-email-error"></span>
+        
+            <div class="input-wrapper">
+                <label for="password"><i class="fa fa-lock"></i></label>
+                <input name="password" id="password" type="password" placeholder="Insert Password" reqired />
+            </div>
+            <span class="message-error" id="sign-in-password-error"></span>
+        
+            <button class="form-btn sx back" id="back" type="button">Back</button>
+            <button class="form-btn dx" type="submit" id="sign-in-btn">Log In</button>
+            <div class="message-error" id="sign-in-error"></div>
+        </form>
+        <button id="sign-out-button">Sign Out</button>
+        </div>
+</body>
+</html>
