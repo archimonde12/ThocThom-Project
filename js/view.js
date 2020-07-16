@@ -7,6 +7,23 @@ view.showPage = async function(namePage){
         case 'signIn': 
             content.innerHTML=components.sign_in;
             view.MakeAllButtonSwitchPageWork();
+            let formSignIn=document.getElementById("signIn");
+            formSignIn.onsubmit = function(event){
+                //Đảm bảo trang không bị load lại
+                event.preventDefault();
+                //Lấy dữ liệu từ form
+                let email = formSignIn.email.value.trim()
+                let password = formSignIn.password.value.trim()
+                //Kiểm tra dữ liệu lấy từ form
+                let validateResult = [
+                    view.validate(email != '' && validateEmail(email), 'sign-in-email-error', 'Input your email'),
+                    view.validate(password != '', 'sign-in-password-error', 'Input your password'),
+                ]
+                if(isPassed(validateResult)){
+                    //Nếu pass gửi dữ liệu lên firebase qua controller
+                    controller.signIn(email,password)
+                }
+            }
             break;
         case 'signUp':
             content.innerHTML=components.sign_up;
@@ -37,27 +54,35 @@ view.showPage = async function(namePage){
             }
 
             //Xử lý form Sign In
-            let formSignIn=document.getElementById("signIn");
-            formSignIn.onsubmit = function(event){
-                //Đảm bảo trang không bị load lại
-                event.preventDefault();
-                //Lấy dữ liệu từ form
-                let email = formSignIn.email.value.trim()
-                let password = formSignIn.password.value.trim()
-                //Kiểm tra dữ liệu lấy từ form
-                let validateResult = [
-                    view.validate(email != '' && validateEmail(email), 'sign-in-email-error', 'Input your email'),
-                    view.validate(password != '', 'sign-in-password-error', 'Input your password'),
-                ]
-                if(isPassed(validateResult)){
-                    //Nếu pass gửi dữ liệu lên firebase qua controller
-                    controller.signIn(email,password)
-                }
-            }
+            // formSignIn=document.getElementById("signIn");
+            // formSignIn.onsubmit = function(event){
+            //     //Đảm bảo trang không bị load lại
+            //     event.preventDefault();
+            //     //Lấy dữ liệu từ form
+            //     let email = formSignIn.email.value.trim()
+            //     let password = formSignIn.password.value.trim()
+            //     //Kiểm tra dữ liệu lấy từ form
+            //     let validateResult = [
+            //         view.validate(email != '' && validateEmail(email), 'sign-in-email-error', 'Input your email'),
+            //         view.validate(password != '', 'sign-in-password-error', 'Input your password'),
+            //     ]
+            //     if(isPassed(validateResult)){
+            //         //Nếu pass gửi dữ liệu lên firebase qua controller
+            //         controller.signIn(email,password)
+            //     }
+            // }
             break;
         case 'mainView':
             content.innerHTML=components.main_view;
             view.MakeAllButtonSwitchPageWork();
+            document.getElementById("sign-out-button").onclick = function(){
+                controller.signOut();
+            }
+            //Lấy dữ liệu
+            await controller.loadUserInfomation();
+            //Show info
+            console.log("abc")
+            view.showInfo();
             break;
         case 'adminPage':
             content.innerHTML=components.admin_page;
@@ -78,10 +103,51 @@ view.showPage = async function(namePage){
         case 'depositPage':
             content.innerHTML=components.deposit_page;
             view.MakeAllButtonSwitchPageWork();
+            //Xử lý form
+            let formDeposit=document.getElementById("deposit-form");
+            
+            formDeposit.onsubmit= async function(event){
+                event.preventDefault();
+                //Lấy lượng muốn nạp
+                let depositAmount=Number(formDeposit.depositAmount.value);
+                console.log("Bạn đang muốn nạp: " + depositAmount);
+                //Kiểm tra điều kiện (Điều kiện >0)
+                let validateResult = [
+                    view.validate(depositAmount>0, 'deposit-amount-error', 'deposit amount must be greater than 0'),
+                ]
+                
+                //Thực hiện thay đổi
+                if(isPassed(validateResult)){
+                    await controller.changeBalance(depositAmount);
+                    console.log("Nạp thành công!");
+                }
+            }
             break;
         case 'withdrawPage':
             content.innerHTML=components.withdraw_page;
             view.MakeAllButtonSwitchPageWork();
+             //Xử lý form
+             let formWithdraw=document.getElementById("withdraw-form");
+
+             formWithdraw.onsubmit= async function(event){
+                 event.preventDefault();
+                 //Lấy lượng muốn nạp
+                 let withdrawAmount=Number(formWithdraw.withdrawAmount.value)
+                 console.log("Bạn đang muốn rút: " + withdrawAmount)
+                 //Kiểm tra điều kiện (Điều kiện nhỏ hơn balance hiện tại và lớn hơn 0 )
+                 let validateResult = [
+                    view.validate(
+                         withdrawAmount<=model.currentUserData.balance&&withdrawAmount>0, 
+                        'withdraw-amount-error', 
+                        'withdraw amount must be GREATER than 0 and lesser than balance'
+                        )
+                 ]
+                 //Thực hiện thay đổi
+                 if(isPassed(validateResult)){
+                    await controller.changeBalance(-withdrawAmount)
+                    console.log("Rút thành công!")
+                 }
+             }
             break;
     }
 }
@@ -133,3 +199,16 @@ view.setText = function(tagId, text) {
 view.setActive = function(tagId, active) {
     document.getElementById(tagId).disabled = !active
 }
+
+view.showInfo=function(){
+    //Show name
+    let currentUserName=model.currentUserData.name; // Lỗi không hiển thị ngay khi tạo tài khoản
+    let userNameDisplay=document.getElementById("user-name");
+    userNameDisplay.innerHTML+=" "+currentUserName;
+    
+    //Show balance
+    let currentUserBalance=model.currentUserData.balance;
+    let userBalanceDisplay=document.getElementById("user-balance");
+    userBalanceDisplay.innerHTML+=" "+currentUserBalance;
+}
+

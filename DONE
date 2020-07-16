@@ -1,0 +1,15 @@
+CÁC CHỨC NĂNG
+- Sign In  - Sign Up [Done] 
+Lỗi:
+ + Hiển thị, khi bắt đầu đăng nhập thì không hiển thị được tên và balance mà cần phải load lại mới được
+ VD: Báo lỗi không load được
+ + Hiển thị, bị lỗi double khi đăng kí rồi out ra rồi đăng nhập lại tài khoản
+ VD: Name: hoan5 hoan5
+- Nạp rút [Done]
+- Hiển thị tên và số tiền đang có [Done]
+
+CÁC CHỨC NĂNG CẦN LÀM TIẾP THEO
+- Đăng bài
+- Duyệt bài
+- Hiển thị bài
+- Bộ lọc bài
