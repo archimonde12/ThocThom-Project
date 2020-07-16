@@ -10,23 +10,19 @@
 </head>
 
 <body>
-    <div style="display: inline-block;margin-left: 50%;"><input id="search" type="text" placeholder="Search.."><button id="submit" type="submit"><i class="fa fa-search"></i></button></div>
-    <!-- <div id='list' style="background-color: blue;">
-        <div id="baiviet" class="flex-box" style="background-color: crimson;">
-            <img src="$" alt="" style="background-color: cyan;">
-            <div style="background-color: darkgreen;">
-                <div>$</div>
-                <div>$</div>
-            </div>
-            <div style="background-color: darkorange;">
-                <div>$</div>
-                <div>$</div>
-                <div>$</div>
-            </div>
-        </div> -->
-    <div id='newdata'></div>
-    </div>
 
+    <div style="display: inline-block;margin-left: 50%;"><input id="search" type="text" placeholder="Search..">
+        <button id="submit" type="submit"><i class="fa fa-search"></i></button></div>
+    <!-- <form id="formSearch"></form> -->
+    <div> Lọc theo author <input id="checkboxAuthor" type="checkbox" name="vehicle2" value="Car">
+        <label for="vehicle2"> author</label></div>
+    <div>Sắp xếp theo <input id="checkboxLike" type="checkbox" name="vehicle2" value="Car">
+        <label for="vehicle2"> lượt like</label>
+        <input type="checkbox" id="checkboxTime" name="vehicle2" value="Car">
+        <label for="vehicle2"> Time</label></div>
+    <!-- </form> -->
+
+    <div id='newdata'></div>
 
     <script src="thinh_search.js"></script>
 </body>
