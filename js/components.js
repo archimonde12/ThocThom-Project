@@ -98,7 +98,7 @@ components.sign_in=`
     </div>
     <span class="message-error" id="sign-in-password-error"></span>
 
-    <button class="form-btn sx back" id="back" type="button">Back</button>
+    <button class="form-btn sx back sign-up-btn" id="back" type="button">Đăng kí tài khoản mới</button>
     <button class="form-btn dx" type="submit" id="sign-in-btn">Log In</button>
     <div class="message-error" id="sign-in-error"></div>
 </form>
@@ -137,6 +137,10 @@ components.main_view=`
 <button class="withdraw-page-btn">WithDraw</button>
 </div>
 <div class="ideas-container">
+<h3>Notification <label id="noti-warning"></label></h3>
+<button id="show-noti-btn">Show Notification</button>
+<div id="noti-list"></div>
+<button id="hide-noti-btn">Hide Notification</button>
 <h3>Show all ideas</h3>
 <label for="searchBox">Search Name</label>
 <input type="search" name="searchBox" id="">
@@ -166,6 +170,7 @@ components.main_view=`
 </table>
 </div>
 <h2>END DEMO</h2>
+<p>====================================================================</p>
 <h2>Các Button chuyển trang chính</h2>
 <br>
 <button class="idea-view-page-btn">Xem Kèo - Đề Về Bao Nhiêu Nào!</button>
@@ -203,6 +208,14 @@ components.main_view=`
 
 components.admin_page= `
 <h1>ADMIN PAGE - TRANG THÔNG TIN CỦA ADMIN</h1>
+<h2>DEMO</h2>
+<div class="header">
+<button class="main-view-btn">Trang Chủ</button>
+<button id="sign-out-button">Sign Out</button>
+</div>
+<div id="pending-idea-list"></div>
+<h2>END DEMO</h2>
+<p>====================================================================</p>
 <h1>Các Button chuyển trang chính</h1>
 <br>
 <button class="main-view-btn">Quay lại Trang Chủ </button>
@@ -314,6 +327,29 @@ components.withdraw_page=`
 
 components.compose_page=`
 <h1>COMPOSE PAGE - TRANG ĐĂNG BÀI</h1>
+<h1>DEMO</h1>
+<form id="compose">
+    <!-- Title Input -->
+    <div class="input-wrapper">
+        <label for="title"><i class="fa fa-envelope"></i>Title</label>
+        <input name="title" type="text" placeholder="Idea title" autocomplete='off' reqired />
+    </div>
+    <span class="title-error" id="compose-title-error"></span>
+    <!-- Content Input -->
+    <div class="input-wrapper">
+        <label for="content"><i class="fa fa-lock"></i>Content</label>
+        <input name="content" id="content" type="text"  style="height:100px; width:350px;" placeholder="Your Content" reqired />
+    </div>
+    <span class="content-error" id="compose-content-error"></span>
+     <!-- Upload Input -->
+
+    <!-- Submit Comnpose Input -->
+    <button type="submit" id="compose-btn">Đăng bài</button>
+    <div class="message-error" id="compose-error"></div>
+    <div class="message-success" id="compose-success"></div>
+</form>
+<h1>END DEMO</h1>
+<p>====================================================================</p>
 <h1>Các Button chuyển trang chính</h1>
 <br>
 <button class="main-view-btn">Quay lại Trang Chủ </button>
@@ -322,9 +358,4 @@ components.compose_page=`
 <h1>Các chức năng chính</h1>
 <p>- Đăng bài </p>
 <p>- Up ảnh vào bài </p>
-
-<h1>DEMO</h1>
 `;
-
-
-components.compose_page = `COMPOSE PAGE - TRANG ĐĂNG BÀI`;

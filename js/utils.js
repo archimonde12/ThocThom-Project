@@ -40,3 +40,11 @@ function refineData(rawData) {
     data.id = rawData.id
     return data
 }
+
+function waitForSeconds(seconds) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve('resolved');
+      }, seconds*1000);
+    });
+  }
