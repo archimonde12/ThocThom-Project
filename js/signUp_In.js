@@ -6,8 +6,8 @@ formSignIn.onsubmit = function(event) {
     let password = formSignIn.password.value
 
     let validateResult = [
-        view.validate(email != '', 'signIn-email-erro', 'Input your email'),
-        view.validate(password != '', 'signIn-password-erro', 'Input your password')
+        view.validate(email != '', 'signIn-email-error', 'Input your email'),
+        view.validate(password != '', 'signIn-password-error', 'Input your password')
     ]
     if (isPassed(validateResult)) {
         //gửi dữ liệu
@@ -27,10 +27,10 @@ formSignUp.onsubmit = function(even) {
 
     // kiểm tra  dữ liệu
     let validateResult = [
-        view.validate(name != '', 'name-erro', 'Input your name'),
-        view.validate(email != '' && validateEmail(email), 'email-erro', 'Input your email'),
-        view.validate(password != '', 'password-erro', 'Input your password'),
-        view.validate(passwordConfirmation != '' && password == passwordConfirmation, 'password-Confirmation-erro', 'password Confirmation is not match')
+        view.validate(name != '', 'name-error', 'Input your name'),
+        view.validate(email != '' && validateEmail(email), 'email-error', 'Input your email'),
+        view.validate(password != '', 'password-error', 'Input your password'),
+        view.validate(passwordConfirmation != '' && password == passwordConfirmation, 'password-Confirmation-error', 'password Confirmation is not match')
     ]
 
     console.log(validateResult)

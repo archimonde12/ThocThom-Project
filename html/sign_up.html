@@ -11,75 +11,94 @@
     <link rel="stylesheet" href="../css/signUp_In.css">
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.15.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-firestore.js"></script>
 
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBOcF7oTDlTkJxESdFL5fldIc10bOiJULk",
+            authDomain: "thocthom-project.firebaseapp.com",
+            databaseURL: "https://thocthom-project.firebaseio.com",
+            projectId: "thocthom-project",
+            storageBucket: "thocthom-project.appspot.com",
+            messagingSenderId: "422845301830",
+            appId: "1:422845301830:web:d6e12b5e08d6a7d6853647"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
 </head>
 
 <body>
+
     <div class="container">
-        <form class="signUp" id="signUp">
-            <h3>Create Your Account</h3>
-            <p>Just enter your email address</br>
-                and your password for join.
-            </p>
-
-            <div class="input-wrapper">
-                <label for="name"><i class="fa fa-user"></i></label>
-                <input type="text" name="name" id="name" placeholder="Your name">
-            </div>
-            <span class="message-erro" id="name-erro"></span>
-
-            <div class="input-wrapper">
-                <label for="email"><i class="fa fa-envelope"></i></label>
-                <input class="w100" id="email" type="email" placeholder="Insert eMail" reqired autocomplete='off' />
-            </div>
-            <span name="email" class="message-erro" id="email-erro"></span>
-
-            <div class="input-wrapper">
-                <label for="password"><i class="fa fa-lock"></i></label>
-                <input name="password" id="password" type="password" placeholder="Insert Password" reqired />
-            </div>
-            <span class="message-erro" id="password-erro"></span>
-
-            <div class="input-wrapper">
-                <label for="password-Confirmation"><i class="fa fa-lock"></i></label>
-                <input name="passwordConfirmation" id="password-Confirmation" type="password" placeholder="Verify Password" reqired />
-            </div>
-            <span class="message-erro" id="password-Confirmation-erro"></span>
-
-            <button class="form-btn sx log-in" id="log-in" type="button">Log In</button>
-            <button class="form-btn dx" type="submit">Sign Up</button>
-            <div class="message-erro" id="sign-up-error"></div>
-            <div class="message-success" id="sign-up-success"></div>
-
-        </form>
-        <form class="signIn" id="signIn">
-            <h3>Welcome</br>Back !</h3>
-            <button class="fb" type="button">Log In With Facebook</button>
-            <p>- or -</p>
-
-            <div class="input-wrapper">
-                <label for="email"><i class="fa fa-envelope"></i></label>
-                <input name="email" id="email" type="email" placeholder="Insert eMail" autocomplete='off' reqired />
-            </div>
-            <span class="message-erro" id="signIn-email-erro"></span>
-
-            <div class="input-wrapper">
-                <label for="password"><i class="fa fa-lock"></i></label>
-                <input name="password" id="password" type="password" placeholder="Insert Password" reqired />
-            </div>
-            <span class="message-erro" id="signIn-password-erro"></span>
-
-            <button class="form-btn sx back" id="back" type="button">Back</button>
-            <button class="form-btn dx" type="submit">Log In</button>
-            <div class="message-erro" id="sign-in-error"></div>
-        </form>
+    <form class="signUp" id="signUp">
+        <h3>Create Your Account</h3>
+        <p>Just enter your email address</br>
+            and your password for join.
+        </p>
+    
+        <div class="input-wrapper">
+            <label for="name"><i class="fa fa-user"></i></label>
+            <input type="text" name="name" id="name" placeholder="Your name">
+        </div>
+        <span class="message-error" id="name-error"></span>
+    
+        <div class="input-wrapper">
+            <label for="email"><i class="fa fa-envelope"></i></label>
+            <input class="w100" id="email" type="email" placeholder="Insert eMail" reqired autocomplete='off' />
+        </div>
+        <span name="email" class="message-error" id="email-error"></span>
+    
+        <div class="input-wrapper">
+            <label for="password"><i class="fa fa-lock"></i></label>
+            <input name="password" id="password" type="password" placeholder="Insert Password" reqired />
+        </div>
+        <span class="message-error" id="password-error"></span>
+    
+        <div class="input-wrapper">
+            <label for="password-Confirmation"><i class="fa fa-lock"></i></label>
+            <input name="passwordConfirmation" id="password-Confirmation" type="password"
+                placeholder="Verify Password" reqired />
+        </div>
+        <span class="message-error" id="password-Confirmation-error"></span>
+    
+        <button class="form-btn sx log-in" id="log-in" type="button">Don't have account yet</button>
+        <button id="sign-up-btn" class="form-btn dx" type="submit">Register</button>
+        <div class="message-error" id="sign-up-error"></div>
+        <div class="message-success" id="sign-up-success"></div>
+    
+    </form>
+    <form class="signIn" id="signIn">
+        <h3>Welcome</br>Back !</h3>
+        <button class="fb" type="button">Log In With Facebook</button>
+        <p>- or -</p>
+    
+        <div class="input-wrapper">
+            <label for="email"><i class="fa fa-envelope"></i></label>
+            <input name="email" id="email" type="email" placeholder="Insert eMail" autocomplete='off' reqired />
+        </div>
+        <span class="message-error" id="sign-in-email-error"></span>
+    
+        <div class="input-wrapper">
+            <label for="password"><i class="fa fa-lock"></i></label>
+            <input name="password" id="password" type="password" placeholder="Insert Password" reqired />
+        </div>
+        <span class="message-error" id="sign-in-password-error"></span>
+    
+        <button class="form-btn sx back" id="back" type="button">Back</button>
+        <button class="form-btn dx" type="submit" id="sign-in-btn">Log In</button>
+        <div class="message-error" id="sign-in-error"></div>
+    </form>
     </div>
     <script src="../js/components.js"></script>
     <script src="../js/controller.js"></script>
-    <script src="../js/index.js"></script>
+    <!-- <script src="../js/index.js"></script> -->
     <script src="../js/model.js"></script>
     <script src="../js/signUp_In.js"></script>
     <script src="../js/utils.js"></script>
