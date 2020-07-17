@@ -74,19 +74,36 @@ view.showPage = async function(namePage){
             break;
         case 'mainView':
             content.innerHTML=components.main_view;
+            //Làm các button hoạt động
             view.MakeAllButtonSwitchPageWork();
-            document.getElementById("sign-out-button").onclick = function(){
+
+            let signOutButton=document.getElementById("sign-out-button")
+            signOutButton.onclick = function(){
                 controller.signOut();
             }
-            //Lấy dữ liệu
+
+            //Lấy dữ liệu notificatio
+            let showNotiBtn=document.getElementById("show-noti-btn")
+            showNotiBtn.onclick=function(){
+                view.showNotification("noti-list")
+            }
+            let hideNotiBtn=document.getElementById("hide-noti-btn")
+            hideNotiBtn.onclick=function(){
+                view.setText("noti-list","")
+            }
+            //Lấy dữ liệu notification
             await controller.loadUserInfomation();
+            await controller.loadUserNotification();
             //Show info
-            console.log("abc")
             view.showInfo();
+            view.showNotificationWarning("noti-warning")
             break;
         case 'adminPage':
             content.innerHTML=components.admin_page;
             view.MakeAllButtonSwitchPageWork();
+            
+            await controller.loadPendingIdeas();
+            view.showPendingIdeas("pending-idea-list");
             break;
         case 'profilePage':
             content.innerHTML=components.profile_page;
@@ -95,6 +112,25 @@ view.showPage = async function(namePage){
         case 'composePage':
             content.innerHTML=components.compose_page;
             view.MakeAllButtonSwitchPageWork();
+            //Xử lý form Compose
+            let formCompose=document.getElementById("compose");
+            formCompose.onsubmit = function(event){
+                //Đảm bảo trang không bị load lại
+                event.preventDefault();
+                //Lấy dữ liệu từ form
+                let title = formCompose.title.value.trim()
+                let content = formCompose.content.value.trim()
+
+                //Kiểm tra dữ liệu lấy từ form
+                let validateResult = [
+                    view.validate(title != '', 'compose-title-error', 'Input title'),
+                    view.validate(content != '' , 'compose-content-error', 'Input content'),
+                ]
+                if(isPassed(validateResult)){
+                    //Nếu pass gửi dữ liệu lên firebase qua controller
+                    controller.Compose(title,content)
+                }
+            }
             break;
         case 'ideaViewPage': 
             content.innerHTML=components.idea_view_page;
@@ -211,4 +247,37 @@ view.showInfo=function(){
     let userBalanceDisplay=document.getElementById("user-balance");
     userBalanceDisplay.innerHTML+=" "+currentUserBalance;
 }
+
+view.showNotification=function(tagID){
+    document.getElementById(tagID).innerHTML=""
+    for(let noti of model.notifications  ){
+        document.getElementById(tagID).innerHTML+= `<p>${noti.createdAt} : ${noti.content}</p> <button name="${noti.id}" class="delete-noti"> Xóa </button>`
+        let allDeleteNotiBtn=document.getElementsByClassName("delete-noti")
+        for(let deleteNotiBtn of allDeleteNotiBtn){
+            deleteNotiBtn.onclick=function(){controller.deleteNotification(this.name)}
+        }
+    }
+    
+}
+
+view.showPendingIdeas=function(tagID){
+    document.getElementById(tagID).innerHTML=""
+    for(let pendingIdea of model.pendingIdeas  ){
+        document.getElementById(tagID).innerHTML+= `
+                <p>Title: ${pendingIdea.title}</p> 
+                <p>Content: ${pendingIdea.content}</p> 
+                <p>Author: ${pendingIdea.author.name}
+                <p>Created At: ${pendingIdea.createdAt} </p>
+                <br>
+                <button name="${pendingIdea.id}" class="accept-pending-idea"> Chấp nhận </button>
+                <button name="${pendingIdea.id}" class="delete-pending-idea"> Hủy </button>`
+       //Làm nút Hủy và Chấp Nhận hoạt động
+    }
+    
+}
+
+view.showNotificationWarning=function(tagID){
+    document.getElementById(tagID).innerHTML="("+model.notifications.length.toString()+")"
+}
+
 

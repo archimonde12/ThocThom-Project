@@ -1,0 +1,13 @@
+Function dang bai
+
+1 write Form compose -> 
+2 click submit -> 
+3 check conditions -> if TRUE else back to step 1
+4 notification if success -> 
+5 save data on pending idea -> 
+
+6 show data at admin -> 
+7 accept -> if TRUE
+8 send notification for fund->if Accecpt
+9 save data on idea list -> 
+10 show data at main view

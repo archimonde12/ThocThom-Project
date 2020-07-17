@@ -1,5 +1,7 @@
 let db = firebase.firestore()
-
+const KEY_USERS_COLLECTION = "Users"
+const KEY_NOTI_COLLECTION = "Notifications"
+const KEY_PENDINGIDEA_COLLECTION="PendingIdeas"
 let controller = {};
 
 controller.signUp = async function (name, email, password) {
@@ -38,6 +40,38 @@ controller.signIn = async function (email, password) {
     } catch (error) {
         view.setText('sign-in-error', error.message)
         view.setActive('sign-in-btn', true)
+    }
+
+}
+
+controller.Compose = async function (title, content) {
+    //Khởi động
+    view.setText('compose-error', '')
+    view.setText('compose-success', '')
+    view.setActive('compose-btn', false)
+    try {
+        //Lấy dữ liệu
+        let newIdea = {
+            title: title,
+            content: content,
+            author: model.currentUserData,
+            createAt: new Date().toLocaleString()
+        }
+        //push lên pendingIdeas
+        await db.collection(KEY_PENDINGIDEA_COLLECTION).add(newIdea)
+            .then(function (docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+        //Thông báo thành công
+        view.setText('compose-success', 'Post your idea successfully,please wait for admin accpect!')
+        view.setText('compose-btn', "Đăng thành công")
+        await waitForSeconds(2)
+        let currentEmail = firebase.auth().currentUser.email
+        controller.sendNotification(currentEmail, "Bạn đã đăng bài thành công, hãy đợi sự kiểm duyệt của admin nhé")
+        view.showPage("mainView")
+    } catch (error) {
+        view.setText('compose-error', error.message)
+        view.setActive('compose-btn', true)
     }
 
 }
@@ -105,3 +139,81 @@ controller.changeBalance = async function (change) {
         });
     controller.loadUserInfomation()
 }
+
+
+
+//Xử lý notifications
+
+controller.loadUserNotification = async function () {
+    model.notifications=[];
+    let currentEmail = firebase.auth().currentUser.email
+    try {
+        let result = await firebase.firestore()
+            .collection(KEY_NOTI_COLLECTION) //nơi lấy dữ liệu
+            .where('recivedEmail', "==", currentEmail) //Cấu trúc so sánh email
+            .get() //Thực hiện
+        for (let userNoti of result.docs) {
+            model.saveNotification(userNoti)
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+controller.sendNotification = async function (recivedEmail, content) {
+    //Lấy thông tin
+    //Tạo cơ sở dữ liệu
+    let newNoti = {
+        recivedEmail: recivedEmail,
+        content: content,
+        createAt: new Date().toLocaleString()
+    }
+    try {
+        await db.collection("Notifications").add(newNoti)
+            .then(function (docRef) {
+                console.log("Sent to Notifications, written with ID: ", docRef.id);
+            })
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+controller.deleteNotification = async function (id) {
+    db.collection(KEY_NOTI_COLLECTION).doc(id).delete().then(async function() {
+        await controller.loadUserNotification()
+        view.showNotification("noti-list")
+        view.showNotificationWarning("noti-warning")
+        console.log("Document successfully deleted!");
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
+};
+
+//Xử lý pending Ideas
+
+controller.loadPendingIdeas = async function(){
+    model.pendingIdeas=[]
+    try{
+        let result = await firebase.firestore()
+        .collection(KEY_PENDINGIDEA_COLLECTION) //nơi lấy dữ liệu
+        .get() //Thực hiện
+        for (let pendingIdea of result.docs) {
+            model.savePendingIdea(pendingIdea)
+        }
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+
+controller.deletePendingIdeas = async function (id) {
+    db.collection(KEY_PENDINGIDEA_COLLECTION).doc(id).delete().then(async function() {
+        await controller.loadPendingIdeas()
+        view.showPendingIdeas("pending-idea-list")
+        console.log("Document successfully deleted!");
+    }).catch(function(error) {
+        console.error("Error removing document: ", error);
+    });
+};
+
