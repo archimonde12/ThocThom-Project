@@ -7,7 +7,7 @@ let data = [{
     title: "GBPUSD, MÔ HÌNH 3 ĐỈNH XUẤT HIỆN",
     content: 'Với tình hình đại dịch toàn cầu diễn biến phức tạp, các chính phủ tung nhiều gói kích thích nền kinh tế, dẫn đến tỉ giá các cặp tiền tệ biến động phức tạp thì việc dựa vào phân tích kỹ thuật để giao dịch như một lựa chọn tuyệt vời để tìm ra xu hướng. Hiện tại cặ',
     like: 3,
-    createdAt: '2020, 7, 16'
+    createdAt: '"2018-08-13 17:17:30.0"'
 }, {
     link: 'https://vn.tradingview.com/chart/GBPUSD/86mMjgAN/',
     author: 'Trongvinh-FA25',
@@ -16,8 +16,8 @@ let data = [{
     image: 'https://s3.tradingview.com/l/LeAx5k5V_mid.webp',
     title: "NHẬN ĐỊNH BTCUSD NGÀY 14.07 - Giao dịch theo sóng Elliott",
     content: 'Thân chào anh em, BTC vẫn đang tích lũy và sideway khó chị và chưa có hướng đi rõ ràng, rất khó cho anh em có cơ sở giao dịch vậy BTC sẽ vận động như thế nào tiếp theo anh em cùng xem nhận định ngày hôm nay nhé! Nội dung: 1. Context Market - Diễ',
-    like: 1,
-    createdAt: '2020, 7, 14'
+    like: 13,
+    createdAt: '2018-08-16 17:25:30.0'
 }, {
     link: 'https://vn.tradingview.com/chart/BTCUSDT/LeAx5k5V/',
     author: 'Trongvinh-FA25',
@@ -26,8 +26,8 @@ let data = [{
     image: 'https://s3.tradingview.com/r/RtFQYm5a_mid.webp',
     title: "NHẬN ĐỊNH BTCUSD TUẦN 13 - 20/07 - Giao dịch theo sóng Elliott BTCUSDT",
     content: 'Thân chào anh em, Một tuần nữa lại bắt đầu! Tuần trước, BTC đã có những bước vận động như chúng ta đã nhận định và hiện tại BTC đang trong trạng thái tương đối khó nhằn, chúng ta cùng xem chiến lược của tuần này như thế nào nhé! Nội dung: 1',
-    like: 13,
-    createdAt: '2020, 7, 17'
+    like: 1,
+    createdAt: '2018-08-15 17:28:30.0'
 }, {
     link: 'https://vn.tradingview.com/chart/BTCUSDT/VuHFxV30/',
     author: 'Blogdautu',
@@ -37,13 +37,13 @@ let data = [{
     title: "Phân Tích Nhanh Bitcoin Ngày 14/07/2020 – Phe Bò Đang Suy Yếu ETHUSDTPERP",
     content: 'Chúng ta đã kết thúc tuần vừa rồi với các kịch bản và đồng coins đạt tỉ suất lợi nhuận tốt. Đến lúc này, lực của phe Bò đang có dấu hiệu suy yếu. Các bạn xem khung thời gian 12H, 4H cho cả Bitcoin và Ethereum, các bạn sẽ nhận thấy BTC đang đi trong 1 ',
     like: 20,
-    createdAt: '2020, 7, 11'
+    createdAt: '2018-08-14 17:28:30.0'
 }]
 
 // let search = document.getElementById('search')
 // let submit = document.getElementById('submit')
 let newdata = document.getElementById('newdata')
-shownews(data)
+
 
 //hiển thị bài đăng
 function shownews(newsdata) {
@@ -51,7 +51,7 @@ function shownews(newsdata) {
     if (newsdata.length <= 0) {
         newshtml = `Không Tìm Thấy Thông Tin`
     } else {
-        for (i = 0; i < newsdata.length; i++) {
+        for (i = newsdata.length - 1; i >= 0; i--) {
             newshtml += `<li  style="float: left;
             margin-left: 50px;
         width: 70%;
@@ -106,6 +106,7 @@ function shownews(newsdata) {
 let search = document.getElementById('search')
 let submit = document.getElementById('submit')
 let filterdata = data
+shownews(data)
 
 function timkiem(cachtim) {
     switch (cachtim) {
@@ -150,20 +151,15 @@ search.addEventListener("keyup", function(event) {
     }
 });
 
+//sắp xếp
+let filter = document.getElementById('filter')
 
-checkboxLike.addEventListener('change', () => {
-    filterdata.sort(function(a, b) { return b.like - a.like })
-    shownews(filterdata)
-})
-
-let checkboxTime = document.getElementById('checkboxTime')
-checkboxTime.addEventListener('change', () => {
-    filterdata.sort(function(a, b) {
-        return new Date(b.createdAt) - new Date(a.createdAt);
-    })
-});
-
-
-console.log((new Date(data[1].createdAt)).getDay())
-console.log(new Date(data[1].createdAt))
-console.log(new Date(data[1].createdAt) - new Date(data[0].createdAt))
+function changeFilter() {
+    if (filter.value == 'Lượt like') {
+        filterdata.sort(function(a, b) { return b.like - a.like })
+        shownews(filterdata)
+    } else if (filter.value == 'Ngày đăng') {
+        filterdata.sort(function(a, b) { return new Date(a.createdAt) - new Date(b.createdAt) })
+        shownews(filterdata)
+    }
+}

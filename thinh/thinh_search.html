@@ -16,10 +16,10 @@
     <!-- <form id="formSearch"></form> -->
     <div> Lọc theo author <input id="checkboxAuthor" type="checkbox" name="vehicle2" value="Car">
         <label for="vehicle2"> author</label></div>
-    <div>Sắp xếp theo <input id="checkboxLike" type="checkbox" name="vehicle2" value="Car">
-        <label for="vehicle2"> lượt like</label>
-        <input type="checkbox" id="checkboxTime" name="vehicle2" value="Car">
-        <label for="vehicle2"> Time</label></div>
+    <div>Sắp xếp theo <select id="filter" onchange="changeFilter()">
+        <option style="text-align: center;">Ngày đăng</option>
+        <option style="text-align: center;">Lượt like</option>
+    </select></div>
     <!-- </form> -->
 
     <div id='newdata'></div>
