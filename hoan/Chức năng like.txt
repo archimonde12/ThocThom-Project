@@ -1,0 +1,10 @@
+step 1: load idea to local file.
+idea.like =[email1,email2]
+
+step 2: compare when display button
+if idea.like have email1-> display unlike button 
+if click -> remove email1 from [] idea.like -> display like button
+
+
+if idea.like dont have email1 -> display like button
+if dont click-> add email1 to [] idea.like -> display unlike button

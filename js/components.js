@@ -1,6 +1,6 @@
 let components = {};
 
-components.sign_up=`
+components.sign_up = `
 SIGN UP PAGE - TRANG ĐĂNG KÍ
 <h1>DEMO</h1>
 <div class="container">
@@ -34,8 +34,11 @@ SIGN UP PAGE - TRANG ĐĂNG KÍ
             placeholder="Verify Password" reqired />
     </div>
     <span class="message-error" id="password-Confirmation-error"></span>
-
-    <button class="form-btn sx log-in" id="log-in" type="button">Don't have account yet</button>
+    <label for="typeOfAccount">Choose a type of account:</label>
+    <select id="typeOfAccount" name="typeOfAccount">
+        <option value="member">Gà</option>
+        <option value="fund">Thịt Gà</option>
+    </select>
     <button id="sign-up-btn" class="form-btn dx" type="submit">Register</button>
     <div class="message-error" id="sign-up-error"></div>
     <div class="message-success" id="sign-up-success"></div>
@@ -78,7 +81,7 @@ SIGN UP PAGE - TRANG ĐĂNG KÍ
 </div>
 `;
 
-components.sign_in=`
+components.sign_in = `
 <div class="container">
 <h1>DEMO</h1>
 <form class="signIn" id="signIn">
@@ -122,7 +125,7 @@ SIGN IN PAGE - TRANG ĐĂNG NHẬP
 
 `;
 
-components.main_view=`
+components.main_view = `
 <h1>MAIN VIEW - MÀN HÌNH CHÍNH</h1>
 <h2>DEMO</h2>
 <div class="header">
@@ -130,11 +133,15 @@ components.main_view=`
 <button id="sign-out-button">Sign Out</button>
 </div>
 <div class="info-container">
-<h3>Account Information</h3>
-<p id="user-name">Name:</p>
-<p id="user-balance">Balance:</p>
-<button class="deposit-page-btn">Deposit</button>
-<button class="withdraw-page-btn">WithDraw</button>
+    <h3>Account Information</h3>
+    <button id="my-infomation-btn">Xem profile</button>
+    <p id="user-name">Name:</p>
+    <p id="user-balance">Balance:</p>
+    <p id="user-type">Type:</p>
+    <button class="deposit-page-btn">Deposit</button>
+    <button class="withdraw-page-btn">WithDraw</button>
+    <div id="compose-btn-wapper"></div>
+    <div id="admin-page-btn-wapper"></div>
 </div>
 <div class="ideas-container">
 <h3>Notification <label id="noti-warning"></label></h3>
@@ -149,11 +156,7 @@ components.main_view=`
     <option value=”1″>Nhiều người thích nhất</option>
     <option value=”2″>Của quỹ theo dõi</option>
  </select>
-<table>
-    <tr><td>Image 1</td><td>Idea 1</td><td>Title 1</td><td>Content 1</td><td>Author 1</td></tr>
-    <tr><td>Image 2</td><td>Idea 2</td><td>Title 2</td><td>Content 2</td><td>Author 2</td></tr>
-    <tr><td>Image 3</td><td>Idea 3</td><td>Title 3</td><td>Content 3</td><td>Author 3</td></tr>
-</table>
+<div id="idea-list"></div>
 </div>
 <div class="fund-info-container">
 <h3>Show all fund</h3>
@@ -206,7 +209,7 @@ components.main_view=`
 
 `;
 
-components.admin_page= `
+components.admin_page = `
 <h1>ADMIN PAGE - TRANG THÔNG TIN CỦA ADMIN</h1>
 <h2>DEMO</h2>
 <div class="header">
@@ -232,8 +235,16 @@ components.admin_page= `
 <p>Hiển thị thông tin mới </p>
 `;
 
-components.profile_page=`
+components.profile_page = `
 <h1>PROFILE - TRANG THÔNG TIN TÀI KHOẢN</h1>
+<h2>DEMO</h2>
+<div class="header">
+<button class="main-view-btn">Trang Chủ</button>
+<button id="sign-out-button">Sign Out</button>
+</div>
+<div id="profile-content"></div>
+<h2>END DEMO</h2>
+<p>====================================================================</p>
 <h1>Các Button chuyển trang chính</h1>
 <br>
 <button class="main-view-btn">Quay lại Trang Chủ </button>
@@ -248,7 +259,7 @@ components.profile_page=`
 <h1>DEMO</h1>
 `;
 
-components.idea_view_page=`
+components.idea_view_page = `
 <h1>IDEA PAGE - TRANG ĐỌC MỘT KÈO CHI TIẾT</h1>
 <h1>Các Button chuyển trang chính</h1>
 <br>
@@ -267,7 +278,7 @@ components.idea_view_page=`
 <h1>DEMO</h1>
 `;
 
-components.deposit_page=`
+components.deposit_page = `
 <h1>DEPOSIT PAGE - TRANG NẠP TIỀN</h1>
 <h1>DEMO</h1>
 <div class="container">
@@ -297,7 +308,7 @@ components.deposit_page=`
 
 `;
 
-components.withdraw_page=`
+components.withdraw_page = `
 <h1>WITHDRAW PAGE - TRANG RÚT TIỀN</h1>
 <h1>DEMO</h1>
 <div class="container">
@@ -325,7 +336,7 @@ components.withdraw_page=`
 <p>- Rút tiền (kiểm tra số tiền rút có lớn hơn số tài khoản đang có hay không rồi mới cho rút) </p>
 `;
 
-components.compose_page=`
+components.compose_page = `
 <h1>COMPOSE PAGE - TRANG ĐĂNG BÀI</h1>
 <h1>DEMO</h1>
 <form id="compose">
