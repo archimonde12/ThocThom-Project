@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../ThocThom-Project/css/idea_view_page.css">
+    <link rel="stylesheet" href="../ThocThom-Project/fonts/css/all.css">
+    <link rel="stylesheet" href="../ThocThom-Project/css/sign_in.css">
+    <link rel="shortcut icon" href="../ThocThom-Project/images/title.png">
+    <title>Document</title>
+</head>
+<body>
+    <main role="main">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top heg">
+              <a class="navbar-brand" href="#"><img src="../ThocThom-Project/images/logo.png" alt="" class="logo"></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link home" href="#"><span>HOME</span><span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                      
+                    <a class="nav-link links" href="#"><span>ABOUT US</span></a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link links" href="#"><span>SERVICES</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link links" href="#"><span>CONSTACT US</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link links" href="#"><span>SIGN IN</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link links" href="#"><span>SIGN UP</span></a>
+                    </li>
+                </ul>
+                <form class="form-inline mt-2 mt-md-0">
+                  <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+              </div>
+            </nav>
+          </header>
+    </main>
+    <div class="container" style="margin-top: 100px;">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="name" style="color: black;font-size: 28px;font-weight: bold;margin-bottom: 70px;font-family:initial;">
+                    Login to myInvestor area
+                </div>
+                <form style="border:1px rgba(128, 128, 128, 0.555) solid;padding: 30px;">
+                    <div class="loginName" style="text-align: center;color: gray;font-size: 40px;">Log In</div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" placeholder="myInvestor email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" placeholder="Password"  class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="row summits">
+                        <div class="col-md-6">
+                        <a href="" class="Forgot">Forgot password?</a>
+                        </div>
+                        <div class="col-md-6">
+                        <input name="login" id="submmit" value="Login" type="submit" class="success" style="float:right">
+                        </div>
+                    </div>
+                    <div class="col-md-12" id="register-box" style="background:#F9F9F9">
+                        <h4>Not Registered?</h4>
+                        <a href="" class="btn btn-success">Register</a><br>
+                        <span id="warning" style="font-size: 11px;color:#999999">Trading Forex and CFDs is risky</span>
+                        
+                        <br clear="all"><br clear="all">
+                   </div>
+                  </form>
+            </div>
+            <div class="col-lg-3">
+                <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <div class="tradingview-widget-copyright"><a href="https://vn.tradingview.com" rel="noopener" target="_blank"><span class="blue-text">Dữ liệu Thị trường</span></a> từ TradingView</div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+    {
+    "colorTheme": "light",
+    "dateRange": "12m",
+    "showChart": true,
+    "locale": "vi_VN",
+    "largeChartUrl": "",
+    "isTransparent": false,
+    "width": "400",
+    "height": "660",
+    "plotLineColorGrowing": "rgba(246, 178, 107, 1)",
+    "plotLineColorFalling": "rgba(246, 178, 107, 1)",
+    "gridLineColor": "rgba(240, 243, 250, 1)",
+    "scaleFontColor": "rgba(120, 123, 134, 1)",
+    "belowLineFillColorGrowing": "rgba(33, 150, 243, 0.12)",
+    "belowLineFillColorFalling": "rgba(33, 150, 243, 0.12)",
+    "symbolActiveColor": "rgba(33, 150, 243, 0.12)",
+    "tabs": [
+      {
+        "title": "Các chỉ số",
+        "symbols": [
+          {
+            "s": "FOREXCOM:SPXUSD",
+            "d": "S&P 500"
+          },
+          {
+            "s": "FOREXCOM:NSXUSD",
+            "d": "Nasdaq 100"
+          },
+          {
+            "s": "FOREXCOM:DJI",
+            "d": "Dow 30"
+          },
+          {
+            "s": "INDEX:NKY",
+            "d": "Nikkei 225"
+          },
+          {
+            "s": "INDEX:DEU30",
+            "d": "DAX Index"
+          },
+          {
+            "s": "FOREXCOM:UKXGBP",
+            "d": "FTSE 100"
+          }
+        ],
+        "originalTitle": "Indices"
+      },
+      {
+        "title": "Hàng hóa",
+        "symbols": [
+          {
+            "s": "CME_MINI:ES1!",
+            "d": "E-Mini S&P"
+          },
+          {
+            "s": "CME:6E1!",
+            "d": "Euro"
+          },
+          {
+            "s": "COMEX:GC1!",
+            "d": "Gold"
+          },
+          {
+            "s": "NYMEX:CL1!",
+            "d": "Crude Oil"
+          },
+          {
+            "s": "NYMEX:NG1!",
+            "d": "Natural Gas"
+          },
+          {
+            "s": "CBOT:ZC1!",
+            "d": "Corn"
+          }
+        ],
+        "originalTitle": "Commodities"
+      },
+      {
+        "title": "Trái phiếu",
+        "symbols": [
+          {
+            "s": "CME:GE1!",
+            "d": "Eurodollar"
+          },
+          {
+            "s": "CBOT:ZB1!",
+            "d": "T-Bond"
+          },
+          {
+            "s": "CBOT:UB1!",
+            "d": "Ultra T-Bond"
+          },
+          {
+            "s": "EUREX:FGBL1!",
+            "d": "Euro Bund"
+          },
+          {
+            "s": "EUREX:FBTP1!",
+            "d": "Euro BTP"
+          },
+          {
+            "s": "EUREX:FGBM1!",
+            "d": "Euro BOBL"
+          }
+        ],
+        "originalTitle": "Bonds"
+      },
+      {
+        "title": "Ngoại hối",
+        "symbols": [
+          {
+            "s": "FX:EURUSD"
+          },
+          {
+            "s": "FX:GBPUSD"
+          },
+          {
+            "s": "FX:USDJPY"
+          },
+          {
+            "s": "FX:USDCHF"
+          },
+          {
+            "s": "FX:AUDUSD"
+          },
+          {
+            "s": "FX:USDCAD"
+          }
+        ],
+        "originalTitle": "Forex"
+      }
+    ]
+  }
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <footer class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <span class="foorterName">ABOUT US</span>
+              <img src="../ThocThom-Project/images/logo.png" alt="">
+              <p>Forex Services offered through Advisory Group. Insurance products and services are offered through the Insurance Group. Advisory Group and Insurance Group do business collectively as Financial Group. The aforementioned are affiliated companies.</p>
+              <div class="icon">
+                <a href=""><i class="fab fa-facebook-f"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-skype"></i></a>
+                <a href=""><i class="fab fa-telegram-plane"></i></a>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <span class="foorterName">OUR SERVICES</span>
+              <ul id="menu-services" class="menu"><li id="menu-item-13" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-13"><a href="#">Investment management</a></li><li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-32"><a href="#">Bonds &amp; Commodities</a></li><li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-31"><a href="#">Private Finance Solutions</a></li><li id="menu-item-76" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-76"><a href="#">Tax and Trusts</a></li><li id="menu-item-77" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-77"><a href="#">Banking services</a></li><li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-78"><a href="#">Financial Advisory &amp; Structuring</a></li><li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-79"><a href="#">Insurance Solutions</a></li><li id="menu-item-80" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-80"><a href="#">Trades &amp; Stocks</a></li></ul>
+            </div>
+            <div class="col-md-4">
+              <span class="foorterName">RECENT NEWS</span>
+              <ul id="menu-services" class="menux"><li> <a href="#">Underwriting And Agency Roles</a> <div class="post-date">August 30, 2020</div></li><li> <a href="#">A Look At Primary And Secondary Markets</a> <div class="post-date">August 30, 2020</div></li><li> <a href="#">How spot factoring helps resolve cash flow gaps</a> <div class="post-date">August 30, 2020</div></li></ul>
+            </div>
+            
+          </div>
+        </footer>
+        <p class="end">© 2020 Forex Theme by HeroFX.</p>
+      </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+          <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
+</body>
+</html>
