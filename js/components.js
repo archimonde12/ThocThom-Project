@@ -156,8 +156,16 @@ components.main_view = `
     <option value=”1″>Nhiều người thích nhất</option>
     <option value=”2″>Của quỹ theo dõi</option>
  </select>
-<div id="idea-list"></div>
+
+<div class="responsive" alt="Nature" style="background-image: url(../ThocThom-Project/images/business.jpg);background-size: cover;">
+<div  class="container">
+    <!-- Example row of columns -->
+    <div id="idea-list" class="row">
+    </div>
+    </div>
+    </div>
 </div>
+
 <div class="fund-info-container">
 <h3>Show all fund</h3>
 <label for="searchBox">Search Name</label>
@@ -370,3 +378,5 @@ components.compose_page = `
 <p>- Đăng bài </p>
 <p>- Up ảnh vào bài </p>
 `;
+
+components.idea_view_page

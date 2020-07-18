@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,253 +8,216 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../ThocThom-Project/css/idea_view_page.css">
-    <link rel="stylesheet" href="../ThocThom-Project/fonts/css/all.css">
-    <link rel="stylesheet" href="../ThocThom-Project/css/sign_in.css">
-    <link rel="stylesheet" href="../ThocThom-Project/css/signUp.css">
-    <link rel="stylesheet" href="../ThocThom-Project/css/profile_page.css">
-    <link rel="shortcut icon" href="../ThocThom-Project/images/title.png">
+    <link rel="stylesheet" href="../css/idea_view_page.css">
+    <link rel="stylesheet" href="../fonts/css/all.css">
+    <link rel="stylesheet" href="../css/sign_in.css">
+    <link rel="stylesheet" href="../css/signUp.css">
+    <link rel="stylesheet" href="../css/profile_page.css">
+    <link rel="shortcut icon" href="../images/title.png">
     <title>Document</title>
 </head>
+
 <body>
     <main role="main">
         <header>
             <nav class="navbar navbar-expand-md navbar-dark fixed-top heg">
-              <a class="navbar-brand" href="#"><img src="../ThocThom-Project/images/logo.png" alt="" class="logo"></a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand" href="#"><img src="../ThocThom-Project/images/logo.png" alt="" class="logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
-              <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
-                  <li class="nav-item active">
-                    <a class="nav-link home" href="#"><span>HOME</span><span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                      
-                    <a class="nav-link links" href="#"><span>MY ACCOUNTS</span></a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link links" href="#"><span>SERVICES</span></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link links" href="#"><span>CONSTACT US</span></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link links" href="#"><span>NEW INVESTS</span></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link links" href="#"><span><i class="fas fa-sign-out-alt"></i>LOGOUT</span></a>
-                    </li>
-                </ul>
-                <form class="form-inline mt-2 mt-md-0">
-                  <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-                </form>
-              </div>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link home" href="#"><span>HOME</span><span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+
+                            <a class="nav-link links" href="#"><span>MY ACCOUNTS</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link links" href="#"><span>SERVICES</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link links" href="#"><span>CONSTACT US</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link links" href="#"><span>NEW INVESTS</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link links" href="#"><span><i class="fas fa-sign-out-alt"></i>LOGOUT</span></a>
+                        </li>
+                    </ul>
+                    <form class="form-inline mt-2 mt-md-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
             </nav>
-          </header>
+        </header>
     </main>
     <div class="container profile" style="margin-top: 100px;">
         <div class="row">
             <div class="col-lg-12" style="border-bottom: 1px gray solid;">
-                <h5 class="pull-left">Welcome to myInvestor Area
-                    <br>
-                    <span style="font-weight: normal;font-size: 14px;">      
-                    Markets (SV) LTD
-                    </span>
-                </h5>
+                <h3>Notification <label id="noti-warning"></label></h3>
             </div>
         </div>
-        <div class="row" style="margin-top: 15px;">
-                <div class="col-md-5 col-sm-12 col-xs-12 margin-bottom-20" id="my-trading-accounts">
-                    <div class="titleBox mainlinks">
-                    <h4 class="color-white">My Trading Accounts &nbsp;
-                    
-                    <a href="#" title="View All" style="font-size:15px;float:right;padding-right:15px" class="color-white"><i class="fa fa-list-ul color-white" style="font-size:15px"></i> View All</a>
-                    
-                    </h4>
+        <div class="row" style="margin-top: 15px;" style="display: flex; justify-content: space-between;">
+
+            <div id="noti-list" class="col-md-5 col-sm-12 col-xs-12 margin-bottom-20" id="my-trading-accounts">
+                <div style="display: flex; justify-content: space-between;">
+                    <div>
+                        <p>7/18/2020, 9:55:22 AM : Bài viết của bạn đã được admin chấp thuận!
+
+                        </p>
                     </div>
-                    
-                    <div class="fullWidth margin-bottom-20 noclearmargin">
-                    <div class="table-responsive">
-                    <table id="my_accounts" class="table table-striped table-condensed align-center" style="margin-bottom:5px">
-                    <thead class="text-align-center">
-                    <tr class="header tableHeader">
-                    <th class="text-align-center vertical-align-middle">Account</th>
-                    <th class="text-align-center vertical-align-middle">Follow</th>
-                    <th class="text-align-center vertical-align-middle">Currency</th>
-                    <th class="text-align-center vertical-align-middle">Balance</th>
-                    <th class="text-align-center vertical-align-middle">Bonus</th>
-                    
-                    </tr>
-                    </thead>
-                    <tbody class="text-align-center">
-                    
-                    <tr>
-                    <td><span>1273809</span></td>
-                    <td><span>Hero</span></td>
-                    <td><b><span>USD</span></b></td>
-                    <td><b><span>0.0</span></b></td>
-                    <td><span>0%</span></td>
-                    
-                    
-                    </tr>
-                    
-                    <tr>
-                    <td><span>1273810</span></td>
-                    <td><span>Join</span></td>
-                    <td><b><span>USD</span></b></td>
-                    <td><b><span>0.0</span></b></td>
-                    <td><span>0%</span></td>
-                    
-                    
-                    </tr>
-                    
-                    
-                    <tr style="border-bottom: 1px solid #ddd;">
-                    <td colspan="6" align="left">
-                    &nbsp;&nbsp;&nbsp;<a href="#" class="color-red" style="padding-right:16px">Open new Trading Account</a>
-                    </td>
-                    </tr>
-                    </tbody>
-                    </table>
-                    </div>
-                    </div>
-                    
-            </div>
-            <div class="col-md-3 col-sm-12 col-xs-12 margin-bottom-20 noclearmargin" id="announcements">
-                <div class="titleBox mainlinks">
-                <h4 class="color-white">
-                My Announcements
-                <a href="#" id="editMyDetails" title="My Announcements" class="color-white viewAll" style="font-size:15px;float:right;padding-right:15px">
-                    <i class="far fa-envelope"style="font-size:15px;" ></i> View All
-                </a>
-                </h4>
-                </div>
-                <div class="fullWidth" id="announcement-box-info">
-                <div style="margin-top: 20px;float:left;text-align:left;border-radius:4px;border:1px dashed #cccccc;padding:20px;width:100%;margin-bottom:15px;">
-                <table>
-                <tbody><tr>
-                <td class="icon"><i class="fa fa fa-check-circle" style="font-size:22px;color:#008000"></i></td>
-                <td class="message" style="padding-left:15px;">
-                <p style="padding:0px;margin:0px;font-size:14px;">
-                
-                <b>Your myInvestor account is approved</b> <br>
-                <a class="color-red" href="#">Click here</a> to see all our deposit options.
-                </p>
-                </td>
-                </tr>
-                </tbody></table>
-                </div>
+                    <div><button name="${noti.id}" class="delete-noti"> Xóa </button></div>
                 </div>
             </div>
+
             <div class="col-md-4 col-sm-4 col-xs-12 magazine-page ar-reverse">
                 <div class="headline firstNegativeMargin" style="background:#F9F9F9;padding:10px 10px;border:1px solid #EEEEEE;margin-top: 0px;float: left;">
-                <div class="myIdBox fullWidth" style="border-bottom:1px solid #EEEEEE;padding-bottom:10px;margin-bottom:5px">
-                    <div class="col-md-12" style="padding:7px 0px 0px 0px">
-                    
-                    <a href="/en/central/profile.html" id="editMyDetails" title="Edit Details">
-                    
-                    <img src="../ThocThom-Project/images/avartar1.jpg" width="60" style="border:1px solid #CCCCCC">
-                    <a href="/en/central/profile.html" id="editMyDetails" title="Edit Details" class="color-red"><i class="fa fa-edit color-grown" style="font-size:18px;float: right;"></i></a>    
-                    </a>
+                    <div class="myIdBox fullWidth" style="border-bottom:1px solid #EEEEEE;padding-bottom:10px;margin-bottom:5px">
+                        <div class="col-md-12" style="padding:7px 0px 0px 0px">
+
+                            <a href="/en/central/profile.html" id="editMyDetails" title="Edit Details">
+
+                                <img src="../ThocThom-Project/images/avartar1.jpg" width="60" style="border:1px solid #CCCCCC">
+                                <a href="/en/central/profile.html" id="editMyDetails" title="Edit Details" class="color-red"><i class="fa fa-edit color-grown" style="font-size:18px;float: right;"></i></a>
+                            </a>
+                        </div>
+                        <div id="user-settings-text" class="col-md-8 col-sm-8 col-xs-8" style="padding:7px 0px 5px 10px;font-size:13px">
+                            <span>Hello&nbsp;</span>
+                            <span id="name-Investor"><b>Hero</b></span><br>
+                            <span>myInvestor ID:&nbsp;</span><span>30173210</span>
+                        </div>
                     </div>
-                    <div id="user-settings-text" class="col-md-8 col-sm-8 col-xs-8" style="padding:7px 0px 5px 10px;font-size:13px">
-                    <span>Hello&nbsp;</span>
-                    <span id="name-Investor"><b>Hero</b></span><br>
-                    <span>myInvestor ID:&nbsp;</span><span>30173210</span>
-                    </div>
-                </div>
-                <!---->
-                <div class="row"style="width: 300px;">
+                    <!---->
+                    <div class="row" style="width: 300px;">
                         <div class="col-sm-6" style="padding:0px;font-size:16px !important;color: #333333;padding-left: 10px;">
                             Balance:&nbsp;
                         </div>
                         <div class="col-sm-6" style="padding:0px;text-align:right">
                             <input type="hidden" name="_xsrf" value="2|6a37f94e|37c42e4cce55c01031f414328ccd69aa|1594861975">
-                            <span class="wallet_balance" style="font-weight:bold;font-size:16px !important">0.0 USD</span>
-                            &nbsp;<i class="fa fa-sync refreshBalance" style="font-size:17px;cursor:pointer;color:#056D34"></i>
+                            <span class="wallet_balance" style="font-weight:bold;font-size:16px !important">0.0 USD</span> &nbsp;
+                            <i class="fa fa-sync refreshBalance" style="font-size:17px;cursor:pointer;color:#056D34"></i>
                         </div>
-                </div>
+                    </div>
                 </div>
                 <div class="tradeMoney">
                     <div class="magazine-sb-categories margin-bottom-5 fullWidth">
-                    
-                    <a href="#" class="btn btn-success trade">
-                    
-                    <b>Deposit</b></a>
+
+                        <a href="#" class="btn btn-success trade">
+
+                            <b>Deposit</b></a>
                     </div>
                     <div class="magazine-sb-categories margin-bottom-5 fullWidth">
-                    
-                    <a href="#" class="btn btn-outline-secondary trade">
-                    
-                    <b>Withdraw</b></a>
+
+                        <a href="#" class="btn btn-outline-secondary trade">
+
+                            <b>Withdraw</b></a>
                     </div>
-                    
+
                     <div class="magazine-sb-categories margin-bottom-20 fullWidth">
-                    
-                    <a href="#" class="btn btn-outline-info trade">
-                    
-                    <b>Transfer Funds</b></a>
+
+                        <a href="#" class="btn btn-outline-info trade">
+
+                            <b>Transfer Funds</b></a>
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
-</div>
-<div class="fusion-builder-row fusion-row "><div class="fusion-layout-column fusion_builder_column fusion_builder_column_1_1 fusion-builder-column-21 fusion-one-full fusion-column-first fusion-column-last fusion-column-no-min-height 1_1" style="margin-top:0px;margin-bottom:20px;">
-    <div class="fusion-column-wrapper" style="padding: 0px; background-position: left top; background-repeat: no-repeat; background-size: cover; height: auto;" data-bg-url="">
-      <!-- <style type="text/css">@media only screen and (max-width:800px) {.fusion-title.fusion-title-16{margin-top:0px!important;margin-bottom:0px!important;}}</style><div class="fusion-title title fusion-title-16 fusion-sep-none fusion-title-center fusion-title-text fusion-title-size-two fusion-border-below-title" style="margin-top:0px;margin-bottom:0px;"><h2 class="title-heading-center" style="margin:0;">Payment Modes</h2></div><div class="fusion-sep-clear"></div><div class="fusion-separator sep-single sep-solid" style="border-color:#42abe1;border-top-width:4px;margin-left: auto;margin-right: auto;margin-top:;margin-bottom:30px;width:100%;max-width:80px;"></div><div class="fusion-clearfix"></div> -->
-  
     </div>
-  </div><div class="fusion-layout-column fusion_builder_column fusion_builder_column_1_1 fusion-builder-column-22 fusion-one-full fusion-column-first fusion-column-last 1_1" style="margin-top:0px;margin-bottom:20px;">
-    <div class="fusion-column-wrapper" style="padding: 0px; background-position: left top; background-repeat: no-repeat; background-size: cover; height: auto;" data-bg-url="">
-      <div class="container">
-  <div class="row seven-cols">
-  <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_01.png" width="101" height="51" alt="brabant-portfolio-19-2" title="" class="img-responsive wp-image-4193 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_01.png" data-was-processed="true"></div>
-  <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_03.png" width="101" height="51" alt="payment_method_03" title="" class="img-responsive wp-image-4209 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_03.png" data-was-processed="true"></div>
-  <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_04.png" width="101" height="51" alt="payment_method_04" title="" class="img-responsive wp-image-4217 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_04.png" data-was-processed="true"></div>
-  <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_05.png" width="101" height="51" alt="payment_method_05" title="" class="img-responsive wp-image-4225 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_05.png" data-was-processed="true"></div>
-  <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_06.png" width="101" height="51" alt="payment_method_06" title="" class="img-responsive wp-image-4233 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_06.png" data-was-processed="true"></div>
-  <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_07.png" width="101" height="51" alt="payment_method_07" title="" class="img-responsive wp-image-4241 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_07.png" data-was-processed="true"></div>
-  </div>
-  <div class="row seven-cols">
-  <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_08.png" width="101" height="51" alt="payment_method_08" title="" class="img-responsive wp-image-4249 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_08.png" data-was-processed="true"></div>
-  <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_09.png" width="101" height="51" alt="payment_method_09" title="" class="img-responsive wp-image-4257 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_09.png" data-was-processed="true"></div>
-  <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_10.png" width="101" height="51" alt="payment_method_10" title="" class="img-responsive wp-image-4265 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_10.png" data-was-processed="true"></div>
-  <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_11.png" width="101" height="51" alt="payment_method_11" title="" class="img-responsive wp-image-4217 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_11.png" data-was-processed="true"></div>
-  <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_12.jpg" width="101" height="51" alt="payment_method_13" title="" class="img-responsive wp-image-4233 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_12.jpg" data-was-processed="true"></div>
-  <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_14.png" width="101" height="51" alt="payment_method_14" title="" class="img-responsive wp-image-4241 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_14.png" data-was-processed="true"></div>
-  </div>
-  </div><div class="fusion-clearfix"></div>
-  
+    <div class="fusion-builder-row fusion-row ">
+        <div class="fusion-layout-column fusion_builder_column fusion_builder_column_1_1 fusion-builder-column-21 fusion-one-full fusion-column-first fusion-column-last fusion-column-no-min-height 1_1" style="margin-top:0px;margin-bottom:20px;">
+            <div class="fusion-column-wrapper" style="padding: 0px; background-position: left top; background-repeat: no-repeat; background-size: cover; height: auto;" data-bg-url="">
+                <!-- <style type="text/css">@media only screen and (max-width:800px) {.fusion-title.fusion-title-16{margin-top:0px!important;margin-bottom:0px!important;}}</style><div class="fusion-title title fusion-title-16 fusion-sep-none fusion-title-center fusion-title-text fusion-title-size-two fusion-border-below-title" style="margin-top:0px;margin-bottom:0px;"><h2 class="title-heading-center" style="margin:0;">Payment Modes</h2></div><div class="fusion-sep-clear"></div><div class="fusion-separator sep-single sep-solid" style="border-color:#42abe1;border-top-width:4px;margin-left: auto;margin-right: auto;margin-top:;margin-bottom:30px;width:100%;max-width:80px;"></div><div class="fusion-clearfix"></div> -->
+
+            </div>
+        </div>
+        <div class="fusion-layout-column fusion_builder_column fusion_builder_column_1_1 fusion-builder-column-22 fusion-one-full fusion-column-first fusion-column-last 1_1" style="margin-top:0px;margin-bottom:20px;">
+            <div class="fusion-column-wrapper" style="padding: 0px; background-position: left top; background-repeat: no-repeat; background-size: cover; height: auto;" data-bg-url="">
+                <div class="container">
+                    <div class="row seven-cols">
+                        <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_01.png" width="101" height="51" alt="brabant-portfolio-19-2" title="" class="img-responsive wp-image-4193 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_01.png"
+                                data-was-processed="true"></div>
+                        <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_03.png" width="101" height="51" alt="payment_method_03" title="" class="img-responsive wp-image-4209 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_03.png"
+                                data-was-processed="true"></div>
+                        <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_04.png" width="101" height="51" alt="payment_method_04" title="" class="img-responsive wp-image-4217 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_04.png"
+                                data-was-processed="true"></div>
+                        <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_05.png" width="101" height="51" alt="payment_method_05" title="" class="img-responsive wp-image-4225 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_05.png"
+                                data-was-processed="true"></div>
+                        <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_06.png" width="101" height="51" alt="payment_method_06" title="" class="img-responsive wp-image-4233 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_06.png"
+                                data-was-processed="true"></div>
+                        <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_07.png" width="101" height="51" alt="payment_method_07" title="" class="img-responsive wp-image-4241 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_07.png"
+                                data-was-processed="true"></div>
+                    </div>
+                    <div class="row seven-cols">
+                        <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_08.png" width="101" height="51" alt="payment_method_08" title="" class="img-responsive wp-image-4249 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_08.png"
+                                data-was-processed="true"></div>
+                        <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_09.png" width="101" height="51" alt="payment_method_09" title="" class="img-responsive wp-image-4257 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_09.png"
+                                data-was-processed="true"></div>
+                        <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_10.png" width="101" height="51" alt="payment_method_10" title="" class="img-responsive wp-image-4265 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_10.png"
+                                data-was-processed="true"></div>
+                        <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_11.png" width="101" height="51" alt="payment_method_11" title="" class="img-responsive wp-image-4217 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_11.png"
+                                data-was-processed="true"></div>
+                        <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_12.jpg" width="101" height="51" alt="payment_method_13" title="" class="img-responsive wp-image-4233 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_12.jpg"
+                                data-was-processed="true"></div>
+                        <div class="col-md-2"><img src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_14.png" width="101" height="51" alt="payment_method_14" title="" class="img-responsive wp-image-4241 lazyloaded" data-lazy-src="https://www.alphatradex.com/wp-content/uploads/2019/12/payment_method_14.png"
+                                data-was-processed="true"></div>
+                    </div>
+                </div>
+                <div class="fusion-clearfix"></div>
+
+            </div>
+        </div>
     </div>
-  </div>
-  </div>
     <div class="footer">
         <footer class="container">
-          <div class="row">
-            <div class="col-md-4">
-              <span class="foorterName">ABOUT US</span>
-              <img src="../ThocThom-Project/images/logo.png" alt="">
-              <p>Forex Services offered through Advisory Group. Insurance products and services are offered through the Insurance Group. Advisory Group and Insurance Group do business collectively as Financial Group. The aforementioned are affiliated companies.</p>
-              <div class="icon">
-                <a href=""><i class="fab fa-facebook-f"></i></a>
-                <a href=""><i class="fab fa-twitter"></i></a>
-                <a href=""><i class="fab fa-skype"></i></a>
-                <a href=""><i class="fab fa-telegram-plane"></i></a>
-              </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="foorterName">ABOUT US</span>
+                    <img src="../ThocThom-Project/images/logo.png" alt="">
+                    <p>Forex Services offered through Advisory Group. Insurance products and services are offered through the Insurance Group. Advisory Group and Insurance Group do business collectively as Financial Group. The aforementioned are affiliated
+                        companies.
+                    </p>
+                    <div class="icon">
+                        <a href=""><i class="fab fa-facebook-f"></i></a>
+                        <a href=""><i class="fab fa-twitter"></i></a>
+                        <a href=""><i class="fab fa-skype"></i></a>
+                        <a href=""><i class="fab fa-telegram-plane"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <span class="foorterName">OUR SERVICES</span>
+                    <ul id="menu-services" class="menu">
+                        <li id="menu-item-13" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-13"><a href="#">Investment management</a></li>
+                        <li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-32"><a href="#">Bonds &amp; Commodities</a></li>
+                        <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-31"><a href="#">Private Finance Solutions</a></li>
+                        <li id="menu-item-76" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-76"><a href="#">Tax and Trusts</a></li>
+                        <li id="menu-item-77" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-77"><a href="#">Banking services</a></li>
+                        <li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-78"><a href="#">Financial Advisory &amp; Structuring</a></li>
+                        <li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-79"><a href="#">Insurance Solutions</a></li>
+                        <li id="menu-item-80" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-80"><a href="#">Trades &amp; Stocks</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <span class="foorterName">RECENT NEWS</span>
+                    <ul id="menu-services" class="menux">
+                        <li> <a href="#">Underwriting And Agency Roles</a>
+                            <div class="post-date">August 30, 2020</div>
+                        </li>
+                        <li> <a href="#">A Look At Primary And Secondary Markets</a>
+                            <div class="post-date">August 30, 2020</div>
+                        </li>
+                        <li> <a href="#">How spot factoring helps resolve cash flow gaps</a>
+                            <div class="post-date">August 30, 2020</div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-md-4">
-              <span class="foorterName">OUR SERVICES</span>
-              <ul id="menu-services" class="menu"><li id="menu-item-13" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-13"><a href="#">Investment management</a></li><li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-32"><a href="#">Bonds &amp; Commodities</a></li><li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-31"><a href="#">Private Finance Solutions</a></li><li id="menu-item-76" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-76"><a href="#">Tax and Trusts</a></li><li id="menu-item-77" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-77"><a href="#">Banking services</a></li><li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-78"><a href="#">Financial Advisory &amp; Structuring</a></li><li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-79"><a href="#">Insurance Solutions</a></li><li id="menu-item-80" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-80"><a href="#">Trades &amp; Stocks</a></li></ul>
-            </div>
-            <div class="col-md-4">
-              <span class="foorterName">RECENT NEWS</span>
-              <ul id="menu-services" class="menux"><li> <a href="#">Underwriting And Agency Roles</a> <div class="post-date">August 30, 2020</div></li><li> <a href="#">A Look At Primary And Secondary Markets</a> <div class="post-date">August 30, 2020</div></li><li> <a href="#">How spot factoring helps resolve cash flow gaps</a> <div class="post-date">August 30, 2020</div></li></ul>
-            </div>
-          </div>
         </footer>
         <p class="end">© 2020 Forex Theme by HeroFX.</p>
-      </div>
+    </div>
 </body>
+
 </html>
