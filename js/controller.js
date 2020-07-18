@@ -5,7 +5,7 @@ const KEY_PENDINGIDEA_COLLECTION = "PendingIdeas"
 const KEY_IDEA_COLLECTION = "Ideas"
 let controller = {};
 
-controller.signUp = async function (name, email, password,typeOfAccount) {
+controller.signUp = async function (name, email, password,typeOfAccountData,phoneNumberData,addressData) {
     view.setText('sign-up-error', '')
     view.setText('sign-up-success', '')
     view.setActive('sign-up-btn', false)
@@ -16,7 +16,12 @@ controller.signUp = async function (name, email, password,typeOfAccount) {
         await firebase.auth().currentUser.updateProfile({
             displayName: name
         })
-        let other={typeOfAccount}
+        let other={
+            type:typeOfAccountData,
+            phone:phoneNumberData,
+            address:addressData,
+            avatarURL:"https://firebasestorage.googleapis.com/v0/b/thocthom-project.appspot.com/o/img%2FDefaut%2Fdefault-avatar.png?alt=media&token=55eec6a1-cb2f-4d0d-9bd2-564ef8b45eec"
+        }
         controller.CreateDataForNewAccount(other);
         console.log(firebase.auth().currentUser.displayName)
         //Xác thực tài khoản
@@ -220,7 +225,18 @@ controller.deletePendingIdeas = async function (id) {
     });
 };
 
-controller.acceptPendingIdeas
+controller.acceptPendingIdeas = async function (id) {
+    let newIdeaData=model.pendingIdeas[searchIdIndex(id,model.pendingIdeas)];
+    newIdeaData.likes=[];
+    try {
+        await db.collection(KEY_IDEA_COLLECTION).add(newIdeaData)
+            .then(function (docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 //Xử lý ideas
 controller.addNewIdeasData = async function (idea) {

@@ -5,7 +5,7 @@ view.showPage = async function (namePage) {
     let content = document.getElementById('content')
     switch (namePage) {
         case 'signIn':
-            content.innerHTML = components.sign_in;
+            content.innerHTML = components.sign_in_hung;
             view.MakeAllButtonSwitchPageWork();
             let formSignIn = document.getElementById("signIn");
             formSignIn.onsubmit = function (event) {
@@ -26,7 +26,7 @@ view.showPage = async function (namePage) {
             }
             break;
         case 'signUp':
-            content.innerHTML = components.sign_up;
+            content.innerHTML = components.sign_up_hung;
             SetUpSignInSignUpPage();
             //Cho toàn bộ button chuyển trang hoạt động
             view.MakeAllButtonSwitchPageWork();
@@ -36,21 +36,26 @@ view.showPage = async function (namePage) {
                 //Đảm bảo trang không bị load lại
                 event.preventDefault();
                 //Lấy dữ liệu từ form
-                let name = formSignUp.name.value.trim()
-                let email = formSignUp.email.value.trim()
-                let password = formSignUp.password.value.trim()
-                let passwordConfirmation = formSignUp.passwordConfirmation.value.trim()
+                let name = formSignUp.name.value.trim();
+                let email = formSignUp.email.value.trim();
+                let password = formSignUp.password.value.trim();
+                let passwordConfirmation = formSignUp.passwordConfirmation.value.trim();
+
+                let phoneNumber = formSignUp.phoneNumber.value.trim();
                 let typeOfAccount = formSignUp.typeOfAccount.value;
+                let address = formSignUp.address.value.trim()
                 //Kiểm tra dữ liệu lấy từ form
                 let validateResult = [
                     view.validate(name != '', 'name-error', 'Input your name'),
                     view.validate(email != '' && validateEmail(email), 'email-error', 'Input your email'),
                     view.validate(password != '', 'password-error', 'Input your password'),
+                    view.validate(phoneNumber != '', 'phone-number-error', 'Input your phone number'),
+                    view.validate(address != '', 'address-error', 'Input your address'),
                     view.validate(passwordConfirmation != '' && password == passwordConfirmation, 'password-Confirmation-error', 'password Confirmation is not match')
                 ]
                 if (isPassed(validateResult)) {
                     //Nếu pass gửi dữ liệu lên firebase qua controller
-                    controller.signUp(name, email, password, typeOfAccount)
+                    controller.signUp(name, email, password, typeOfAccount, phoneNumber, address)
                 }
             }
 
@@ -71,7 +76,35 @@ view.showPage = async function (namePage) {
             //Show info
             view.showInfo();
             view.showNotificationWarning("noti-warning");
-            view.showIdeas("idea-list");
+            view.ideaFilter();
+            //Xử lý search button
+            let search = document.getElementById('ideas-search')
+            let submit = document.getElementById('ideas-submit')
+            let searchFor = document.getElementById('ideas-search-for')
+
+            submit.addEventListener('click',async function() {
+                if (searchFor.value == "Tên tác giả") {
+                    await controller.loadIdeas()
+                    view.ideaSearch("author")
+                } else {
+                    await controller.loadIdeas()
+                    view.ideaSearch("title")
+                }
+            })
+
+            search.addEventListener("keyup", function (event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    document.getElementById("submit").click();
+                }
+            });
+
+            //Xử lý filter
+            let ideaFilter = document.getElementById("ideas-filter")
+            ideaFilter.onchange = function () {
+                view.ideaFilter();
+                console.log("filter change")
+            }
 
             //Làm các button hoạt động
             view.MakeAllButtonSwitchPageWork();
@@ -86,7 +119,7 @@ view.showPage = async function (namePage) {
             }
 
             let showInfoPageBtn = document.getElementById("my-infomation-btn")
-            showInfoPageBtn.onclick = function(){
+            showInfoPageBtn.onclick = function () {
                 view.showPage('profilePage')
                 view.showMyProfile();
             }
@@ -105,6 +138,19 @@ view.showPage = async function (namePage) {
         case 'composePage':
             content.innerHTML = components.compose_page;
             view.MakeAllButtonSwitchPageWork();
+            //Up ảnh
+            let fileButton = document.getElementById('fileButton');
+
+            if (fileButton) {
+                console.log("loading")
+                fileButton.addEventListener('change', function (e) {
+
+                    document.getElementById("progressBar").hidden = false
+
+                    uploadFile(e.target.files[0])
+
+                });
+            }
             //Xử lý form Compose
             let formCompose = document.getElementById("compose");
             formCompose.onsubmit = function (event) {
@@ -256,6 +302,9 @@ view.showInfo = function () {
         let composeBtn = document.getElementById("admin-page-btn-wapper")
         composeBtn.innerHTML += composeBtnHtml
     }
+    if (!model.currentUserData.other.avatarURL) {
+        view.showImg("user-avatar", "https://firebasestorage.googleapis.com/v0/b/thocthom-project.appspot.com/o/img%2FDefaut%2Fdefault-avatar.png?alt=media&token=55eec6a1-cb2f-4d0d-9bd2-564ef8b45eec")
+    }
 }
 
 view.showNotification = function (tagID) {
@@ -276,13 +325,13 @@ view.showNotificationWarning = function (tagID) {
     document.getElementById(tagID).innerHTML = "(" + model.notifications.length.toString() + ")"
 }
 
-view.showIdeas = function (tagID) {
+view.showIdeas = function (tagID, data) {
     let ideaIDs = [];
     try {
         //Khởi động
         document.getElementById(tagID).innerHTML = ""
         //Chèn ideas HTML vào
-        for (let idea of model.ideas) {
+        for (let idea of data) {
             //chuẩn bị code của button like và dislike
             let likeButton = ` <button name="${idea.id}" id="${idea.id + "-like-btn"}" class="like-btn">Like</button>`
             let dislikeButton = `<button name="${idea.id}" id="${idea.id + "-dislike-btn"}" class="dislike-btn">Dislike</button>`
@@ -309,14 +358,14 @@ view.showIdeas = function (tagID) {
                 likeBtn.onclick = async function () {
                     controller.addLike(this.name)
                     // await controller.loadIdeas()
-                    view.showIdeas("idea-list") //Thực hiện refresh trang
+                    view.showIdeas("idea-list", model.ideas) //Thực hiện refresh trang
                 }
             }
             if (dislikeBtn != null) {
                 dislikeBtn.onclick = async function () {
                     controller.removeLike(this.name)
                     // await controller.loadIdeas()
-                    view.showIdeas("idea-list") //Thực hiện refresh trang
+                    view.showIdeas("idea-list", model.ideas) //Thực hiện refresh trang
                 }
             }
         }
@@ -370,7 +419,49 @@ view.showMyProfile = async function () {
     document.getElementById("profile-content").innerHTML = `Đây là profile của ${model.currentUserData.email}`
     await controller.loadInfomationOfUserByEmail(model.currentUserData.email)
     //Hiển thị thông tin
-    document.getElementById("profile-content").innerHTML+=``
+    document.getElementById("profile-content").innerHTML += ``
 }
 
+view.showImg = function (tagID, imgURL) {
+    document.getElementById(tagID).src = imgURL;
+}
 
+view.ideaFilter = function () {
+    let filter = document.getElementById('ideas-filter')
+    if (filter.value == 'Lượt like nhiều nhất') {
+        console.log("Lượt like nhiều nhất")
+        model.ideas.sort(function (a, b) { return b.likes.length - a.likes.length })
+        view.showIdeas("idea-list", model.ideas)
+    } else if (filter.value == 'Mới nhất') {
+        console.log("Mới nhất")
+        model.ideas.sort(function (a, b) { return new Date(b.createdAt) - new Date(a.createdAt) })
+        view.showIdeas("idea-list", model.ideas)
+    }
+}
+
+view.ideaSearch = function (searchWay) {
+    let data = model.ideas
+    let filterdata = []
+    let search = document.getElementById("ideas-search")
+    switch (searchWay) {
+        case "title":
+            for (i = 0; i < data.length; i++) {
+                let newTitle = removeAccents(data[i].title.toLowerCase())
+                let newSearchValue = removeAccents(search.value.toLowerCase().trim())
+                if (newTitle.search(newSearchValue) != -1) {
+                    filterdata.push(data[i])
+                }
+            }
+            break
+        case "author":
+            for (i = 0; i < data.length; i++) {
+                let newTitle = removeAccents(data[i].author.name.toLowerCase())
+                let newSearchValue = removeAccents(search.value.toLowerCase().trim())
+                if (newTitle.search(newSearchValue) != -1) {
+                    filterdata.push(data[i])
+                }
+            }
+    }
+    view.showIdeas("idea-list", filterdata);
+    model.ideas=filterdata;
+}

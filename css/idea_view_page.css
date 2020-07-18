@@ -18,10 +18,11 @@
     color: white;
     font-size: 17px;
 }
-.nav-item .home{
+.nav-item .active{
     border-bottom: #ddbc95 2px solid;
     padding-bottom: 30px;
 }
+
 .nav-item .links:hover{
     border-bottom: #ddbc95 2px solid;
     padding-bottom: 30px;
