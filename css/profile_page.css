@@ -1,0 +1,58 @@
+h4.color-white {
+    font-size: 18px;
+}
+
+.titleBox.mainlinks {background: #262626;color: white;font-family: auto;border-left: 3px #d69c55 solid;}
+.profile a.color-white {
+    padding-top: 5px;
+}
+.profile .titleBox.mainlinks {
+    padding: 4px;
+    padding-top: 12px;
+}
+.headline.firstNegativeMargin {
+    width: 301px;
+}
+.tradeMoney
+{
+    margin-top: 10px;
+    text-align: center;
+    width: 300px;
+}
+.trade
+{
+    margin-top: 8px;
+    display: inline block;
+    width: 100%;
+    border-radius: 0cm;
+}
+.color-white
+{
+    color: white;
+    font-size: 15px;
+}
+.color-white:hover
+{
+    text-decoration: none;
+    color: white;
+}
+a.color-red {
+    color: red;
+    text-decoration: none;
+}
+a.color-red:hover {
+    color: red;
+    font-weight: bold;
+    text-decoration: none;
+}
+.color-grown
+{
+    color: #d69c55;
+}
+h5.pull-left {
+    font-family: serif;
+    font-weight: bold;
+    margin-bottom: 40px;
+    font-size: 24px;
+}
+

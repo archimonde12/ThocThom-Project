@@ -1,0 +1,26 @@
+.depositCoin img
+{
+    width: 100px;
+    border-radius: 20%;
+    transition: 0.3s;
+}
+.depositCoin img:hover
+{
+    transition: 0.2s;
+    border-radius: 50%;
+    padding: 5px;
+    border: groove 0.8em gold;
+}
+.depositCoin img:active
+{
+    border: groove 0.8em rgb(0, 255, 21);
+    transition: 0.3s;
+}
+.wallet
+{
+    display: inline block;
+    border: 1px gray solid;
+}
+input:focus {
+    outline-width: 0;
+}

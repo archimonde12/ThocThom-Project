@@ -1,10 +1,11 @@
 let db = firebase.firestore()
 const KEY_USERS_COLLECTION = "Users"
 const KEY_NOTI_COLLECTION = "Notifications"
-const KEY_PENDINGIDEA_COLLECTION="PendingIdeas"
+const KEY_PENDINGIDEA_COLLECTION = "PendingIdeas"
+const KEY_IDEA_COLLECTION = "Ideas"
 let controller = {};
 
-controller.signUp = async function (name, email, password) {
+controller.signUp = async function (name, email, password,typeOfAccount) {
     view.setText('sign-up-error', '')
     view.setText('sign-up-success', '')
     view.setActive('sign-up-btn', false)
@@ -15,7 +16,8 @@ controller.signUp = async function (name, email, password) {
         await firebase.auth().currentUser.updateProfile({
             displayName: name
         })
-        controller.CreateDataForNewAccount();
+        let other={typeOfAccount}
+        controller.CreateDataForNewAccount(other);
         console.log(firebase.auth().currentUser.displayName)
         //Xác thực tài khoản
         //await firebase.auth().currentUser.sendEmailVerification()
@@ -76,7 +78,7 @@ controller.Compose = async function (title, content) {
 
 }
 
-controller.CreateDataForNewAccount = async function () {
+controller.CreateDataForNewAccount = async function (otherData) {
     //Lấy thông tin email và display name của user
     let currentEmail = firebase.auth().currentUser.email
     let currentName = firebase.auth().currentUser.displayName
@@ -85,7 +87,8 @@ controller.CreateDataForNewAccount = async function () {
         name: currentName,
         email: currentEmail,
         balance: 0,
-        createAt: new Date().toLocaleString()
+        createAt: new Date().toLocaleString(),
+        other:otherData
     }
     try {
         await db.collection("Users").add(newUser)
@@ -145,7 +148,7 @@ controller.changeBalance = async function (change) {
 //Xử lý notifications
 
 controller.loadUserNotification = async function () {
-    model.notifications=[];
+    model.notifications = [];
     let currentEmail = firebase.auth().currentUser.email
     try {
         let result = await firebase.firestore()
@@ -180,24 +183,24 @@ controller.sendNotification = async function (recivedEmail, content) {
 }
 
 controller.deleteNotification = async function (id) {
-    db.collection(KEY_NOTI_COLLECTION).doc(id).delete().then(async function() {
+    db.collection(KEY_NOTI_COLLECTION).doc(id).delete().then(async function () {
         await controller.loadUserNotification()
         view.showNotification("noti-list")
         view.showNotificationWarning("noti-warning")
         console.log("Document successfully deleted!");
-    }).catch(function(error) {
+    }).catch(function (error) {
         console.error("Error removing document: ", error);
     });
 };
 
 //Xử lý pending Ideas
 
-controller.loadPendingIdeas = async function(){
-    model.pendingIdeas=[]
-    try{
+controller.loadPendingIdeas = async function () {
+    model.pendingIdeas = []
+    try {
         let result = await firebase.firestore()
-        .collection(KEY_PENDINGIDEA_COLLECTION) //nơi lấy dữ liệu
-        .get() //Thực hiện
+            .collection(KEY_PENDINGIDEA_COLLECTION) //nơi lấy dữ liệu
+            .get() //Thực hiện
         for (let pendingIdea of result.docs) {
             model.savePendingIdea(pendingIdea)
         }
@@ -208,12 +211,108 @@ controller.loadPendingIdeas = async function(){
 }
 
 controller.deletePendingIdeas = async function (id) {
-    db.collection(KEY_PENDINGIDEA_COLLECTION).doc(id).delete().then(async function() {
+    db.collection(KEY_PENDINGIDEA_COLLECTION).doc(id).delete().then(async function () {
         await controller.loadPendingIdeas()
         view.showPendingIdeas("pending-idea-list")
         console.log("Document successfully deleted!");
-    }).catch(function(error) {
+    }).catch(function (error) {
         console.error("Error removing document: ", error);
     });
 };
 
+controller.acceptPendingIdeas
+
+//Xử lý ideas
+controller.addNewIdeasData = async function (idea) {
+    let newIdea = {
+        title: idea.title,
+        content: idea.content,
+        author: idea.author,
+        createdAt: idea.createdAt,
+        likes: []
+    }
+    try {
+        await db.collection(KEY_IDEA_COLLECTION).add(newIdea)
+            .then(function (docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+controller.loadIdeas = async function () {
+    model.ideas = []
+    try {
+        let result = await firebase.firestore()
+            .collection(KEY_IDEA_COLLECTION) //nơi lấy dữ liệu
+            .get() //Thực hiện
+        for (let idea of result.docs) {
+            model.saveIdea(idea);
+        }
+    }
+    catch (error) {
+        console.log(error)
+    }
+   model.ideas.reverse();
+}
+
+//Xử lý like và dislike
+controller.addLike = async function (id) {
+    let currentEmail = firebase.auth().currentUser.email
+    model.addLikeToIdeaHaveID(id, currentEmail)
+    let ideaDocRef = db.collection(KEY_IDEA_COLLECTION).doc(id);
+    ideaDocRef.update({
+        likes: model.ideas[searchIdIndex(id,model.ideas)].likes
+    })
+    .then(function() {
+        console.log("Document successfully updated!");
+    })
+    .catch(function(error){
+        console.error("Error updating document: ", error);
+    });
+    
+}
+
+controller.removeLike = async function (id) {
+    let currentEmail = firebase.auth().currentUser.email
+    model.removeLikeToIdeaHaveId(id, currentEmail)
+    let ideaDocRef = db.collection(KEY_IDEA_COLLECTION).doc(id);
+    ideaDocRef.update({
+        likes: model.ideas[searchIdIndex(id,model.ideas)].likes
+    })
+    .then(function() {
+        console.log("Document successfully updated!");
+    })
+    .catch(function(error){
+        console.error("Error updating document: ", error);
+    });
+    
+}
+
+
+controller.loadInfomationOfUserByEmail=async function(email){
+     //load dữ liệu từ firebase
+     try {
+         let result = await firebase.firestore()
+             .collection('Users') //nơi lấy dữ liệu
+             .where('email', "==", email) //Cấu trúc so sánh email
+             .get() //Thực hiện
+         let userData = refineData(result.docs[0])
+         model.saveCurrentUserData(userData)
+     } catch (error) {
+         console.log(error)
+     }
+}
+
+controller.changeInfomationUser= async function(data){
+    model.saveCurrentUserData(data)
+    db.collection(KEY_USERS_COLLECTION).doc(data.id).update(data)
+    .then(function() {
+        console.log("Document successfully updated!");
+    })
+    .catch(function(error) {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+    })
+}

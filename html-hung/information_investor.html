@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../ThocThom-Project/css/idea_view_page.css">
+    <link rel="stylesheet" href="../ThocThom-Project/fonts/css/all.css">
+    <link rel="stylesheet" href="../ThocThom-Project/css/sign_in.css">
+    <link rel="stylesheet" href="../ThocThom-Project/css/signUp.css">
+    <link rel="stylesheet" href="../ThocThom-Project/css/profile_page.css">
+    <link rel="shortcut icon" href="../ThocThom-Project/images/title.png">
+    <title>Document</title>
+</head>
+<body>
+    <main role="main">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top heg">
+              <a class="navbar-brand" href="#"><img src="../ThocThom-Project/images/logo.png" alt="" class="logo"></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link home" href="#"><span>HOME</span><span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                      
+                    <a class="nav-link links" href="#"><span>MY ACCOUNTS</span></a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link links" href="#"><span>SERVICES</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link links" href="#"><span>CONSTACT US</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link links" href="#"><span>NEW INVESTS</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link links" href="#"><span><i class="fas fa-sign-out-alt"></i>LOGOUT</span></a>
+                    </li>
+                </ul>
+                <form class="form-inline mt-2 mt-md-0">
+                  <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+              </div>
+            </nav>
+          </header>
+    </main>
+    <div class="container profile" style="margin-top: 100px;">
+        <div class="row">
+            <div class="col-lg-12" style="border-bottom: 1px gray solid;">
+                <h5 class="pull-left">My Profile
+                    <br>
+                    <span style="font-weight: normal;font-size: 14px;">      
+                    Markets (SV) LTD
+                    </span>
+                </h5>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 15px;">
+            <div class="col-md-8 col-sm-12 col-xs-12 margin-bottom-20">
+                <div class="panel-body">
+                    <div class="fullWidth">
+                    <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group" style="margin-bottom: 0px;">
+                    <div class="row">
+                    <div class="col-md-3 col-sm-6 col-xs-6">
+                    
+                    <img src="../ThocThom-Project/images/avartar1.jpg" width="60" height="60" style="border:1px solid #CCCCCC">
+                    
+                    </div>
+                    <div class="col-md-9 col-sm-6 col-xs-6">
+                    <div class="row" style="height: 50px">
+                        <label style="border-radius: unset;font-size: 15px;font-weight: bold;padding-top: 8px;" class="btn btn-danger" for="img">Change profile photo</label>
+                        <input type="file" name="uploadfile" accept="image/*" id="img" style="display:none;"/>
+                     
+                    <div id="fileName" class="selected-filename">
+                    </div>
+                    <a id="removePhoto" style="display:none" href="javascript:MyHfProfile.removeProfilePhoto()">
+                    <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                    </div>
+                    <div class="row avatar-info" style="width: 100%;font-size: 12px;color: gray;font-style: italic;">
+                    * The avatar will be resized to 80x80 pixels, only the following extensions are allowed (jpg,jpeg,JPG,JPEG)
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12" id="parent_nickname">
+                    <div class="form-group margin-bottom-20">
+                    <div id="div_nickname">
+                     <div>
+                    
+                    <label for="nickname">
+                    
+                    Nickname:</label>
+                    
+                    
+                    <input type="text" name="nickname" id="nickname" value="ho manh hung" placeholder="Nickname" class="form-control">
+                    
+                    
+                    </div>
+
+                    </div>
+                    </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12" id="parent_clienttype">
+                    <div class="form-group margin-bottom-20">
+                    <div id="div_clienttype">
+ 
+                    <div>
+                    
+                    <label for="clienttype">
+                    
+                    Client Type:</label>
+                    
+                    
+                    <input type="text" name="clienttype" id="clienttype" value="Individual" readonly="" placeholder="Client Type" class="form-control">
+                    
+                    
+                    </div>
+
+                    </div>
+                    </div>
+                    </div>
+ 
+                    <div class="col-md-6 col-sm-6 col-xs-12" id="parent_phone">
+                    <div class="form-group margin-bottom-20">
+                    <div id="div_phone">
+
+                    <div>
+                    
+                    <label for="phone">
+                    
+                    Phone:</label>
+                    
+                    
+                    <input type="text" name="phone" id="phone" value="84 965350767" readonly="" placeholder="Phone" class="required-field form-control">
+                    
+                    
+                    </div>
+
+                    </div>
+                    </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12" id="parent_fname">
+                    <div class="form-group margin-bottom-20">
+                    <div id="div_fname">
+
+                    <div>
+                    
+                    <label for="fname">
+                    
+                    First name:</label>
+                    
+                    
+                    <input type="text" name="fname" id="fname" value="Ho Manh" readonly="" placeholder="First name" class="required-field form-control">
+                    
+                    
+                    </div>
+
+                    </div>
+                    </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12" id="parent_lname">
+                    <div class="form-group margin-bottom-20">
+                    <div id="div_lname">
+
+                    <div>
+                    
+                    <label for="lname">
+                    
+                    Last name:</label>
+                    
+                    
+                    <input type="text" name="lname" id="lname" value="Hung" readonly="" placeholder="Last name" class="required-field form-control">
+                    
+                    
+                    </div>
+
+                    </div>
+                    </div>
+                    </div>
+ 
+                    <div class="col-md-6 col-sm-6 col-xs-12" id="parent_country">
+                    <div class="form-group margin-bottom-20">
+                    <div id="div_country">
+
+                    <div>
+                    
+                    <label for="country">
+                    
+                    Country of Residence:</label>
+                    
+                    
+                    <input type="text" name="country" id="country" value="Viet Nam" readonly="" placeholder="Country of Residence" class="required-field form-control">
+                    
+                    
+                    </div>
+ 
+                    </div>
+                    </div>
+                    </div>
+    
+                    <div class="col-md-6 col-sm-6 col-xs-12" id="parent_city">
+                    <div class="form-group margin-bottom-20">
+                    <div id="div_city">
+
+                    <div>
+                    
+                    <label for="city">
+                    
+                    Town / City:</label>
+                    
+                    
+                    <input type="text" name="city" id="city" value="Quang Ninh" readonly="" placeholder="Town / City" class="required-field form-control">
+                    
+                    
+                    </div>
+
+                    </div>
+                    </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12" id="parent_postal_code">
+                    <div class="form-group margin-bottom-20">
+                    <div id="div_postal_code">
+
+                    <div>
+                    
+                    <label for="postal_code">
+                    
+                    Postal / zip code:</label>
+                    
+                    
+                    <input type="text" name="postal_code" id="postal_code" value="84" readonly="" placeholder="Postal / zip code" class="required-field form-control">
+                    
+                    
+                    </div>
+
+                    </div>
+                    </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 col-xs-12" id="parent_address">
+                    <div class="form-group margin-bottom-20">
+                    <div id="div_address">
+  
+                    <div>
+                    
+                    <label for="address">
+                    
+                    Address:</label>
+                    
+                    
+                    <input type="text" name="address" id="address" value="Yen Son, Yen Tho, Dong Trieu" readonly="" placeholder="Address" class="required-field form-control">
+                    
+                    
+                    </div>
+   
+                    </div>
+                    </div>
+                    </div>
+  
+                    </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"> 
+                            <button id="compose_page" class="btn btn-outline-secondary trade">Upload Content invests</button>
+                        </div>
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 magazine-page ar-reverse">
+                <div class="headline firstNegativeMargin" style="background:#F9F9F9;padding:10px 10px;border:1px solid #EEEEEE;margin-top: 0px;float: left;">
+                <div class="myIdBox fullWidth" style="border-bottom:1px solid #EEEEEE;padding-bottom:10px;margin-bottom:5px">
+                    <div class="col-md-12" style="padding:7px 0px 0px 0px">
+                    
+                    <a href="/en/central/profile.html" id="editMyDetails" title="Edit Details">
+                    
+                    <img src="../ThocThom-Project/images/avartar1.jpg" width="60" style="border:1px solid #CCCCCC">
+                    <a href="/en/central/profile.html" id="editMyDetails" title="Edit Details" class="color-red"><i class="fa fa-edit color-grown" style="font-size:18px;float: right;"></i></a>    
+                    </a>
+                    </div>
+                    <div id="user-settings-text" class="col-md-8 col-sm-8 col-xs-8" style="padding:7px 0px 5px 10px;font-size:13px">
+                    <span>Hello&nbsp;</span>
+                    <span id="name-Investor"><b>Hero</b></span><br>
+                    <span>myInvestor ID:&nbsp;</span><span>30173210</span>
+                    </div>
+                </div>
+                <!---->
+                <div class="row"style="width: 300px;">
+                        <div class="col-sm-6" style="padding:0px;font-size:16px !important;color: #333333;padding-left: 10px;">
+                            Balance:&nbsp;
+                        </div>
+                        <div class="col-sm-6" style="padding:0px;text-align:right">
+                            <input type="hidden" name="_xsrf" value="2|6a37f94e|37c42e4cce55c01031f414328ccd69aa|1594861975">
+                            <span class="wallet_balance" style="font-weight:bold;font-size:16px !important">0.0 USD</span>
+                            &nbsp;<i class="fa fa-sync refreshBalance" style="font-size:17px;cursor:pointer;color:#056D34"></i>
+                        </div>
+                </div>
+                </div>
+                <div class="tradeMoney">
+                    <div class="magazine-sb-categories margin-bottom-5 fullWidth">
+                    
+                    <a href="#" class="btn btn-success trade">
+                    
+                    <b>Deposit</b></a>
+                    </div>
+                    <div class="magazine-sb-categories margin-bottom-5 fullWidth">
+                    
+                    <a href="#" class="btn btn-outline-secondary trade">
+                    
+                    <b>Withdraw</b></a>
+                    </div>
+                    
+                    <div class="magazine-sb-categories margin-bottom-20 fullWidth">
+                    
+                    <a href="#" class="btn btn-outline-info trade">
+                    
+                    <b>Transfer Funds</b></a>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </div>
+    <div class="footer">
+        <footer class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <span class="foorterName">ABOUT US</span>
+              <img src="../ThocThom-Project/images/logo.png" alt="">
+              <p>Forex Services offered through Advisory Group. Insurance products and services are offered through the Insurance Group. Advisory Group and Insurance Group do business collectively as Financial Group. The aforementioned are affiliated companies.</p>
+              <div class="icon">
+                <a href=""><i class="fab fa-facebook-f"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-skype"></i></a>
+                <a href=""><i class="fab fa-telegram-plane"></i></a>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <span class="foorterName">OUR SERVICES</span>
+              <ul id="menu-services" class="menu"><li id="menu-item-13" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-13"><a href="#">Investment management</a></li><li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-32"><a href="#">Bonds &amp; Commodities</a></li><li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-31"><a href="#">Private Finance Solutions</a></li><li id="menu-item-76" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-76"><a href="#">Tax and Trusts</a></li><li id="menu-item-77" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-77"><a href="#">Banking services</a></li><li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-78"><a href="#">Financial Advisory &amp; Structuring</a></li><li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-79"><a href="#">Insurance Solutions</a></li><li id="menu-item-80" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-80"><a href="#">Trades &amp; Stocks</a></li></ul>
+            </div>
+            <div class="col-md-4">
+              <span class="foorterName">RECENT NEWS</span>
+              <ul id="menu-services" class="menux"><li> <a href="#">Underwriting And Agency Roles</a> <div class="post-date">August 30, 2020</div></li><li> <a href="#">A Look At Primary And Secondary Markets</a> <div class="post-date">August 30, 2020</div></li><li> <a href="#">How spot factoring helps resolve cash flow gaps</a> <div class="post-date">August 30, 2020</div></li></ul>
+            </div>
+          </div>
+        </footer>
+        <p class="end">© 2020 Forex Theme by HeroFX.</p>
+      </div>
+</body>
+</html>

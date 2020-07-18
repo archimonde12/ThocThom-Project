@@ -1,0 +1,231 @@
+.container.marketing {margin-top: 5px;}
+.bg-dark
+{
+    background-color: #000000ab;
+}
+.block
+{
+    padding-bottom: 250px;
+}
+.heg{
+    background-color: #5b5b5ba6;
+}
+.nav-item
+{
+    margin-left: 40px;
+}
+.nav-item span{
+    color: white;
+    font-size: 17px;
+}
+.nav-item .home{
+    border-bottom: #ddbc95 2px solid;
+    padding-bottom: 30px;
+}
+.nav-item .links:hover{
+    border-bottom: #ddbc95 2px solid;
+    padding-bottom: 30px;
+}
+.imagesP{
+    width: 200px;
+    border-radius: 50%;
+}
+.col-lg-4
+{
+    text-align: center;
+}
+.col-lg-4 h2
+{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+}
+.readMore {text-decoration: none;color: #d69c55;font-weight: bold;transition: 0.5s;}
+
+.readMore:hover i
+{
+    text-decoration: none;
+    color: #d69c55;
+    padding-left: 4px;
+    transition: 0.5s;
+}
+.readMore:hover
+{
+    text-decoration: none;
+    color: #ddbc95;
+}
+h2.featurette-heading {
+    font-family: initial;
+    font-weight: bold;
+}
+.foorterName
+{
+    color:white;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+#menu-services li a{
+    text-decoration: none;
+    color: gray;
+}
+.menux{
+    list-style: none;
+}
+.footer
+{
+    background-color: rgb(37, 37, 37);
+}
+.col-md-4 p
+{
+    color: gray;
+}
+.container
+{
+    padding-top: 40px;
+}
+ul#menu-services {
+    margin-top: 30px;
+}
+.end
+{
+    color: gray;
+    text-align: center;
+    background-color: black;
+    padding: 15px;
+}
+.menux li {
+    border-bottom: rgb(167, 167, 167) 1px solid;
+    padding-bottom: 22px;
+}
+.post-date
+{
+    color: #c2c2c2;
+}
+.menu a
+{
+    display: flex;
+    padding: 3px;
+}
+.menu li a:hover
+{
+    color: rgb(255, 255, 255);
+}
+.icon a
+{
+    padding: 10px;
+    color: gray;
+    transition: 0.5s;
+}
+.icon a:hover
+{
+    transition: 0.5s;
+    color: white;
+}
+.newfeed img
+{
+    display: block;
+    width: 100%;
+    height: 00px;
+}
+.newfeed
+{
+    margin-bottom: 20px;
+}
+.carousel-item img
+{
+    position: relative;
+}
+.card
+{
+    position: absolute;
+}
+.responsive a h2
+{
+    transition: 0.3s;   
+    color: white;
+    text-decoration: none;
+}
+.col-md-4:hover h2
+{
+    color: #d69c55;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.responsive a:hover
+{
+    text-decoration: none;
+}
+.responsive p
+{
+    color: white;
+}
+.col-md-4 a img
+{
+    transition: 0.3s;
+}
+.col-md-4:hover a img
+{
+    transition: 0.3s;
+}
+.row.seven-cols {
+    padding-bottom: 60px;
+}
+h2.title-heading-center {
+    text-align: center;
+    font-family: unset;
+    color: #03037b;
+    font-weight: bold;
+    font-size: 35px;
+}
+.btn-secondary
+{
+    color: black;
+    background-color: white;
+}
+.btn-secondary:hover
+{
+    color: #d69c55;
+    background-color: white;
+}
+.btn-primary
+{
+    border-radius: 50px;
+    transition: none 0s ease 0s;
+    line-height: 14px;
+    border-width: 2px;
+    margin: 0px;
+    padding: 12px 24px;
+    letter-spacing: 0px;
+    font-weight: 700;
+    font-size: 18px;
+    border: 1px white solid ;
+    color: black;
+    background-color: white;
+}
+.btn-primary:hover
+{
+    border: 1px #d69c55 solid ;
+    color: #d69c55;
+    background-color: white;
+}
+.btn-outline-primary:hover
+{
+    border: 1px #d69c55 solid ;
+    color: #d69c55;
+    background-color: white;
+}
+.btn-outline-primary
+{
+    border-radius: 50px;
+    transition: none 0s ease 0s;
+    line-height: 14px;
+    border-width: 2px;
+    margin: 0px;
+    padding: 10px 20px;
+    letter-spacing: 0px;
+    font-weight: 700;
+    font-size: 14px;
+    border: 1px white solid ;
+    color: black;
+    background-color: white;
+}

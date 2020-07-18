@@ -1,0 +1,29 @@
+.signUp p i
+{
+    color: #d69c55;
+}
+.signUp h2
+{
+    font-family: initial;
+    font-weight: bold;
+    margin-bottom: 35px;
+}
+.warning
+{
+    color: red;
+}
+.nameIf
+{
+    color: #d69c55;
+    font-size: 25px;
+}
+.nameBroker span
+{
+    font-weight: normal;
+    width: 340px;
+    height: 250px;
+}
+.col-lg-5
+{
+    text-align: center;
+}
