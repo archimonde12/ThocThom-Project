@@ -517,3 +517,23 @@ view.showFollowersNumberOfFundHaveID=function(id){
     }
 }
 
+view.makeFollowAndUnfollowBtnWork = function(){
+    //Quy định mỗi button sẽ có một name là id của Fund
+    let allFollowBtn=document.querySelectorAll(".follow-btn")
+    let allUnFollowBtn=document.querySelectorAll(".unfollow-btn")
+
+    for(let followBtn of allFollowBtn){
+        followBtn.onclick=async function(){
+            this.disabled=true;
+            await controller.followFund(this.name)
+            this.disabled=false;
+        }
+    }
+    for(let unfollowBtn of allUnFollowBtn){
+        unfollowBtn.onclick=async function(){
+            this.disabled=true;
+            await controller.unFollowFund(this.name)
+            this.disabled=false;
+        }
+    }
+}
