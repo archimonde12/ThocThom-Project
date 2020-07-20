@@ -15,3 +15,21 @@ img.avatar-sm{
     height:100px;
     border-radius: 999999px;
 }
+
+div.spaceForHeader{
+    height:108px;
+}
+
+div.main-flex-container {
+    display: flex;
+    align-items: stretch;
+  }
+  
+div.main-flex-container > div {
+    margin: 10px;
+  }
+
+span#user-name,span#user-type{
+    font-weight: bold;
+}
+

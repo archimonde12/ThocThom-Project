@@ -7,7 +7,8 @@ let model={
     guestData:{},
     notifications:[],
     pendingIdeas:[],
-    ideas:[]
+    ideas:[],
+    funds:[]
 }
 
 model.saveCurrentUserData = function(userData){
@@ -57,6 +58,8 @@ model.saveIdea = function(ideaData){
     model.ideas.push(newIdea);
 }
 
+//Xử lý Like Function
+
 model.addLikeToIdeaHaveID = function(id,email){
     model.ideas.forEach((idea)=>{
         if(idea.id==id){
@@ -78,4 +81,64 @@ model.removeLikeToIdeaHaveId = function(id,email){
 
 model.saveImgURL=function(url){
     model.imgURL=url;
+}
+
+model.saveFundInfomation = function(fundsData){
+    model.funds.push(fundsData)
+}
+
+//Xử lý follow và unfollow Function
+
+
+model.addFollowerToFundHaveID = function(id,currentEmail){
+    if (model.funds==[]) {console.log("Chưa tải dữ liệu quỹ hoặc chưa có quỹ tồn tại")}
+    else {
+        model.funds.forEach((fund)=>{
+            if(fund.id==id){
+                if(fund.follower==undefined) {fund.follower=[]}
+                if(!fund.follower.includes(currentEmail)){
+                    fund.follower.push(currentEmail)
+                    console.log(currentEmail+ " đã được thêm vào danh sách follower của " + fund.email + " thành công!")
+                }
+                else{console.log(currentEmail+ " đã được loại khỏi danh sách follower của " + fund.email + " thành công!")}
+            }
+        })
+    }    
+}
+
+model.addFollowToCurrentUser = function(Fundemail){
+    if(model.currentUserData.follow==undefined) {model.currentUserData.follow=[]}
+    if(!model.currentUserData.follow.includes(Fundemail)){
+        model.currentUserData.follow.push(Fundemail)
+        console.log(" đã thêm " + Fundemail+ " vào Follow List")
+    }
+}
+
+model.removeFollowerToFundHaveID = function(id,currentEmail){
+    let fundWithID=model.funds[searchIdIndex(id,model.funds)]
+    temp=fundWithID.follower.filter(item => item !== currentEmail);
+    fundWithID.follower=temp;
+    if(!fundWithID.follower.includes(currentEmail))
+        console.log(currentEmail+ " đã được loại bỏ khỏi danh sách Follower của " + fundWithID.email)
+    else 
+        {console.error("Có lỗi gì đó xảy ra!!! "+currentEmail+ " vẫn chưa được loại bỏ khỏi danh sách Follower của " + fundWithID.email)}
+    
+}
+
+model.removeFollowToCurrentUser = function(Fundemail){
+    temp=model.currentUserData.follow.filter(item => item !== Fundemail);
+    model.currentUserData.follow=temp
+    if(!model.currentUserData.follow.includes(Fundemail))
+        console.log(Fundemail+ " đã được loại bỏ khỏi danh sách Follow của " + model.currentUserData.email)
+    else 
+        {console.log("Có lỗi gì đó xảy ra "+Fundemail+ " vẫn chưa được loại bỏ khỏi danh sách Follow của " + model.currentUserData.email)}
+}
+
+//Hàm lấy dữ liệu của Follow Function
+model.getFollowerListOfFundHaveID = function(idOfFund){
+    return model.funds[searchIdIndex(idOfFund,model.funds)].follower;
+}
+
+model.getFollowListOfCurrentUser = function(){
+    return model.currentUserData.follow
 }
