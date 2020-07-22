@@ -248,13 +248,13 @@ view.showInfo = function() {
     if (true) {
         let composeBtnHtml = `<button class="compose-page-btn" >Đăng Bài</button>`
         let composeBtn = document.getElementById("compose-btn-wapper")
-        composeBtn.innerHTML += composeBtnHtml
+        composeBtn.innerHTML = composeBtnHtml
     }
     let isAdminAccount = (model.currentUserData.other.typeOfAccount == "admin")
     if (true) {
         let composeBtnHtml = `<button class="admin-page-btn" >Duyệt Bài</button>`
         let composeBtn = document.getElementById("admin-page-btn-wapper")
-        composeBtn.innerHTML += composeBtnHtml
+        composeBtn.innerHTML = composeBtnHtml
     }
 }
 

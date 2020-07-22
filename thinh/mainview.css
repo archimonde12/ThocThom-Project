@@ -1,0 +1,29 @@
+.flex-nowrap {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.flex-space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-justify-center {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-justify-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.flex-justify-space {
+    display: flex;
+    justify-content: space-around;
+}
+
+.flex-justify-start {
+    display: flex;
+    justify-content: flex-start;
+}

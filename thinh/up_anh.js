@@ -13,9 +13,11 @@ var initApp = function() {
 
     const fileButton = document.getElementById('fileButton');
 
-    if (!!fileButton) {
+    if (fileButton) {
 
         fileButton.addEventListener('change', function(e) {
+
+            document.getElementById("progressBar").hidden=false
 
             uploadFile(e.target.files[0])
 
@@ -26,15 +28,6 @@ var initApp = function() {
 };
 
 function uploadFile(file) {
-    // var newMetadata = {
-    //   cacheControl: 'public,max-age=300',
-    //   contentType: 'image/jpeg',
-    //   contentLanguage: null,
-    //   customMetadata: {
-    //     whatever: 'we feel like',
-    //   },
-    // };
-
     // Create the file metadata
     var metadata = {
         contentType: 'image/jpeg',

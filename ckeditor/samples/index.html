@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+-->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>CKEditor Sample</title>
+    <script src="../ckeditor.js"></script>
+    <script src="js/sample.js"></script>
+    <link rel="stylesheet" href="css/samples.css">
+    <link rel="stylesheet" href="toolbarconfigurator/lib/codemirror/neo.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Try the latest sample of CKEditor 4 and learn more about customizing your WYSIWYG editor with endless possibilities.">
+</head>
+
+<body id="main">
+
+    <main>
+        <form id="compose">
+            <!-- Title Input -->
+            <img src="https://s3.tradingview.com/f/fGSiLbDw_mid.webp" alt="">
+            <div class="input-wrapper">
+                <label for="title">Title</label>
+                <input name="title" type="text" placeholder="Idea title" autocomplete='off' reqired />
+            </div>
+            <span class="title-error" id="compose-title-error"></span>
+            <!-- Content Input -->
+            <div class="input-wrapper">
+                <label for="content">Content</label>
+
+                <div id="content">
+
+                </div>
+            </div>
+            <span class="content-error" id="compose-content-error"></span>
+            <!-- Upload Input -->
+
+            <!-- Submit Comnpose Input -->
+            <button type="submit">Đăng bài</button>
+            <div class="message-error" id="compose-error"></div>
+            <div class="message-success" id="compose-success"></div>
+        </form>
+
+
+    </main>
+
+    <script>
+        initSample();
+    </script>
+
+</body>
+
+</html>

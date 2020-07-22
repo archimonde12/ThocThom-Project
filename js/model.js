@@ -75,3 +75,7 @@ model.removeLikeToIdeaHaveId = function(id,email){
     model.ideas[searchIdIndex(id,model.ideas)].likes=temp;
     console.log(email+ " đã unlike bài viết")
 }
+
+model.saveImgURL=function(url){
+    model.imgURL=url;
+}
