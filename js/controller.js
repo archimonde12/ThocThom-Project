@@ -239,18 +239,18 @@ controller.acceptPendingIdeas = async function (id) {
     } catch (error) {
         console.log(error);
     }
-     //Gửi thông báo cho tất cả follower
-     //Tìm kiếm id của fund đã viết bài
-     let idOfAuthor=newIdeaData.author.id
-     //Lấy dữ liệu follower list của fund đó
-     let authorFollowerList=await controller.getFollowerListOfFundHaveID(idOfAuthor)
-     //Tạo nội dung của notification
-     let contentMes=`${newIdeaData.author.email} đã có bài viết mới: "${newIdeaData.title}". Click vào ĐÂY để xem bài viết`
-     //Gửi thông báo đến toàn bộ danh sách này
-     for(let follwerEmail of authorFollowerList){
-        await controller.sendNotification(follwerEmail,contentMes);
+    //Gửi thông báo cho tất cả follower
+    //Tìm kiếm id của fund đã viết bài
+    let idOfAuthor = newIdeaData.author.id
+    //Lấy dữ liệu follower list của fund đó
+    let authorFollowerList = await controller.getFollowerListOfFundHaveID(idOfAuthor)
+    //Tạo nội dung của notification
+    let contentMes = `${newIdeaData.author.email} đã có bài viết mới: "${newIdeaData.title}". Click vào ĐÂY để xem bài viết`
+    //Gửi thông báo đến toàn bộ danh sách này
+    for (let follwerEmail of authorFollowerList) {
+        await controller.sendNotification(follwerEmail, contentMes);
         console.log("Đã gửi xong thông báo cho tất cả follower");
-     }
+    }
 }
 
 //Xử lý ideas
@@ -352,7 +352,7 @@ controller.changeInfomationUser = async function (data) {
 //Xử lý follow function
 //a) Load dữ liệu về cache
 controller.loadFundsInfomation = async function () {
-    model.funds=[];
+    model.funds = [];
     try {
         let result = await firebase.firestore()
             .collection(KEY_USERS_COLLECTION) //nơi lấy dữ liệu
@@ -394,14 +394,14 @@ controller.followFund = async function (id) {
     }
 }
 //c) unfollow Fund
-controller.unFollowFund=async function (id){
+controller.unFollowFund = async function (id) {
     let currentEmail = firebase.auth().currentUser.email;
     let fundEmail = model.funds[searchIdIndex(id, model.funds)].email;
     if (currentEmail == fundEmail) console.log("Không thể tự unfollow chính mình")
     else {
-         //II.Thực hiện lưu dữ liệu ở cache 
+        //II.Thực hiện lưu dữ liệu ở cache 
         //II.1. Loại bỏ follower trong cache quỹ
-        model.removeFollowerToFundHaveID(id,currentEmail)
+        model.removeFollowerToFundHaveID(id, currentEmail)
         //II.2. Loại bỏ follow cho tài khoản hiện tại
         model.removeFollowToCurrentUser(fundEmail)
         //III.Đẩy dữ liệu ở cache lên sever
@@ -421,3 +421,14 @@ controller.unFollowFund=async function (id){
     }
 }
 
+
+//Invest Function
+//Form data request {email,initialMoney,}
+
+controller.investReq = function (idFund, dataReq) {
+    model.saveInvestDataToFund(idFund, dataReq)
+    model.saveInvestDataToUser(idFund, dataReq)
+    console.log("Kết quả đầu ra")
+    console.log(model.funds[searchIdIndex(idFund, model.funds)].investors)
+    console.log( model.currentUserData.investAct)
+}
