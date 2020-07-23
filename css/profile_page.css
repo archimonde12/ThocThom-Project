@@ -23,7 +23,7 @@ h4.color-white {
 {
     margin-top: 8px;
     display: inline block;
-    width: 100%;
+    width: 105%;
     border-radius: 0cm;
 }
 .color-white
@@ -55,4 +55,18 @@ h5.pull-left {
     margin-bottom: 40px;
     font-size: 24px;
 }
-
+.namePost
+{
+    text-decoration: none;
+    color: black;
+}
+.namePost:hover
+{
+    color:#d69c55;
+    text-decoration: none;
+    transition: 0.2s;
+}
+#investorPost
+{
+    font-weight: bold;
+}

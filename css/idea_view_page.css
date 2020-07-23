@@ -22,6 +22,12 @@
     border-bottom: #ddbc95 2px solid;
     padding-bottom: 30px;
 }
+
+.nav-item .links
+{
+    border-bottom: transparent 2px solid;
+    padding-bottom: 30px;
+}
 .nav-item .links:hover{
     border-bottom: #ddbc95 2px solid;
     padding-bottom: 30px;

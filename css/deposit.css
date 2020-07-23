@@ -24,3 +24,7 @@
 input:focus {
     outline-width: 0;
 }
+.input-group-prepend
+{
+    outline: 0; 
+}
