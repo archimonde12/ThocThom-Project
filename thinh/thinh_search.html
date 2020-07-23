@@ -14,12 +14,18 @@
     <div style="display: inline-block;margin-left: 50%;"><input id="search" type="text" placeholder="Search..">
         <button id="submit" type="submit"><i class="fa fa-search"></i></button></div>
     <!-- <form id="formSearch"></form> -->
-    <div> Lọc theo author <input id="checkboxAuthor" type="checkbox" name="vehicle2" value="Car">
-        <label for="vehicle2"> author</label></div>
-    <div>Sắp xếp theo <select id="filter" onchange="changeFilter()">
-        <option style="text-align: center;">Ngày đăng</option>
-        <option style="text-align: center;">Lượt like</option>
-    </select></div>
+    <div> Tìm kiếm theo 
+        <select id="searchFor">
+            <option style="text-align: center;">Tên tiêu đề</option>
+            <option style="text-align: center;">Tên tác giả</option>     
+        </select>
+    </div>
+    <div>Sắp xếp theo
+        <select id="filter">
+            <option style="text-align: center;">Mới nhất</option>
+            <option style="text-align: center;">Lượt like</option>
+        </select>
+    </div>
     <!-- </form> -->
 
     <div id='newdata'></div>

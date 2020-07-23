@@ -1,10 +1,11 @@
 let db = firebase.firestore()
 const KEY_USERS_COLLECTION = "Users"
 const KEY_NOTI_COLLECTION = "Notifications"
-const KEY_PENDINGIDEA_COLLECTION="PendingIdeas"
+const KEY_PENDINGIDEA_COLLECTION = "PendingIdeas"
+const KEY_IDEA_COLLECTION = "Ideas"
 let controller = {};
 
-controller.signUp = async function (name, email, password) {
+controller.signUp = async function (name, email, password, typeOfAccountData, phoneNumberData, addressData) {
     view.setText('sign-up-error', '')
     view.setText('sign-up-success', '')
     view.setActive('sign-up-btn', false)
@@ -15,7 +16,13 @@ controller.signUp = async function (name, email, password) {
         await firebase.auth().currentUser.updateProfile({
             displayName: name
         })
-        controller.CreateDataForNewAccount();
+        let other = {
+            type: typeOfAccountData,
+            phone: phoneNumberData,
+            address: addressData,
+            avatarURL: "https://firebasestorage.googleapis.com/v0/b/thocthom-project.appspot.com/o/img%2FDefaut%2Fdefault-avatar.png?alt=media&token=55eec6a1-cb2f-4d0d-9bd2-564ef8b45eec"
+        }
+        controller.CreateDataForNewAccount(other);
         console.log(firebase.auth().currentUser.displayName)
         //Xác thực tài khoản
         //await firebase.auth().currentUser.sendEmailVerification()
@@ -76,7 +83,7 @@ controller.Compose = async function (title, content) {
 
 }
 
-controller.CreateDataForNewAccount = async function () {
+controller.CreateDataForNewAccount = async function (otherData) {
     //Lấy thông tin email và display name của user
     let currentEmail = firebase.auth().currentUser.email
     let currentName = firebase.auth().currentUser.displayName
@@ -85,7 +92,11 @@ controller.CreateDataForNewAccount = async function () {
         name: currentName,
         email: currentEmail,
         balance: 0,
-        createAt: new Date().toLocaleString()
+        createAt: new Date().toLocaleString(),
+        other: otherData,
+        //Follow Function Data
+        follow: [],
+        follower: []
     }
     try {
         await db.collection("Users").add(newUser)
@@ -145,7 +156,7 @@ controller.changeBalance = async function (change) {
 //Xử lý notifications
 
 controller.loadUserNotification = async function () {
-    model.notifications=[];
+    model.notifications = [];
     let currentEmail = firebase.auth().currentUser.email
     try {
         let result = await firebase.firestore()
@@ -180,24 +191,24 @@ controller.sendNotification = async function (recivedEmail, content) {
 }
 
 controller.deleteNotification = async function (id) {
-    db.collection(KEY_NOTI_COLLECTION).doc(id).delete().then(async function() {
+    db.collection(KEY_NOTI_COLLECTION).doc(id).delete().then(async function () {
         await controller.loadUserNotification()
         view.showNotification("noti-list")
         view.showNotificationWarning("noti-warning")
         console.log("Document successfully deleted!");
-    }).catch(function(error) {
+    }).catch(function (error) {
         console.error("Error removing document: ", error);
     });
 };
 
 //Xử lý pending Ideas
 
-controller.loadPendingIdeas = async function(){
-    model.pendingIdeas=[]
-    try{
+controller.loadPendingIdeas = async function () {
+    model.pendingIdeas = []
+    try {
         let result = await firebase.firestore()
-        .collection(KEY_PENDINGIDEA_COLLECTION) //nơi lấy dữ liệu
-        .get() //Thực hiện
+            .collection(KEY_PENDINGIDEA_COLLECTION) //nơi lấy dữ liệu
+            .get() //Thực hiện
         for (let pendingIdea of result.docs) {
             model.savePendingIdea(pendingIdea)
         }
@@ -208,12 +219,216 @@ controller.loadPendingIdeas = async function(){
 }
 
 controller.deletePendingIdeas = async function (id) {
-    db.collection(KEY_PENDINGIDEA_COLLECTION).doc(id).delete().then(async function() {
+    db.collection(KEY_PENDINGIDEA_COLLECTION).doc(id).delete().then(async function () {
         await controller.loadPendingIdeas()
         view.showPendingIdeas("pending-idea-list")
         console.log("Document successfully deleted!");
-    }).catch(function(error) {
+    }).catch(function (error) {
         console.error("Error removing document: ", error);
     });
 };
 
+controller.acceptPendingIdeas = async function (id) {
+    let newIdeaData = model.pendingIdeas[searchIdIndex(id, model.pendingIdeas)];
+    newIdeaData.likes = [];
+    try {
+        await db.collection(KEY_IDEA_COLLECTION).add(newIdeaData)
+            .then(function (docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+    } catch (error) {
+        console.log(error);
+    }
+    //Gửi thông báo cho tất cả follower
+    //Tìm kiếm id của fund đã viết bài
+    let idOfAuthor = newIdeaData.author.id
+    //Lấy dữ liệu follower list của fund đó
+    let authorFollowerList = await controller.getFollowerListOfFundHaveID(idOfAuthor)
+    //Tạo nội dung của notification
+    let contentMes = `${newIdeaData.author.email} đã có bài viết mới: "${newIdeaData.title}". Click vào ĐÂY để xem bài viết`
+    //Gửi thông báo đến toàn bộ danh sách này
+    for (let follwerEmail of authorFollowerList) {
+        await controller.sendNotification(follwerEmail, contentMes);
+        console.log("Đã gửi xong thông báo cho tất cả follower");
+    }
+}
+
+//Xử lý ideas
+controller.addNewIdeasData = async function (idea) {
+    let newIdea = {
+        title: idea.title,
+        content: idea.content,
+        author: idea.author,
+        createdAt: idea.createdAt,
+        likes: []
+    }
+    try {
+        await db.collection(KEY_IDEA_COLLECTION).add(newIdea)
+            .then(function (docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+controller.loadIdeas = async function () {
+    model.ideas = []
+    try {
+        let result = await firebase.firestore()
+            .collection(KEY_IDEA_COLLECTION) //nơi lấy dữ liệu
+            .get() //Thực hiện
+        for (let idea of result.docs) {
+            model.saveIdea(idea);
+        }
+    }
+    catch (error) {
+        console.log(error)
+    }
+    model.ideas.reverse();
+}
+
+//Xử lý like và dislike
+controller.addLike = async function (id) {
+    let currentEmail = firebase.auth().currentUser.email
+    model.addLikeToIdeaHaveID(id, currentEmail)
+    let ideaDocRef = db.collection(KEY_IDEA_COLLECTION).doc(id);
+    ideaDocRef.update({
+        likes: model.ideas[searchIdIndex(id, model.ideas)].likes
+    })
+        .then(function () {
+            console.log("Document successfully updated!");
+        })
+        .catch(function (error) {
+            console.error("Error updating document: ", error);
+        });
+
+}
+
+controller.removeLike = async function (id) {
+    let currentEmail = firebase.auth().currentUser.email
+    model.removeLikeToIdeaHaveId(id, currentEmail)
+    let ideaDocRef = db.collection(KEY_IDEA_COLLECTION).doc(id);
+    ideaDocRef.update({
+        likes: model.ideas[searchIdIndex(id, model.ideas)].likes
+    })
+        .then(function () {
+            console.log("Document successfully updated!");
+        })
+        .catch(function (error) {
+            console.error("Error updating document: ", error);
+        });
+
+}
+
+
+controller.loadInfomationOfUserByEmail = async function (email) {
+    //load dữ liệu từ firebase
+    try {
+        let result = await firebase.firestore()
+            .collection('Users') //nơi lấy dữ liệu
+            .where('email', "==", email) //Cấu trúc so sánh email
+            .get() //Thực hiện
+        let userData = refineData(result.docs[0])
+        model.saveCurrentUserData(userData)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+controller.changeInfomationUser = async function (data) {
+    model.saveCurrentUserData(data)
+    db.collection(KEY_USERS_COLLECTION).doc(data.id).update(data)
+        .then(function () {
+            console.log("Document successfully updated!");
+        })
+        .catch(function (error) {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        })
+}
+
+
+//Xử lý follow function
+//a) Load dữ liệu về cache
+controller.loadFundsInfomation = async function () {
+    model.funds = [];
+    try {
+        let result = await firebase.firestore()
+            .collection(KEY_USERS_COLLECTION) //nơi lấy dữ liệu
+            .where('other.type', "==", "fund") //Cấu trúc so sánh email
+            .get() //Thực hiện
+        for (let fundInfo of result.docs) {
+            model.saveFundInfomation(refineData(fundInfo))
+        }
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+//b) follow Fund
+controller.followFund = async function (id) {
+    //I.Lấy thông tin hai email
+    let currentEmail = firebase.auth().currentUser.email;
+    let fundEmail = model.funds[searchIdIndex(id, model.funds)].email;
+    if (currentEmail == fundEmail) console.log("Không thể tự follow chính mình")
+    else {
+        //II.Thực hiện lưu dữ liệu ở cache 
+        //II.1. Thêm follower cho quỹ
+        model.addFollowerToFundHaveID(id, currentEmail)
+        //II.2. Thêm follow cho tài khoản hiện tại
+        model.addFollowToCurrentUser(fundEmail)
+        //III.Đẩy dữ liệu ở cache lên sever
+        //III.1.Đẩy dữ liệu từ cache lên dữ liệu của Fund
+        let fundsDocRef = db.collection(KEY_USERS_COLLECTION).doc(id);
+        fundsDocRef.update({
+            follower: model.funds[searchIdIndex(id, model.funds)].follower
+        })
+            .then(function () {
+                console.log("Document successfully updated!");
+            })
+            .catch(function (error) {
+                console.error("Error updating document: ", error);
+            });
+        controller.changeInfomationUser(model.currentUserData)
+    }
+}
+//c) unfollow Fund
+controller.unFollowFund = async function (id) {
+    let currentEmail = firebase.auth().currentUser.email;
+    let fundEmail = model.funds[searchIdIndex(id, model.funds)].email;
+    if (currentEmail == fundEmail) console.log("Không thể tự unfollow chính mình")
+    else {
+        //II.Thực hiện lưu dữ liệu ở cache 
+        //II.1. Loại bỏ follower trong cache quỹ
+        model.removeFollowerToFundHaveID(id, currentEmail)
+        //II.2. Loại bỏ follow cho tài khoản hiện tại
+        model.removeFollowToCurrentUser(fundEmail)
+        //III.Đẩy dữ liệu ở cache lên sever
+        //III.1.Đẩy dữ liệu từ cache model.funds lên dữ liệu của Fund
+        let fundsDocRef = db.collection(KEY_USERS_COLLECTION).doc(id);
+        fundsDocRef.update({
+            follower: model.funds[searchIdIndex(id, model.funds)].follower
+        })
+            .then(function () {
+                console.log("Document successfully updated!");
+            })
+            .catch(function (error) {
+                console.error("Error updating document: ", error);
+            });
+        //III.2.Đẩy dữ liệu từ cache model.currentUserData lên dữ liệu của Fund
+        controller.changeInfomationUser(model.currentUserData)
+    }
+}
+
+
+//Invest Function
+//Form data request {email,initialMoney,}
+
+controller.investReq = function (idFund, dataReq) {
+    model.saveInvestDataToFund(idFund, dataReq)
+    model.saveInvestDataToUser(idFund, dataReq)
+    console.log("Kết quả đầu ra")
+    console.log(model.funds[searchIdIndex(idFund, model.funds)].investors)
+    console.log( model.currentUserData.investAct)
+}

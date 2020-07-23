@@ -108,12 +108,14 @@ let submit = document.getElementById('submit')
 let filterdata = data
 shownews(data)
 
-function timkiem(cachtim) {
+function Search(cachtim) {
     switch (cachtim) {
         case "title":
             filterdata = []
             for (i = 0; i < data.length; i++) {
-                if (data[i].title.toLowerCase().search(`${search.value.toLowerCase()}`) != -1) {
+                let newTitle=removeAccents(data[i].title.toLowerCase())
+                let newSearchValue=removeAccents(search.value.toLowerCase().trim())
+                if (newTitle.search(newSearchValue) != -1) {
                     filterdata.push(data[i])
                 }
             }
@@ -121,23 +123,24 @@ function timkiem(cachtim) {
         case "author":
             filterdata = []
             for (i = 0; i < data.length; i++) {
-                if (data[i].author.toLowerCase().search(`${search.value.toLowerCase()}`) != -1) {
+                let newTitle=removeAccents(data[i].title.toLowerCase())
+                let newSearchValue=removeAccents(search.value.toLowerCase().trim())
+                if (newTitle.search(newSearchValue) != -1) {
                     filterdata.push(data[i])
                 }
             }
     }
 }
 
-//tìm theo checkbox
-let checkboxAuthor = document.getElementById('checkboxAuthor')
-let checkboxLike = document.getElementById('checkboxLike')
+//Search
+let searchFor = document.getElementById('searchFor')
 
 submit.addEventListener('click', () => {
-    if (checkboxAuthor.checked == false) {
-        timkiem("title")
+    if (searchFor.value == "Tên tác giả") {
+        Search("author")
         shownews(filterdata)
     } else {
-        timkiem("author")
+        Search("title")
         shownews(filterdata)
     }
 
@@ -153,13 +156,42 @@ search.addEventListener("keyup", function(event) {
 
 //sắp xếp
 let filter = document.getElementById('filter')
+filter.onchange=function(){
+    changeFilter()
+}
 
 function changeFilter() {
     if (filter.value == 'Lượt like') {
-        filterdata.sort(function(a, b) { return b.like - a.like })
+        filterdata.sort(function(a, b) { return a.like - b.like })
         shownews(filterdata)
-    } else if (filter.value == 'Ngày đăng') {
+    } else if (filter.value == 'Mới nhất') {
         filterdata.sort(function(a, b) { return new Date(a.createdAt) - new Date(b.createdAt) })
         shownews(filterdata)
     }
 }
+
+changeFilter()
+
+function removeAccents(str) {
+    var AccentsMap = [
+      "aàảãáạăằẳẵắặâầẩẫấậ",
+      "AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬ",
+      "dđ", "DĐ",
+      "eèẻẽéẹêềểễếệ",
+      "EÈẺẼÉẸÊỀỂỄẾỆ",
+      "iìỉĩíị",
+      "IÌỈĨÍỊ",
+      "oòỏõóọôồổỗốộơờởỡớợ",
+      "OÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢ",
+      "uùủũúụưừửữứự",
+      "UÙỦŨÚỤƯỪỬỮỨỰ",
+      "yỳỷỹýỵ",
+      "YỲỶỸÝỴ"    
+    ];
+    for (var i=0; i<AccentsMap.length; i++) {
+      var re = new RegExp('[' + AccentsMap[i].substr(1) + ']', 'g');
+      var char = AccentsMap[i][0];
+      str = str.replace(re, char);
+    }
+    return str;
+  }

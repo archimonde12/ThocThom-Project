@@ -1,0 +1,35 @@
+img.upload-image{
+    width: 50px;
+    border: 10px solid red;
+}
+
+div.avatar-container{
+    width: 100px;
+    height: 100px;
+    border-radius: 99999999px;
+    background-color: red;
+}
+
+img.avatar-sm{
+    width: 100px;
+    height:100px;
+    border-radius: 999999px;
+}
+
+div.spaceForHeader{
+    height:108px;
+}
+
+div.main-flex-container {
+    display: flex;
+    align-items: stretch;
+  }
+  
+div.main-flex-container > div {
+    margin: 10px;
+  }
+
+span#user-name,span#user-type{
+    font-weight: bold;
+}
+

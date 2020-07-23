@@ -18,16 +18,19 @@
     color: white;
     font-size: 17px;
 }
-.nav-item .home{
+.nav-item .active{
     border-bottom: #ddbc95 2px solid;
     padding-bottom: 30px;
 }
 
+<<<<<<< HEAD
 .nav-item .links
 {
     border-bottom: transparent 2px solid;
     padding-bottom: 30px;
 }
+=======
+>>>>>>> 78817ff98b78e6bb6413af9f1e34f4bb8ace0fe1
 .nav-item .links:hover{
     border-bottom: #ddbc95 2px solid;
     padding-bottom: 30px;
@@ -98,6 +101,7 @@ ul#menu-services {
     text-align: center;
     background-color: black;
     padding: 15px;
+    margin-bottom:0px;
 }
 .menux li {
     border-bottom: rgb(167, 167, 167) 1px solid;
