@@ -66,12 +66,41 @@ view.showPage = async function(namePage) {
 
             //Lấy dữ liệu notification
             await controller.loadUserInfomation(); //load all information of users
+            view.showInfo();
+
             await controller.loadUserNotification(); //Load all notification of current users
             await controller.loadIdeas() //Load all ideas
                 //Show info
-            view.showInfo();
             view.showNotificationWarning("noti-warning");
-            view.showIdeas("idea-list");
+            view.ideaFilter();
+            //Xử lý search button
+            let search = document.getElementById('ideas-search')
+            let submit = document.getElementById('ideas-submit')
+            let searchFor = document.getElementById('ideas-search-for')
+
+            submit.addEventListener('click', async function() {
+                if (searchFor.value == "Tên tác giả") {
+                    await controller.loadIdeas()
+                    view.ideaSearch("author")
+                } else {
+                    await controller.loadIdeas()
+                    view.ideaSearch("title")
+                }
+            })
+
+            search.addEventListener("keyup", function(event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    document.getElementById("submit").click();
+                }
+            });
+
+            //Xử lý filter
+            let ideaFilter = document.getElementById("ideas-filter")
+            ideaFilter.onchange = function() {
+                view.ideaFilter();
+                console.log("filter change")
+            }
 
             //Làm các button hoạt động
             view.MakeAllButtonSwitchPageWork();
@@ -86,9 +115,11 @@ view.showPage = async function(namePage) {
             }
 
             let showInfoPageBtn = document.getElementById("my-infomation-btn")
-            showInfoPageBtn.onclick = function() {
-                view.showPage('profilePage')
-                view.showMyProfile();
+            if (showInfoPageBtn == null) { console.log("showInfoPageBtn=null!!!") } else {
+                showInfoPageBtn.onclick = function() {
+                    view.showPage('profilePage')
+                    view.showMyProfile();
+                }
             }
             break;
         case 'adminPage':
@@ -221,10 +252,12 @@ view.validate = function(condition, errortag, message) {
 }
 
 view.setText = function(tagId, text) {
+    if (document.getElementById(tagId) == null) return;
     document.getElementById(tagId).innerHTML = text
 }
 
 view.setActive = function(tagId, active) {
+    if (document.getElementById(tagId) == null) return;
     document.getElementById(tagId).disabled = !active
 }
 
@@ -232,30 +265,44 @@ view.showInfo = function() {
     //Show name
     let currentUserName = model.currentUserData.name; // Lỗi không hiển thị ngay khi tạo tài khoản
     let userNameDisplay = document.getElementById("user-name");
-    userNameDisplay.innerHTML += " " + currentUserName;
+    userNameDisplay.innerHTML = currentUserName;
 
     //Show balance
     let currentUserBalance = model.currentUserData.balance;
     let userBalanceDisplay = document.getElementById("user-balance");
-    userBalanceDisplay.innerHTML += " " + currentUserBalance;
+    userBalanceDisplay.innerHTML = formatter.format(currentUserBalance);
 
     //Show type of account
-    let currentUserType = (model.currentUserData.other.typeOfAccount == "member") ? "Gà" : (model.currentUserData.other.typeOfAccount == "fund") ? "Thịt Gà" : "Admin";
+    let currentUserType = (model.currentUserData.other.type == "member") ? "Thành Viên" : (model.currentUserData.other.type == "fund") ? "Quỹ" : "Admin";
     let userTypeDisplay = document.getElementById("user-type");
-    userTypeDisplay.innerHTML += " " + currentUserType
+    userTypeDisplay.innerHTML = currentUserType
         //Show compose button
-    let isFundAccount = (model.currentUserData.other.typeOfAccount == "fund")
+    let isFundAccount = (model.currentUserData.other.type == "fund")
     if (true) {
-        let composeBtnHtml = `<button class="compose-page-btn" >Đăng Bài</button>`
+        let composeBtnHtml = ` 
+        <div class="magazine-sb-categories margin-bottom-5 fullWidth">
+            <a class="btn btn-outline-secondary trade compose-page-btn">
+                <i class='fas fa-edit'></i>Đăng Bài
+            </a>
+        </div>`
         let composeBtn = document.getElementById("compose-btn-wapper")
         composeBtn.innerHTML = composeBtnHtml
     }
-    let isAdminAccount = (model.currentUserData.other.typeOfAccount == "admin")
+    let isAdminAccount = (model.currentUserData.other.type == "admin")
     if (true) {
-        let composeBtnHtml = `<button class="admin-page-btn" >Duyệt Bài</button>`
+        let composeBtnHtml = `
+        <div class="magazine-sb-categories margin-bottom-5 fullWidth">
+            <a class="btn btn-outline-secondary trade admin-page-btn">
+                <i class='fas fa-edit'></i>Duyệt Bài
+            </a>
+        </div>
+        `
         let composeBtn = document.getElementById("admin-page-btn-wapper")
         composeBtn.innerHTML = composeBtnHtml
     }
+    if (!model.currentUserData.other.avatarURL) {
+        view.showImg("user-avatar", "https://firebasestorage.googleapis.com/v0/b/thocthom-project.appspot.com/o/img%2FDefaut%2Fdefault-avatar.png?alt=media&token=55eec6a1-cb2f-4d0d-9bd2-564ef8b45eec")
+    } else { view.showImg("user-avatar", model.currentUserData.other.avatarURL) }
 }
 
 view.showNotification = function(tagID) {
@@ -289,7 +336,7 @@ view.showIdeas = function(tagID) {
                 //chèn ideas
             document.getElementById(tagID).innerHTML += `
             <div class="col-md-4">
-            <a href=""><img src="../images/keothom1.png" alt="" width="350" height="250"></a>
+            <a href=""></a>
                     <h2>Title: ${idea.title}</h2> 
                     <p>Content: ${idea.content}</p> 
                     <p>Author: ${idea.author.name}
@@ -373,4 +420,99 @@ view.showMyProfile = async function() {
     await controller.loadInfomationOfUserByEmail(model.currentUserData.email)
         //Hiển thị thông tin
     document.getElementById("profile-content").innerHTML += ``
+}
+
+view.showImg = function(tagID, imgURL) {
+    document.getElementById(tagID).src = imgURL;
+}
+
+view.ideaFilter = function() {
+    let filter = document.getElementById('ideas-filter')
+    if (filter.value == 'Lượt like nhiều nhất') {
+        model.ideas.sort(function(a, b) { return b.likes.length - a.likes.length })
+        view.showIdeas("idea-list", model.ideas)
+    } else if (filter.value == 'Mới nhất') {
+        model.ideas.sort(function(a, b) { return new Date(b.createdAt) - new Date(a.createdAt) })
+        view.showIdeas("idea-list", model.ideas)
+    }
+}
+
+view.ideaSearch = function(searchWay) {
+    let data = model.ideas
+    let filterdata = []
+    let search = document.getElementById("ideas-search")
+    switch (searchWay) {
+        case "title":
+            for (i = 0; i < data.length; i++) {
+                let newTitle = removeAccents(data[i].title.toLowerCase())
+                let newSearchValue = removeAccents(search.value.toLowerCase().trim())
+                if (newTitle.search(newSearchValue) != -1) {
+                    filterdata.push(data[i])
+                }
+            }
+            break
+        case "author":
+            for (i = 0; i < data.length; i++) {
+                let newTitle = removeAccents(data[i].author.name.toLowerCase())
+                let newSearchValue = removeAccents(search.value.toLowerCase().trim())
+                if (newTitle.search(newSearchValue) != -1) {
+                    filterdata.push(data[i])
+                }
+            }
+    }
+    view.showIdeas("idea-list", filterdata);
+    model.ideas = filterdata;
+}
+
+//Hiển thị của Follow Function
+
+view.showFollowerListOfFundHaveID = function(id) {
+    //Nhận toàn bộ follwer list của
+    let followerLists = document.querySelectorAll(`.${id}-follower-list`)
+    for (let followerList of followerLists) {
+        if (model.getFollowerListOfFundHaveID(id) == []) {
+            followerList.innerHTML = "Chưa theo dõi ai cả"
+        } else {
+            followerList.innerHTML = model.getFollowerListOfFundHaveID(id)
+        }
+    }
+}
+
+view.showUserFollowList = function() {
+    let UserfollowListDOMs = document.querySelectorAll(".user-follow-list")
+    for (let UserfollowListDOM of UserfollowListDOMs) {
+        if (model.getFollowListOfCurrentUser() == []) {
+            UserfollowListDOM.innerHTML = "Chưa theo dõi ai cả"
+        } else {
+            UserfollowListDOM.innerHTML = model.getFollowListOfCurrentUser()
+        }
+    }
+}
+
+view.showFollowersNumberOfFundHaveID = function(id) {
+    let followersNumbers = document.querySelectorAll(`.${id}-followers-number`)
+    for (let followersNumber of followersNumbers) {
+        followersNumber.innerHTML = model.getFollowerListOfFundHaveID(id).length
+    }
+}
+
+view.makeFollowAndUnfollowBtnWork = function() {
+    //Quy định mỗi button sẽ có một name là id của Fund
+    let allFollowBtn = document.querySelectorAll(".follow-btn")
+    let allUnFollowBtn = document.querySelectorAll(".unfollow-btn")
+
+    for (let followBtn of allFollowBtn) {
+        followBtn.onclick = async function() {
+            this.disabled = true;
+            await controller.followFund(this.name)
+            this.disabled = false;
+        }
+    }
+    for (let unfollowBtn of allUnFollowBtn) {
+        unfollowBtn.onclick = async function() {
+            this.disabled = true;
+            await controller.unFollowFund(this.name)
+            this.disabled = false;
+        }
+    }
 }

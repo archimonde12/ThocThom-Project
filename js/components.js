@@ -1,4 +1,121 @@
 let components = {};
+components.footer = ` <div class="footer">
+<footer class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <span class="foorterName">ABOUT US</span>
+      <img src="../ThocThom-Project/images/logo.png" alt="">
+      <p>Forex Services offered through Advisory Group. Insurance products and services are offered through the
+        Insurance Group. Advisory Group and Insurance Group do business collectively as Financial Group. The
+        aforementioned are affiliated companies.</p>
+      <div class="icon">
+        <a href=""><i class="fab fa-facebook-f"></i></a>
+        <a href=""><i class="fab fa-twitter"></i></a>
+        <a href=""><i class="fab fa-skype"></i></a>
+        <a href=""><i class="fab fa-telegram-plane"></i></a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <span class="foorterName">OUR SERVICES</span>
+      <ul id="menu-services" class="menu">
+        <li id="menu-item-13" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-13"><a
+            href="#">Investment management</a></li>
+        <li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-32"><a
+            href="#">Bonds &amp; Commodities</a></li>
+        <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-31"><a
+            href="#">Private Finance Solutions</a></li>
+        <li id="menu-item-76" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-76"><a
+            href="#">Tax and Trusts</a></li>
+        <li id="menu-item-77" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-77"><a
+            href="#">Banking services</a></li>
+        <li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-78"><a
+            href="#">Financial Advisory &amp; Structuring</a></li>
+        <li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-79"><a
+            href="#">Insurance Solutions</a></li>
+        <li id="menu-item-80" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-80"><a
+            href="#">Trades &amp; Stocks</a></li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <span class="foorterName">RECENT NEWS</span>
+      <ul id="menu-services" class="menux">
+        <li> <a href="#">Underwriting And Agency Roles</a>
+          <div class="post-date">August 30, 2020</div>
+        </li>
+        <li> <a href="#">A Look At Primary And Secondary Markets</a>
+          <div class="post-date">August 30, 2020</div>
+        </li>
+        <li> <a href="#">How spot factoring helps resolve cash flow gaps</a>
+          <div class="post-date">August 30, 2020</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<p class="end">© 2020 Forex Theme by HeroFX.</p>
+</div>`
+
+components.header = `
+<header>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top heg">
+  <a class="navbar-brand" href="#"><img src="../ThocThom-Project/images/logo.png" alt="" class="logo"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"><span>HOME</span><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+          
+        <a class="nav-link links" href="#"><span>ABOUT US</span></a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link links" href="#"><span>SERVICES</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link links" href="#"><span>CONSTACT US</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link links sign-in-btn" href="#"><span>SIGN IN</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link links active sign-up-btn" href="#"><span>SIGN UP</span></a>
+        </li>
+    </ul>   
+  </div>
+</nav>
+</header>`
+
+components.headerWhenLogIn = `
+<header>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top heg">
+  <a class="navbar-brand main-view-btn" href="#"><img src="../ThocThom-Project/images/logo.png" alt="" class="logo"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item main-view-btn">
+        <a class="nav-link active" href="#"><span>MAIN</span><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item profile-page-btn">
+        <a class="nav-link" href="#"><span>PROFILE</span><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item deposit-page-btn">
+        <a class="nav-link " href="#"><span>DEPOSIT</span><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item withdraw-page-btn">
+        <a class="nav-link" href="#"><span>WITHDRAW</span><span class="sr-only">(current)</span></a>
+      </li>
+    </ul>   
+  </div>
+  <div class="form-inline mt-2 mt-md-0">
+  <a class="nav-link links" href="#" style="color:#d00000" id="sign-out-button"><span>SIGN OUT  </span><i class="fas fa-sign-out-alt"></i></a>
+          </div>
+</nav>
+</header>`
 
 components.sign_up = `
 SIGN UP PAGE - TRANG ĐĂNG KÍ
@@ -349,7 +466,7 @@ components.sign_in_hung = `
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
 crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"></script>
 <script src="/docs/4.4/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
 crossorigin="anonymous"></script>
@@ -398,53 +515,109 @@ SIGN IN PAGE - TRANG ĐĂNG NHẬP
 
 `;
 
-components.main_view = `
-<h1>MAIN VIEW - MÀN HÌNH CHÍNH</h1>
-<h2>DEMO</h2>
-<div class="header">
-<button class="main-view-btn">Trang Chủ</button>
-<button id="sign-out-button">Sign Out</button>
-</div>
-<div class="info-container">
-    <h3>Account Information</h3>
-    
-      <img class="avatar-sm" id="user-avatar">
+components.main_view = components.headerWhenLogIn + `
+<div class="spaceForHeader"></div>
+<div class="main-flex-container">
+  <div style="flex-grow: 3">
+  <div class="col-md-4 col-sm-4 col-xs-12 magazine-page ar-reverse">
+        <div class="headline firstNegativeMargin"
+          style="background:#F9F9F9;padding:10px 10px;border:1px solid #EEEEEE;margin-top: 0px;float: left;">
+          <div class="myIdBox fullWidth" style="border-bottom:1px solid #EEEEEE;padding-bottom:10px;margin-bottom:5px">
+            <div class="col-md-12" style="padding:7px 0px 0px 0px">
 
-    <button id="my-infomation-btn">Xem profile</button>
-    <p id="user-name">Name:</p>
-    <p id="user-balance">Balance:</p>
-    <p id="user-type">Type:</p>
-    <button class="deposit-page-btn">Deposit</button>
-    <button class="withdraw-page-btn">WithDraw</button>
-    <div id="compose-btn-wapper"></div>
-    <div id="admin-page-btn-wapper"></div>
+              <a href="/en/central/profile.html" id="editMyDetails" title="Edit Details">
+
+                <img id="user-avatar" width="100" style="border:1px solid #CCCCCC">
+                <a href="/en/central/profile.html" id="editMyDetails" title="Edit Details" class="color-red"><i
+                    class="fa fa-edit color-grown" style="font-size:18px;float: right;"></i></a>
+              </a>
+            </div>
+            <div id="user-settings-text" class="col-md-8 col-sm-8 col-xs-8"
+              style="padding:7px 0px 5px 10px;font-size:13px">
+              <span>Xin Chào&nbsp;</span>
+              <span id="user-name"></span><br>
+              <span>Loại Tài Khoản:&nbsp;</span>
+              <span id="user-type"></span>
+            </div>
+          </div>
+          <!---->
+          <div class="row" style="width: 300px;">
+            <div class="col-sm-6" style="padding:0px;font-size:16px !important;color: #333333;padding-left: 10px;">
+              Số dư:&nbsp;
+            </div>
+            <div class="col-sm-6" style="padding:0px;text-align:right">
+              <input type="hidden" name="_xsrf" value="2|6a37f94e|37c42e4cce55c01031f414328ccd69aa|1594861975">
+              <span id="user-balance" class="wallet_balance" style="font-weight:bold;font-size:16px !important">0.0 USD</span>
+            </div>
+          </div>
+        </div>
+        <div class="tradeMoney">
+          <div class="magazine-sb-categories margin-bottom-5 fullWidth">
+
+            <a href="#" class="btn btn-success trade deposit-page-btn">
+
+              <b>Nạp Tiền</b></a>
+          </div>
+          <div class="magazine-sb-categories margin-bottom-5 fullWidth">
+
+            <a href="#" class="btn btn-outline-secondary trade withdraw-page-btn">
+
+              <b>Rút Tiền</b></a>
+          </div>
+
+          <div class="magazine-sb-categories margin-bottom-20 fullWidth">
+
+            <a href="#" class="btn btn-outline-info trade">
+
+              <b>Chuyển Tiền Nội Bộ</b></a>
+          </div>
+          <div id="compose-btn-wapper"></div>
+          <div id="admin-page-btn-wapper"></div>
+        </div>
+      </div>
+    <div class="info-container">
+        
+        
+        <div class="ideas-container">
+            <h3>Notification <label id="noti-warning"></label></h3>
+            <button id="show-noti-btn">Show Notification</button>
+            <div id="noti-list"></div>
+            <button id="hide-noti-btn">Hide Notification</button>
+        </div>
+    </div>
+  </div>
+
+  <div style="flex-grow: 7">
+    <h3>Show all ideas</h3>
+    <div id="search-and-filter-idea-container">
+      <div> Tìm kiếm theo
+          <select id="ideas-search-for">
+              <option style="text-align: center;">Tên tiêu đề</option>
+              <option style="text-align: center;">Tên tác giả</option>
+          </select>
+          <div style="display: inline-block;margin-left: 50%;"><input id="ideas-search" type="text"
+              placeholder="Search..">
+          <button id="ideas-submit" type="submit"><i class="fa fa-search"></i></button>
+      </div>
+      </div>
+      
+      <div>Sắp xếp theo
+          <select id="ideas-filter">
+              <option style="text-align: center;">Mới nhất</option>
+              <option style="text-align: center;">Lượt like nhiều nhất</option>
+          </select>
+      </div>
+    </div>
+    <div id="idea-list"></div>
+  </div>  
 </div>
-<div class="ideas-container">
-<h3>Notification <label id="noti-warning"></label></h3>
-<button id="show-noti-btn">Show Notification</button>
-<div id="noti-list"></div>
-<button id="hide-noti-btn">Hide Notification</button>
-<h3>Show all ideas</h3>
-<div id="search-and-filter-idea-container">
-  <div> Tìm kiếm theo 
-      <select id="ideas-search-for">
-            <option style="text-align: center;">Tên tiêu đề</option>
-            <option style="text-align: center;">Tên tác giả</option>     
-      </select>
-  </div>
-  <div style="display: inline-block;margin-left: 50%;"><input id="ideas-search" type="text" placeholder="Search..">
-    <button id="ideas-submit" type="submit"><i class="fa fa-search"></i></button>
-  </div>
-  <div>Sắp xếp theo
-        <select id="ideas-filter">
-            <option style="text-align: center;">Mới nhất</option>
-            <option style="text-align: center;">Lượt like nhiều nhất</option>
-        </select>
-  </div>
-</div>
+<<<<<<< HEAD
 <div id="idea-list">
 </div>
 </div>
+=======
+
+>>>>>>> 78817ff98b78e6bb6413af9f1e34f4bb8ace0fe1
 
 <div class="fund-info-container">
 <h3>Show all fund</h3>
@@ -504,9 +677,7 @@ components.main_view = `
 <p>- Danh sách các quỹ</p>
 <p>- Bộ lọc quỹ</p>
 <p>- Danh sách các kèo của quỹ theo dõi</p>
-
-
-`;
+` + components.footer;
 
 components.admin_page = `
 <h1>ADMIN PAGE - TRANG THÔNG TIN CỦA ADMIN</h1>
@@ -672,5 +843,3 @@ components.compose_page = `
 <p>- Đăng bài </p>
 <p>- Up ảnh vào bài </p>
 `;
-
-components.idea_view_page

@@ -1,45 +1,84 @@
-var fonts = document.querySelectorAll('select#fontChanger>option')
-for (let i = 0; i < fonts.length; i++) {
-    fonts[i].style.fontFamily = fonts[i].value
-}
+let newIdea = document.getElementById('newIdea')
+let showForm = document.getElementById('showForm')
 
-let fontSizeChanger = document.getElementById('fontSizeChanger')
-for (let i = 1; i < 8; i++) {
-    fontSizeChanger.innerHTML += `<option>${i}</option>`
-}
+// showForm.addEventListener('click', () => {
+//     if (showForm.innerHTML == 'Thêm idea mới') {
+//         newIdea.innerHTML = `<form id="compose" style="width: 100%; background-color: #F1F1F1; border-radius: 5px;">
+//         <div class="d-flex bd-highlight">
+//         <div class="p-2 flex-shrink-1 bd-highlight" style="width: 350px; height: 350px; margin-right: 10px; ">
+//         <img id="photo" style="border-radius: 5px; width: 350px; height: 350px; background-color: #CFCECE; background-size: cover; background-image: url('https://static.toiimg.com/photo/72975551.cms');">
+//         <input type="file" id="fileButton" name="">
+//         </div>
 
-let theContent = document.getElementById('theContent')
-theContent.contentWindow.document.designMode = "on"
+//             <div class="p-2 w-100 bd-highlight">
+//                 <div style="font-weight: bold;">Thêm Idea Mới</div>
+//                 <div class="input-wrapper">
+//                     <div style="width: 100%;">
+//                         <input style="width: 100%;border: 1px solid #2b579a;font-size:larger; font-weight: bold;" name="title" type="text" placeholder="Idea title" autocomplete='off' reqired />
+//                     </div>
+//                 </div>
+//                 <span class="title-error" id="compose-title-error"></span>
+//                 <!-- Content Input -->
+//                 <div>
+//                     <div>
+//                         <label style="font-weight: bold;" for="content">Content</label>
+//                     </div>
+//                     <div id="content">
 
-let theRibbon = document.getElementById("theRibbon")
+//                     </div>
+//                 </div>
+//                 <span class="content-error" id="compose-content-error"></span>
+//             </div>
+//             <div class="p-2 flex-shrink-1 bd-highlight" style="font-size: smaller; width: 400px;">
+//             <div style="display: flex; justify-content: space-between;">
+//                 <label for="">Dự đoán giá:</label>
+//                 <select name="" id="" style="height: 20px; width: 70px;">
+//                 <option value="">vàng</option>
+//                 </select>
+//             </div>
+//             <div>
+//                 <div style="display: flex; justify-content: space-between;">
+//                     <label>Tăng hay giảm:</label>
+//                     <select name="" id="" style="height: 20px; width: 70px;">
+//                     <option value="">Tăng</option>
+//                     <option value="">Giảm</option>
+//                 </select>
+//                 </div>
+//                 <div>
+//                     <input style="width: 100px; margin-right: 5px; height: 25px;" type="number">USD/ounce
+//                 </div>
+//             </div>
+//             <div style="margin-top: 30px;">
+//                 <label for="birthday">Thời điểm dự đoán:</label>
+//                 <input style="height: 25px;" type="date" name="birthday">
+//                 <div>
+//                     Sai số:<span>234235</span>
+//                 </div>
+//             </div>
 
-for (let i = 0; i < theRibbon.children.length; i++) {
-    document.getElementById(`${theRibbon.children[i].id}`).addEventListener('click', function() {
-        theContent.contentWindow.document.execCommand(`${theRibbon.children[i].id}`)
-    })
-}
+//             <div style="display: flex; justify-content: flex-end;">
+//                 <button style="margin-right: 10px; color: white; background-color:#2B579A ; border-radius: 5px;" type="submit">Đăng bài</button>
+//             </div>
+//             <div class="message-error" id="compose-error"></div>
+//             <div class="message-success" id="compose-success"></div>
+//         </div>
+//         </div>
 
-document.getElementById("fontColorButton").addEventListener('change', function(even) {
-    theContent.contentWindow.document.execCommand('foreColor', false, even.target.value)
-})
+//     </form>`
+//         initSample();
+//         showForm.innerHTML = 'Huỷ'
+//     } else {
+//         newIdea.innerHTML = ''
+//         showForm.innerHTML = 'Thêm idea mới'
+//     }
 
-document.getElementById("highlightButton").addEventListener('change', function(even) {
-    theContent.contentWindow.document.execCommand('backColor', false, even.target.value)
-})
+//     // let pickImage = document.getElementById('pickImage')
+//     // pickImage.addEventListener('click', function() {
+//     //     console.log('hello')
+//     //     pickImage.style.backgroundImage = `url('https://static.toiimg.com/photo/72975551.cms')`
+//     // })
 
-document.getElementById("fontChanger").addEventListener('change', function(even) {
-    theContent.contentWindow.document.execCommand('fontName', false, even.target.value)
-})
+// })
 
-document.getElementById("fontSizeChanger").addEventListener('change', function(even) {
-    theContent.contentWindow.document.execCommand('fontSize', false, even.target.value)
-})
-
-document.getElementById("createLink").addEventListener('click', function() {
-    let url = prompt('Enter a Url', 'http://')
-    theContent.contentWindow.document.execCommand('createLink', false, url)
-})
-
-document.getElementById("unlink").addEventListener('click', function() {
-    theContent.contentWindow.document.execCommand('unlink')
-})
+showForm.addEventListener('click', function() {
+            newIdea.style.visibility('visible')
