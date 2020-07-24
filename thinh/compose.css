@@ -24,8 +24,13 @@ button.compose-btn:hover {
 
 .compose-form-container {
     display: none;
-    margin: 110px;
+    margin: 30px 50px 30px 50px;
 }
+
+
+/* .compose-form-container>form {
+    height: 500px;
+} */
 
 .input-image {
     border-radius: 5px;
