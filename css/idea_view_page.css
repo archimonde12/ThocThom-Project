@@ -26,6 +26,14 @@
     color:rgb(200, 200, 200);
 }
 
+<<<<<<< HEAD
+.nav-item .links
+{
+    border-bottom: transparent 2px solid;
+    padding-bottom: 30px;
+}
+=======
+>>>>>>> 78817ff98b78e6bb6413af9f1e34f4bb8ace0fe1
 .nav-item .links:hover{
     border-bottom: #ddbc95 2px solid;
     padding-bottom: 30px;
