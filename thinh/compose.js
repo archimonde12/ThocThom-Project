@@ -81,4 +81,11 @@ let showForm = document.getElementById('showForm')
 // })
 
 showForm.addEventListener('click', function() {
-            newIdea.style.visibility('visible')
+    newIdea.style.display = 'initial';
+})
+
+let buttonClose = document.getElementById("buttonClose")
+buttonClose.addEventListener('click', function() {
+    newIdea.style.display = 'none';
+})
+initSample()
