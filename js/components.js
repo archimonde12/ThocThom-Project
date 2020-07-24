@@ -1,5 +1,5 @@
 let components = {};
-components.footer= ` <div class="footer">
+components.footer = ` <div class="footer">
 <footer class="container">
   <div class="row">
     <div class="col-md-4">
@@ -55,7 +55,7 @@ components.footer= ` <div class="footer">
 <p class="end">© 2020 Forex Theme by HeroFX.</p>
 </div>`
 
-components.header=`
+components.header = `
 <header>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top heg">
   <a class="navbar-brand" href="#"><img src="../ThocThom-Project/images/logo.png" alt="" class="logo"></a>
@@ -88,7 +88,7 @@ components.header=`
 </nav>
 </header>`
 
-components.headerWhenLogIn=`
+components.headerWhenLogIn = `
 <header>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top heg">
   <a class="navbar-brand main-view-btn" href="#"><img src="../ThocThom-Project/images/logo.png" alt="" class="logo"></a>
@@ -198,7 +198,7 @@ SIGN UP PAGE - TRANG ĐĂNG KÍ
 
 </div>
 `;
-components.sign_up_hung=`  <main role="main">
+components.sign_up_hung = `  <main role="main">
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top heg">
       <a class="navbar-brand" href="#"><img src="../ThocThom-Project/images/logo.png" alt="" class="logo"></a>
@@ -331,7 +331,7 @@ components.sign_up_hung=`  <main role="main">
 </footer>
 <p class="end">© 2020 Forex Theme by HeroFX.</p>
 </div>`
-components.sign_in_hung=`
+components.sign_in_hung = `
 <main role="main">
 <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top heg">
@@ -516,7 +516,7 @@ SIGN IN PAGE - TRANG ĐĂNG NHẬP
 
 `;
 
-components.main_view = components.headerWhenLogIn+ `
+components.main_view = components.headerWhenLogIn + `
 <div class="spaceForHeader"></div>
 <div class="main-flex-container">
   <div class="left-main-page-container" style="flex-grow: 2">
@@ -611,7 +611,75 @@ components.main_view = components.headerWhenLogIn+ `
     <div id="idea-list"></div>
   </div>  
 </div>
+<<<<<<< HEAD
+<div id="idea-list">
+</div>
+</div>
+=======
 
+<<<<<<< HEAD
+>>>>>>> 78817ff98b78e6bb6413af9f1e34f4bb8ace0fe1
+
+<div class="fund-info-container">
+<h3>Show all fund</h3>
+<div id="search-and-filter-fund-container">
+  <div> Tìm kiếm theo 
+      <select id="funds-search-for">
+            <option style="text-align: center;">Tên tiêu đề</option>
+            <option style="text-align: center;">Tên tác giả</option>     
+      </select>
+  </div>
+  <div style="display: inline-block;margin-left: 50%;"><input id="funds-search" type="text" placeholder="Search..">
+    <button id="submit" type="submit"><i class="fa fa-search"></i></button>
+  </div>
+  <div>Sắp xếp theo
+        <select id="funds-filter">
+            <option style="text-align: center;">Mới nhất</option>
+            <option style="text-align: center;">Lượt like</option>
+        </select>
+  </div>
+</div>
+<table>
+    <tr><td>Fund 1</td><td>Name 1</td><td>Result 1</td></tr>
+    <tr><td>Fund 2</td><td>Name 2</td><td>Result 2</td></tr>
+    <tr><td>Fund 3</td><td>Name 3</td><td>Result 3</td></tr>
+</table>
+</div>
+<h2>END DEMO</h2>
+<p>====================================================================</p>
+<h2>Các Button chuyển trang chính</h2>
+<br>
+<button class="idea-view-page-btn">Xem Kèo - Đề Về Bao Nhiêu Nào!</button>
+<br>
+<button class="sign-in-btn">Log Out - Chán Vãi Out Thôi!</button>
+<br>
+<button class="profile-page-btn">Xem Profile - Xem avatar đẹp trai không nào </button>
+<br>
+<button class="deposit-page-btn">Nạp Tiền - Nuôi Béo Quỹ Thôi!</button>
+<br>
+<button class="withdraw-page-btn">Rút Tiền - Quỹ như shit rút tiền về thôi</button>
+<p>Quỹ mới thấy cái này </p>
+<button class="compose-page-btn" >Đăng Bài - Dụ Gà Nào!</button>
+<p> Admin mới thấy cái này </p>
+<button class="admin-page-btn">Admin Page</button>
+
+<h1>Các chức năng chính</h1>
+<p>- Tìm kiếm kèo</p>
+<p>- Bộ lọc kèo</p>
+<p>- Tìm kiếm quỹ</p>
+<p>- Bộ lọc quỹ</p>
+<p>- Xem bài viết của những quỹ mình theo dõi </p>
+
+<h1>Các hiển thị chính</h1>
+<p>- Tên user hiện tại</p>
+<p>- Balance đang có </p>
+<p>- Danh sách các kèo</p>
+<p>- Bộ lọc kèo</p>
+<p>- Danh sách các quỹ</p>
+<p>- Bộ lọc quỹ</p>
+<p>- Danh sách các kèo của quỹ theo dõi</p>
+=======
+>>>>>>> b7ac82510378e96d25a5a7cae294c3b8e773fbdf
 ` + components.footer;
 
 components.admin_page = `
@@ -926,4 +994,3 @@ components.compose_page = `
 <p>- Đăng bài </p>
 <p>- Up ảnh vào bài </p>
 `;
-

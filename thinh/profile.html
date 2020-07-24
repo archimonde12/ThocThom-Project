@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THOC THOM PROJECT</title>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-storage.js"></script>
+
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBOcF7oTDlTkJxESdFL5fldIc10bOiJULk",
+            authDomain: "thocthom-project.firebaseapp.com",
+            databaseURL: "https://thocthom-project.firebaseio.com",
+            projectId: "thocthom-project",
+            storageBucket: "thocthom-project.appspot.com",
+            messagingSenderId: "422845301830",
+            appId: "1:422845301830:web:d6e12b5e08d6a7d6853647"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <!-- Add scripts -->
+    <script src="./js/utils.js"></script>
+    <script src="./js/components.js"></script>
+    <script src="./js/model.js"></script>
+    <script src="./js/view.js"></script>
+    <script src="./js/controller.js"></script>
+    <script src="./js/index.js"></script>
+</head>
+
+<body>
+    <!-- FOR TEST -->
+    <!-- <button id="admin-page" class="admin-page-btn">admin page show</button>
+    <button id="compose-page" class="compose-page-btn" >compose page show</button>
+    <button id="deposit-page" class="deposit-page-btn">deposit page show</button>
+    <button id="idea-view-page" class="idea-view-page-btn">idea view page show</button>
+    <button id="main-view" class="main-view-btn">main view page show</button>
+    <button id="profile-page" class="profile-page-btn">profile page show</button>
+    <button id="sign-in" class="sign-in-btn">sign in page show</button>
+    <button id="sign-up" class="sign-up-btn">sign up page show</button>
+    <button id="withdraw-page" class="withdraw-page-btn">withdraw page show</button> -->
+    <!-- FOR TEST -->
+
+    <div class="container profile" style="margin-top: 100px;">
+        <div class="row">
+            <div class="col-lg-12" style="border-bottom: 1px gray solid;">
+                <h5 class="pull-left">Welcome to myInvestor Area
+                    <br>
+                    <span style="font-weight: normal;font-size: 14px;">      
+                    Markets (SV) LTD
+                    </span>
+                </h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-sm-12 col-xs-12 margin-bottom-20">
+                <div class="row" style="text-align: center;margin-top: 5px;">
+                    <div class="col-md-3">
+                        <a href="" class="depositCoin"><img src="../images/bitcoin.png" alt=""></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="" class="depositCoin"><img src="../images/bitcoincash.png" alt=""></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="" class="depositCoin"><img src="../images/eth.png" alt=""></a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="" class="depositCoin"><img src="../images/usdtnew.png" alt=""></a>
+                    </div>
+                </div>
+                <!-- Mục mã đầu tư components -->
+                <div class="row" style="border: 1px rgb(192, 192, 192) solid;margin-top: 8px;margin-bottom: 8px;padding-bottom: 10px; border-radius: 3px;">
+                    <div class="col-md-12" style="text-align: center;">
+                        <h3 style="font-family: serif;font-size: 2.5rem;">Deposit USDT</h3>
+                        <img style="width: 259px;height: 259px;" src="../images/viUSDT.png" alt="">
+                        <div class="wallet" style="padding: 3px;border-radius: 5px;">
+                            <input disabled id="copyqr" value="0x11b4a4e966f5516fc2764be00f5158d4a6c1b5b3" style="font-weight: bold;font-size: 14px;border: none;width: 330px;background: none;"></input>
+                            <button onclick="myFunction()" style="display: inline;background:#a9a9a95c;border-radius: 3px;border: none;"><i><i style="margin: 6px;" class="far fa-clone"></i></i></button>
+                            <script>
+                                function myFunction() {
+                                    var copyText = document.getElementById("copyqr");
+                                    copyText.select();
+                                    copyText.setSelectionRange(0, 99999)
+                                    document.execCommand("copy");
+                                    alert("Already copy!" + copyText.value);
+                                }
+                            </script>
+                        </div>
+                    </div>
+                    <!-- Mục mã đầu tư components -->
+                    <div class="col-lg-8">
+                        <span style="font-weight: bold;">Deposit fee:<span id="fee" style="color: #d69c55;"> 0.00</span> USDT</span>
+                        <p style="margin-top: 10px;"><i class="fas fa-info-circle" style="color: #308cd5;"></i> You must deposit greater than <span style="font-weight: bold;"> 1 USDT</span> to be credited.</p>
+                        <p><i class="fas fa-info-circle" style="color: #308cd5;"></i>This deposit address only accepts <span style="font-weight: bold;"> USDT </span>. Do not deposit other coins into it.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 magazine-page ar-reverse">
+                <div class="headline firstNegativeMargin" style="background:#F9F9F9;padding:10px 10px;border:1px solid #EEEEEE;margin-top: 0px;float: left;margin-top: 20px;">
+                    <div class="myIdBox fullWidth" style="border-bottom:1px solid #EEEEEE;padding-bottom:10px;margin-bottom:5px">
+                        <div class="col-md-12" style="padding:7px 0px 0px 0px">
+
+                            <a href="/en/central/profile.html" id="editMyDetails" title="Edit Details">
+
+                                <img src="../images/avartar1.jpg" width="60" style="border:1px solid #CCCCCC">
+                                <a href="/en/central/profile.html" id="editMyDetails" title="Edit Details" class="color-red"><i class="fa fa-edit color-grown" style="font-size:18px;float: right;"></i></a>
+                            </a>
+                        </div>
+                        <div id="user-settings-text" class="col-md-8 col-sm-8 col-xs-8" style="padding:7px 0px 5px 10px;font-size:13px">
+                            <span>Hello&nbsp;</span>
+                            <span id="name-Investor"><b>Hero</b></span><br>
+                            <span>myInvestor ID:&nbsp;</span><span>30173210</span>
+                        </div>
+                    </div>
+                    <!---->
+                    <div class="row" style="width: 300px;">
+                        <div class="col-sm-6" style="padding:0px;font-size:16px !important;color: #333333;padding-left: 10px;">
+                            Balance:&nbsp;
+                        </div>
+                        <div class="col-sm-6" style="padding:0px;text-align:right">
+                            <input type="hidden" name="_xsrf" value="2|6a37f94e|37c42e4cce55c01031f414328ccd69aa|1594861975">
+                            <span class="wallet_balance" style="font-weight:bold;font-size:16px !important">0.0 USD</span> &nbsp;
+                            <i class="fa fa-sync refreshBalance" style="font-size:17px;cursor:pointer;color:#056D34"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="tradeMoney">
+                    <div class="magazine-sb-categories margin-bottom-5 fullWidth">
+
+                        <a href="#" class="btn btn-success trade">
+
+                            <b>Deposit</b></a>
+                    </div>
+                    <div class="magazine-sb-categories margin-bottom-5 fullWidth">
+
+                        <a href="#" class="btn btn-outline-secondary trade">
+
+                            <b>Withdraw</b></a>
+                    </div>
+
+                    <div class="magazine-sb-categories margin-bottom-20 fullWidth">
+
+                        <a href="#" class="btn btn-outline-info trade">
+
+                            <b>Transfer Funds</b></a>
+                    </div>
+                    <img src="../images/broker.png" style="width:315px;height: 268px;margin-top: 10px;" alt="">
+                </div>
+            </div>
+            <!-- <div class="col-lg-4"> -->
+            <!-- </div> -->
+        </div>
+    </div>
+    <div class="footer">
+        <footer class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="foorterName">ABOUT US</span>
+                    <img src="../images/logo.png" alt="">
+                    <p>Forex Services offered through Advisory Group. Insurance products and services are offered through the Insurance Group. Advisory Group and Insurance Group do business collectively as Financial Group. The aforementioned are affiliated
+                        companies.
+                    </p>
+                    <div class="icon">
+                        <a href=""><i class="fab fa-facebook-f"></i></a>
+                        <a href=""><i class="fab fa-twitter"></i></a>
+                        <a href=""><i class="fab fa-skype"></i></a>
+                        <a href=""><i class="fab fa-telegram-plane"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <span class="foorterName">OUR SERVICES</span>
+                    <ul id="menu-services" class="menu">
+                        <li id="menu-item-13" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-13"><a href="#">Investment management</a></li>
+                        <li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-32"><a href="#">Bonds &amp; Commodities</a></li>
+                        <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-31"><a href="#">Private Finance Solutions</a></li>
+                        <li id="menu-item-76" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-76"><a href="#">Tax and Trusts</a></li>
+                        <li id="menu-item-77" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-77"><a href="#">Banking services</a></li>
+                        <li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-78"><a href="#">Financial Advisory &amp; Structuring</a></li>
+                        <li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-79"><a href="#">Insurance Solutions</a></li>
+                        <li id="menu-item-80" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-80"><a href="#">Trades &amp; Stocks</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <span class="foorterName">RECENT NEWS</span>
+                    <ul id="menu-services" class="menux">
+                        <li> <a href="#">Underwriting And Agency Roles</a>
+                            <div class="post-date">August 30, 2020</div>
+                        </li>
+                        <li> <a href="#">A Look At Primary And Secondary Markets</a>
+                            <div class="post-date">August 30, 2020</div>
+                        </li>
+                        <li> <a href="#">How spot factoring helps resolve cash flow gaps</a>
+                            <div class="post-date">August 30, 2020</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <p class="end">© 2020 Forex Theme by HeroFX.</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THOC THOM PROJECT</title>
+
+    <!-- link css -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/idea_view_page.css">
+    <link rel="stylesheet" href="../fonts/css/all.css">
+    <link rel="stylesheet" href="../css/sign_in.css">
+    <link rel="stylesheet" href="../css/signUp.css">
+    <link rel="stylesheet" href="../css/profile_page.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="shortcut icon" href="../images/title.png">
+    <link rel="stylesheet" href="mainview.css">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-storage.js"></script>
+
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBOcF7oTDlTkJxESdFL5fldIc10bOiJULk",
+            authDomain: "thocthom-project.firebaseapp.com",
+            databaseURL: "https://thocthom-project.firebaseio.com",
+            projectId: "thocthom-project",
+            storageBucket: "thocthom-project.appspot.com",
+            messagingSenderId: "422845301830",
+            appId: "1:422845301830:web:d6e12b5e08d6a7d6853647"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <!-- Add scripts -->
+    <script src="./js/utils.js"></script>
+    <script src="./js/components.js"></script>
+    <script src="./js/model.js"></script>
+    <script src="./js/view.js"></script>
+    <script src="./js/controller.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/tester.js"></script>
+</head>
+
+
+<body class="flex-center">
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top heg">
+            <a class="navbar-brand" href="#"><img src="../ThocThom-Project/images/logo.png" alt="" class="logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#"><span>HOME</span><span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+
+                        <a class="nav-link links" href="#"><span>ABOUT US</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link links" href="#"><span>SERVICES</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link links" href="#"><span>CONSTACT US</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link links sign-in-btn" href="#"><span>SIGN IN</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link links active sign-up-btn" href="#"><span>SIGN UP</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>`
+    <!-- <main role="main">
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top heg">
+                <a class="navbar-brand" href="#"><img src="../images/logo.png" alt="" class="logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link home" href="#"><span>HOME</span><span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+
+                            <a class="nav-link links" href="#"><span>MY ACCOUNTS</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link links" href="#"><span>SERVICES</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link links" href="#"><span>CONSTACT US</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link links" href="#"><span>NEW INVESTS</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link links" href="#"><span><i class="fas fa-sign-out-alt"></i>LOGOUT</span></a>
+                        </li>
+                    </ul>
+                    <form class="form-inline mt-2 mt-md-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+        </header>
+    </main> -->
+    <div class="flex-between body-main">
+        <div style="margin-right: 10px;">
+            <div class="content-header">
+                Biên tập viên chọn
+            </div>
+            <div class="flex-column">
+                <div>
+                    <div class="title1 hover">
+                        GOLD - Nhịp lấy Đỉnh!!
+                    </div>
+                    <div class="content-idea">
+                        <span>XAUUSD</span><span>, 60</span><span>giá xuống</span>
+                    </div>
+                    <div class="img-content flex-center">
+                        <img src="https://s3.tradingview.com/f/fGSiLbDw_mid.webp" alt="">
+                    </div>
+                    <div class="content-idea">
+                        LuTienSinh
+                    </div>
+                    <div class="content-idea">
+                        Mốc $1808 tối thứ 6 vừa rồi có phản ứng nhưng như tui đã đưa tin về vụ Trung tạm ngưng nhập 02 chuyến tàu nông sản Mĩ (cái này nhạy cảm vì Trung đang lũ lụt tè le mà ngưng nhập cho thấy chắc có gì đó ghê gớm lắm!!)khiến Cậu cứ cheo leo ở mốc $180
+                    </div>
+                    <div>
+                        like
+                    </div>
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </div>
+        <div style="margin-left: 10px;">
+            <div class="content-header">
+                Tổng hợp tin tức
+            </div>
+            <div class="flex-column">
+                <div class="hover">
+                    <div class="title2">
+                        Tỷ phú Ấn Độ lần đầu lọt top 5 người giàu nhất hành tinh
+                    </div>
+                    <div class="content-idea">
+                        Trong nhiều năm qua, nhóm 5 người giàu nhất thế giới không có sự hiện diện của người châu Á. Tuy nhiên, điều đó vừa thay đổi.
+                    </div>
+                    <div class="content-idea">
+                        24-07-2020 - 15:48 PM | Tài chính quốc tế
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

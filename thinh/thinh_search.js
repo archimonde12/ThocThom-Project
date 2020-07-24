@@ -170,6 +170,31 @@ function changeFilter() {
     }
 }
 
+<<<<<<< HEAD
+function removeAccents(str) {
+    var AccentsMap = [
+        "aàảãáạăằẳẵắặâầẩẫấậ",
+        "AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬ",
+        "dđ", "DĐ",
+        "eèẻẽéẹêềểễếệ",
+        "EÈẺẼÉẸÊỀỂỄẾỆ",
+        "iìỉĩíị",
+        "IÌỈĨÍỊ",
+        "oòỏõóọôồổỗốộơờởỡớợ",
+        "OÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢ",
+        "uùủũúụưừửữứự",
+        "UÙỦŨÚỤƯỪỬỮỨỰ",
+        "yỳỷỹýỵ",
+        "YỲỶỸÝỴ"
+    ];
+    for (var i = 0; i < AccentsMap.length; i++) {
+        var re = new RegExp('[' + AccentsMap[i].substr(1) + ']', 'g');
+        var char = AccentsMap[i][0];
+        str = str.replace(re, char);
+    }
+    return str;
+}
+=======
 changeFilter()
 
 function removeAccents(str) {
@@ -195,3 +220,4 @@ function removeAccents(str) {
     }
     return str;
   }
+>>>>>>> eab7a9995020040666f4f4c334044b5ce480b2fc
