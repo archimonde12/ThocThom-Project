@@ -19,7 +19,7 @@ img.avatar-sm{
 div.spaceForHeader{
     height:108px;
 }
-
+/* Style container */
 div.main-flex-container {
     display: flex;
     align-items: stretch;
@@ -28,6 +28,7 @@ div.main-flex-container {
 div.main-flex-container > div {
     margin: 10px;
   }
+
 
 span#user-name,span#user-type{
     font-weight: bold;
@@ -83,6 +84,12 @@ div.fund-post{
     padding:20px 30px 10px 30px;
     margin: 20px 50px 50px 50px;
 }
+
+div.fund-post>.img-fund-post{
+    width: 200px;
+    height: 200px;
+}
+
 div.fund-post>.title-fund-post{
     font-weight: bold;
     font-size: large;
@@ -101,6 +108,7 @@ div.fund-post>.content-fund-post{
     overflow: hidden !important;
     text-overflow: ellipsis;
 }
+
 div.fund-post>.author-fund-post{
     color:#adb5bd;
     font-size: small;
@@ -116,4 +124,17 @@ div.fund-post a{
 
 div.fund-post a:hover{
     text-decoration: underline;
+}
+
+/* Notification */
+
+.noti-container .badge{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    left:160px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
 }

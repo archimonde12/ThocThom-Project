@@ -10,7 +10,8 @@ let model = {
     ideas: [],
     funds: [],
     profileData:{},
-    ideaData:{}
+    ideaData:{},
+    imgURL:""
 }
 
 model.saveCurrentUserData = function (userData) {
@@ -37,12 +38,14 @@ model.saveNotification = function (notiData) {
 
 model.savePendingIdea = function (pendingIdeaData) {
     let refinedPendingIdeaData = refineData(pendingIdeaData);
+    console.log(refinedPendingIdeaData)
     let newPendingIdea = {
         content: refinedPendingIdeaData.content,
         title: refinedPendingIdeaData.title,
         createdAt: refinedPendingIdeaData.createAt,
         author: refinedPendingIdeaData.author,
-        id: pendingIdeaData.id
+        id: pendingIdeaData.id,
+        ideaImageURL:refinedPendingIdeaData.ideaImageURL
     };
     model.pendingIdeas.push(newPendingIdea);
 }
@@ -55,7 +58,8 @@ model.saveIdea = function (ideaData) {
         createdAt: refinedIdeaData.createdAt,
         author: refinedIdeaData.author,
         id: ideaData.id,
-        likes: refinedIdeaData.likes
+        likes: refinedIdeaData.likes,
+        ideaImageURL:refinedIdeaData.ideaImageURL
     };
     model.ideas.push(newIdea);
 }

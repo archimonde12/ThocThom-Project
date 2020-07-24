@@ -62,7 +62,8 @@ controller.Compose = async function (title, content) {
             title: title,
             content: content,
             author: model.currentUserData,
-            createAt: new Date().toLocaleString()
+            createAt: new Date().toLocaleString(),
+            ideaImageURL:model.imgURL
         }
         //push lên pendingIdeas
         await db.collection(KEY_PENDINGIDEA_COLLECTION).add(newIdea)
@@ -243,7 +244,7 @@ controller.acceptPendingIdeas = async function (id) {
     //Tìm kiếm id của fund đã viết bài
     let idOfAuthor = newIdeaData.author.id
     //Lấy dữ liệu follower list của fund đó
-    let authorFollowerList = await controller.getFollowerListOfFundHaveID(idOfAuthor)
+    let authorFollowerList = model.getFollowerListOfFundHaveID(idOfAuthor)
     //Tạo nội dung của notification
     let contentMes = `${newIdeaData.author.email} đã có bài viết mới: "${newIdeaData.title}". Click vào ĐÂY để xem bài viết`
     //Gửi thông báo đến toàn bộ danh sách này

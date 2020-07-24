@@ -133,6 +133,7 @@ view.showPage = async function (namePage) {
             view.MakeAllButtonSwitchPageWork();
 
             await controller.loadPendingIdeas();
+            await controller.loadFundsInfomation();
             view.showPendingIdeas("pending-idea-list");
             break;
         case 'profilePage':
@@ -353,7 +354,7 @@ view.showNotification = function (tagID) {
 
 
 view.showNotificationWarning = function (tagID) {
-    document.getElementById(tagID).innerHTML = "(" + model.notifications.length.toString() + ")"
+    document.getElementById(tagID).innerHTML =  model.notifications.length.toString() 
 }
 
 view.showIdeas = function (tagID, data) {
@@ -369,6 +370,7 @@ view.showIdeas = function (tagID, data) {
             //chèn ideas
             document.getElementById(tagID).innerHTML += `
                     <div class="fund-post">
+                        <img class="img-fund-post" src=${idea.ideaImageURL}>
                         <p class="title-fund-post" onclick="model.saveIdeaData('${idea.id}')">${idea.title.toUpperCase()}</p> 
                         <p class="author-fund-post"> Theo <span class="author"> ${idea.author.name} </span> - ${calculateTimeToNow(new Date(idea.createdAt))} - <span ><i class="fa fa-thumbs-up" style="bottom:-20px"></i> ${(idea.likes != undefined) ? idea.likes.length : 0}</span></p>
                         
@@ -387,14 +389,14 @@ view.showIdeas = function (tagID, data) {
             seeMoreIdeaBtn.onclick = function () { view.showPage("ideaViewPage"); }
             if (likeBtn != null) {
                 likeBtn.onclick = async function () {
-                    controller.addLike(this.name)
+                    await controller.addLike(this.name)
                     // await controller.loadIdeas()
                     view.showIdeas("idea-list", model.ideas) //Thực hiện refresh trang
                 }
             }
             if (dislikeBtn != null) {
                 dislikeBtn.onclick = async function () {
-                    controller.removeLike(this.name)
+                    await controller.removeLike(this.name)
                     // await controller.loadIdeas()
                     view.showIdeas("idea-list", model.ideas) //Thực hiện refresh trang
                 }
@@ -410,6 +412,7 @@ view.showPendingIdeas = function (tagID) {
         document.getElementById(tagID).innerHTML = ""
         for (let pendingIdea of model.pendingIdeas) {
             document.getElementById(tagID).innerHTML += `
+                    <img src="${pendingIdea.ideaImageURL}" >
                     <p>Title: ${pendingIdea.title}</p> 
                     <p>Content: ${pendingIdea.content}</p> 
                     <p>Author: ${pendingIdea.author.name}

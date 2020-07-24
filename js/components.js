@@ -519,10 +519,10 @@ SIGN IN PAGE - TRANG ĐĂNG NHẬP
 components.main_view = components.headerWhenLogIn+ `
 <div class="spaceForHeader"></div>
 <div class="main-flex-container">
-  <div style="flex-grow: 3">
+  <div class="left-main-page-container" style="flex-grow: 2">
   <div class="col-md-4 col-sm-4 col-xs-12 magazine-page ar-reverse">
         <div class="headline firstNegativeMargin"
-          style="background:#F9F9F9;padding:10px 10px;border:1px solid #EEEEEE;margin-top: 0px;float: left;">
+          style="background:#F9F9F9;padding:10px 10px;width:315px;border:1px solid #EEEEEE;margin-top: 0px;float: left;">
           <div class="myIdBox fullWidth" style="border-bottom:1px solid #EEEEEE;padding-bottom:10px;margin-bottom:5px">
             <div class="col-md-12" style="padding:7px 0px 0px 0px">
 
@@ -542,7 +542,7 @@ components.main_view = components.headerWhenLogIn+ `
             </div>
           </div>
           <!---->
-          <div class="row" style="width: 300px;">
+          <div class="row" style="width: 280px;">
             <div class="col-sm-6" style="padding:0px;font-size:16px !important;color: #333333;padding-left: 10px;">
               Số dư:&nbsp;
             </div>
@@ -576,11 +576,10 @@ components.main_view = components.headerWhenLogIn+ `
           <div id="admin-page-btn-wapper"></div>
         </div>
       </div>
-    <div class="info-container">
-        
-        
-        <div class="ideas-container">
-            <h3>Notification <label id="noti-warning"></label></h3>
+    <div class="info-container"> 
+        <div class="noti-container">
+            <span class="badge" id="noti-warning"></span>
+            <h3>Notification </h3>
             <button id="show-noti-btn">Show Notification</button>
             <div id="noti-list"></div>
             <button id="hide-noti-btn">Hide Notification</button>
@@ -589,7 +588,7 @@ components.main_view = components.headerWhenLogIn+ `
   </div>
 
   <div style="flex-grow: 7">
-    <h3>Show all ideas</h3>
+    <h3>Bài Đăng</h3>
     <div id="search-and-filter-idea-container">
       <div> Tìm kiếm theo
           <select id="ideas-search-for">
