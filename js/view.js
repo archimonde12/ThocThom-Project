@@ -178,6 +178,20 @@ view.showPage = async function (namePage) {
         case 'ideaViewPage':
             content.innerHTML = components.idea_view_page;
             view.MakeAllButtonSwitchPageWork();
+            let titleIdea=document.getElementById("title-idea-page");
+            let contentIdea=document.getElementById("content-idea-page");
+            let detailsIdea=document.getElementById("details-idea-page");
+
+            titleIdea.innerHTML=model.ideaData.title;
+            contentIdea.innerHTML=model.ideaData.content;
+            detailsIdea.innerHTML=`
+            Theo <span class="author"> ${model.ideaData.author.name} </span> 
+            - ${calculateTimeToNow(new Date(model.ideaData.createdAt))} 
+            - <span >
+                <i class="fa fa-thumbs-up" style="bottom:-20px"></i> 
+                ${(model.ideaData.likes != undefined) ? model.ideaData.likes.length : 0}
+            </span>
+            `
             break;
         case 'depositPage':
             content.innerHTML = components.deposit_page;
@@ -297,7 +311,7 @@ view.showInfo = function () {
     userTypeDisplay.innerHTML = currentUserType
     //Show compose button
     let isFundAccount = (model.currentUserData.other.type == "fund")
-    if (true) {
+    if (isFundAccount) {
         let composeBtnHtml = ` 
         <div class="magazine-sb-categories margin-bottom-5 fullWidth">
             <a class="btn btn-outline-secondary trade compose-page-btn">
@@ -350,18 +364,18 @@ view.showIdeas = function (tagID, data) {
         //Chèn ideas HTML vào
         for (let idea of data) {
             //chuẩn bị code của button like và dislike
-            let likeButton = ` <button name="${idea.id}" id="${idea.id + "-like-btn"}" class="like-btn">Like</button>`
-            let dislikeButton = `<button name="${idea.id}" id="${idea.id + "-dislike-btn"}" class="dislike-btn">Dislike</button>`
+            let likeButton = ` <button name="${idea.id}" id="${idea.id + "-like-btn"}" class="like-btn"><i class="fa fa-thumbs-up"></i> Like</button>`
+            let dislikeButton = `<button name="${idea.id}" id="${idea.id + "-dislike-btn"}" class="dislike-btn"><i class="fa fa-thumbs-up"></i>  Liked!</button>`
             //chèn ideas
             document.getElementById(tagID).innerHTML += `
-                    <p>Title: ${idea.title}</p> 
-                    <p>Content: ${idea.content}</p> 
-                    <p>Author: ${idea.author.name}
-                    <p>Created At: ${idea.createdAt} </p>
-                    <p>Likes: ${(idea.likes != undefined) ? idea.likes.length : 0}
-                    <br>
-                    <button name="${idea.id}" id="${idea.id + "-see-more-btn"}" class="see-more-idea-btn"> Xem thêm </button>
-                    ${idea.likes.includes(firebase.auth().currentUser.email) ? dislikeButton : likeButton}
+                    <div class="fund-post">
+                        <p class="title-fund-post" onclick="model.saveIdeaData('${idea.id}')">${idea.title.toUpperCase()}</p> 
+                        <p class="author-fund-post"> Theo <span class="author"> ${idea.author.name} </span> - ${calculateTimeToNow(new Date(idea.createdAt))} - <span ><i class="fa fa-thumbs-up" style="bottom:-20px"></i> ${(idea.likes != undefined) ? idea.likes.length : 0}</span></p>
+                        
+                        <p class="content-fund-post">${idea.content.slice(0,250)} ...<a name="${idea.id}" id="${idea.id + "-see-more-btn"}" class="see-more-idea-btn"> Xem thêm </button></a> </p>
+                        
+                        ${idea.likes.includes(firebase.auth().currentUser.email) ? dislikeButton : likeButton}
+                    </div>
                     `
             ideaIDs.push(idea.id)
         }

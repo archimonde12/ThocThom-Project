@@ -170,6 +170,7 @@ function removeAccents(str) {
     return str;
 }
 
+//Chuyển số thành định dạng tiền
 function numberToCurrency(amount, currency) {
     return amount.toFixed(0).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')+ currency;
 }
@@ -179,3 +180,14 @@ const formatter = new Intl.NumberFormat('en-US', {
     currency: 'VND',
     minimumFractionDigits: 0
   })
+
+//Tính toán thời gian từ thời điểm start đến bây giờ
+function calculateTimeToNow(time){
+    let now=new Date();
+    let seconds=Math.floor((now.getTime()-time.getTime())/1000);
+    if(seconds<60){return (seconds + " giây trước")}
+    else if(seconds<3600){return (Math.floor(seconds/60) + " phút trước")}
+    else if(seconds<3600*24){return (Math.floor(seconds/3600) + " giờ trước")}
+    else if(seconds<3600*24*30){return (Math.floor(seconds/(3600*24)) + " ngày trước")}
+    else return (Math.floor(seconds/(3600*24*30)) + " tháng trước")
+}

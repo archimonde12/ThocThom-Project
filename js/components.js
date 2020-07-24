@@ -98,16 +98,16 @@ components.headerWhenLogIn=`
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item main-view-btn">
-        <a class="nav-link active" href="#"><span>MAIN</span><span class="sr-only">(current)</span></a>
+        <a class="links nav-link active" href="#"><span>MAIN</span><span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item profile-page-btn">
-        <a class="nav-link" href="#"><span>PROFILE</span><span class="sr-only">(current)</span></a>
+      <li class="nav-item links profile-page-btn">
+        <a class="links nav-link" href="#"><span>PROFILE</span><span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item deposit-page-btn">
-        <a class="nav-link " href="#"><span>DEPOSIT</span><span class="sr-only">(current)</span></a>
+      <li class="nav-item links deposit-page-btn">
+        <a class="links nav-link " href="#"><span>DEPOSIT</span><span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item withdraw-page-btn">
-        <a class="nav-link" href="#"><span>WITHDRAW</span><span class="sr-only">(current)</span></a>
+      <li class="nav-item links withdraw-page-btn">
+        <a class="links nav-link" href="#"><span>WITHDRAW</span><span class="sr-only">(current)</span></a>
       </li>
     </ul>   
   </div>
@@ -116,6 +116,7 @@ components.headerWhenLogIn=`
           </div>
 </nav>
 </header>`
+
 
 components.sign_up = `
 SIGN UP PAGE - TRANG ĐĂNG KÍ
@@ -612,65 +613,6 @@ components.main_view = components.headerWhenLogIn+ `
   </div>  
 </div>
 
-
-<div class="fund-info-container">
-<h3>Show all fund</h3>
-<div id="search-and-filter-fund-container">
-  <div> Tìm kiếm theo 
-      <select id="funds-search-for">
-            <option style="text-align: center;">Tên tiêu đề</option>
-            <option style="text-align: center;">Tên tác giả</option>     
-      </select>
-  </div>
-  <div style="display: inline-block;margin-left: 50%;"><input id="funds-search" type="text" placeholder="Search..">
-    <button id="submit" type="submit"><i class="fa fa-search"></i></button>
-  </div>
-  <div>Sắp xếp theo
-        <select id="funds-filter">
-            <option style="text-align: center;">Mới nhất</option>
-            <option style="text-align: center;">Lượt like</option>
-        </select>
-  </div>
-</div>
-<table>
-    <tr><td>Fund 1</td><td>Name 1</td><td>Result 1</td></tr>
-    <tr><td>Fund 2</td><td>Name 2</td><td>Result 2</td></tr>
-    <tr><td>Fund 3</td><td>Name 3</td><td>Result 3</td></tr>
-</table>
-</div>
-<h2>END DEMO</h2>
-<p>====================================================================</p>
-<h2>Các Button chuyển trang chính</h2>
-<br>
-<button class="idea-view-page-btn">Xem Kèo - Đề Về Bao Nhiêu Nào!</button>
-<br>
-<button class="sign-in-btn">Log Out - Chán Vãi Out Thôi!</button>
-<br>
-<button class="profile-page-btn">Xem Profile - Xem avatar đẹp trai không nào </button>
-<br>
-<button class="deposit-page-btn">Nạp Tiền - Nuôi Béo Quỹ Thôi!</button>
-<br>
-<button class="withdraw-page-btn">Rút Tiền - Quỹ như shit rút tiền về thôi</button>
-<p>Quỹ mới thấy cái này </p>
-<button class="compose-page-btn" >Đăng Bài - Dụ Gà Nào!</button>
-<p> Admin mới thấy cái này </p>
-<button class="admin-page-btn">Admin Page</button>
-
-<h1>Các chức năng chính</h1>
-<p>- Tìm kiếm kèo</p>
-<p>- Bộ lọc kèo</p>
-<p>- Tìm kiếm quỹ</p>
-<p>- Bộ lọc quỹ</p>
-<p>- Xem bài viết của những quỹ mình theo dõi </p>
-
-<h1>Các hiển thị chính</h1>
-<p>- Tên user hiện tại</p>
-<p>- Balance đang có </p>
-<p>- Danh sách các kèo</p>
-<p>- Bộ lọc kèo</p>
-<p>- Danh sách các quỹ</p>
-<p>- Bộ lọc quỹ</p>
-<p>- Danh sách các kèo của quỹ theo dõi</p>
 ` + components.footer;
 
 components.admin_page = `
@@ -699,80 +641,224 @@ components.admin_page = `
 <p>Hiển thị thông tin mới </p>
 `;
 
-components.profile_page = `
-<h1>PROFILE - TRANG THÔNG TIN TÀI KHOẢN</h1>
-<h2>DEMO</h2>
-<div class="header">
-<button class="main-view-btn">Trang Chủ</button>
-<button id="sign-out-button">Sign Out</button>
-</div>
-<div id="profile-content"></div>
-<h2>END DEMO</h2>
-<p>====================================================================</p>
-<h1>Các Button chuyển trang chính</h1>
-<br>
-<button class="main-view-btn">Quay lại Trang Chủ </button>
-<br>
-<button class="sign-in-btn">Log Out - Chán Vãi Out Thôi!</button>
-<h1>Các chức năng chính</h1>
-<p>- Chỉnh sửa thông tin cá nhân (nếu là profile của mình) </p>
-<p>- Đầu tư (Nếu đang xem profile của quỹ) </p>
-<p>- Rút vốn (Nếu đang xem profile của quỹ) </p>
-<p>- Theo dõi (Nếu đang xem profile của quỹ) </p>
-
-<h1>DEMO</h1>
-`;
-
-components.idea_view_page = `
-<h1>IDEA PAGE - TRANG ĐỌC MỘT KÈO CHI TIẾT</h1>
-<h1>Các Button chuyển trang chính</h1>
-<br>
-<button class="main-view-btn">Quay lại Trang Chủ </button>
-<br>
-<button class="profile-page-btn">Xem Profile - Xem thằng chém gió là ai nào </button>
-<br>
-<button class="sign-in-btn">Log Out - Chán Vãi Out Thôi!</button>
-
-<h1>Các chức năng chính</h1>
-<p>- Gợi ý một số bài liên quan </p>
-<p>- Thích</p>
-<p>- Comment ý kiến</p>
-<p>- Theo dõi</p>
-
-<h1>DEMO</h1>
-`;
-
-components.deposit_page = `
-<h1>DEPOSIT PAGE - TRANG NẠP TIỀN</h1>
-<h1>DEMO</h1>
-<div class="container">
-<div class="header">
-    <button class="main-view-btn">Trang Chủ</button>
-    <button id="sign-out-button">Thoát</button>
-</div>
-<form id="deposit-form">
-    <div class="input-wrapper">
-        <label for="depositAmount"><i class="fa fa-envelope"></i>Nhập số tiền cần nạp</label>
-        <input name="depositAmount" id="depositAmount" type="number" placeholder="Insert deposit amount" autocomplete='off' reqired />
+components.profile_page = 
+  //Header
+  `
+  <header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top heg">
+    <a class="navbar-brand main-view-btn" href="#"><img src="../ThocThom-Project/images/logo.png" alt="" class="logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item main-view-btn">
+          <a class="links nav-link " href="#"><span>MAIN</span><span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item links profile-page-btn">
+          <a class="links nav-link active" href="#"><span>PROFILE</span><span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item links deposit-page-btn">
+          <a class="links nav-link " href="#"><span>DEPOSIT</span><span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item links withdraw-page-btn">
+          <a class="links nav-link" href="#"><span>WITHDRAW</span><span class="sr-only">(current)</span></a>
+        </li>
+      </ul>   
     </div>
-    <span id="deposit-amount-error"></span>
-    <button type="submit" id="deposit-apply-btn">Deposit</button>
-</form>
-</div>
-<h1>END DEMO</h1>
-<p>====================================================================</p>
-<h1>Các Button chuyển trang chính</h1>
-<br>
-<button class="main-view-btn">Quay lại Trang Chủ </button>
-<br>
-<button class="sign-in-btn">Log Out - Chán Vãi Out Thôi!</button>
+    <div class="form-inline mt-2 mt-md-0">
+    <a class="nav-link links" href="#" style="color:#d00000" id="sign-out-button"><span>SIGN OUT  </span><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+  </nav>
+  </header>`
+  //End Header
+  +
+  //Main 
+  `
+  <h1>PROFILE - TRANG THÔNG TIN TÀI KHOẢN</h1>
+  <h2>DEMO</h2>
+  <div class="header">
+  <button class="main-view-btn">Trang Chủ</button>
+  <button id="sign-out-button">Sign Out</button>
+  </div>
+  <div id="profile-content"></div>
+  <h2>END DEMO</h2>
+  <p>====================================================================</p>
+  <h1>Các Button chuyển trang chính</h1>
+  <br>
+  <button class="main-view-btn">Quay lại Trang Chủ </button>
+  <br>
+  <button class="sign-in-btn">Log Out - Chán Vãi Out Thôi!</button>
+  <h1>Các chức năng chính</h1>
+  <p>- Chỉnh sửa thông tin cá nhân (nếu là profile của mình) </p>
+  <p>- Đầu tư (Nếu đang xem profile của quỹ) </p>
+  <p>- Rút vốn (Nếu đang xem profile của quỹ) </p>
+  <p>- Theo dõi (Nếu đang xem profile của quỹ) </p>
 
-<h1>Các chức năng chính</h1>
-<p>- Nạp tiền (kiểm tra số tiền rút có lớn hơn 0 hay không rồi mới cho rút) </p>
+  <h1>DEMO</h1>
+  `
+  + 
+  //Footer
+components.footer;
+components.idea_view_page = 
+  //Header
+  `
+  <header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top heg">
+    <a class="navbar-brand main-view-btn" href="#"><img src="../ThocThom-Project/images/logo.png" alt="" class="logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item main-view-btn ">
+          <a class="links nav-link active" href="#"><span>MAIN</span><span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item links profile-page-btn">
+          <a class="links nav-link " href="#"><span>PROFILE</span><span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item links deposit-page-btn">
+          <a class="links nav-link " href="#"><span>DEPOSIT</span><span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item links withdraw-page-btn">
+          <a class="links nav-link" href="#"><span>WITHDRAW</span><span class="sr-only">(current)</span></a>
+        </li>
+      </ul>   
+    </div>
+    <div class="form-inline mt-2 mt-md-0">
+    <a class="nav-link links" href="#" style="color:#d00000" id="sign-out-button"><span>SIGN OUT  </span><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+  </nav>
+  </header>`
+  //End Header
+  +
+  //Main 
+  `
+  <div class="spaceForHeader"></div>
+  <h1>MAIN/IDEAS/</h1>
+  <h1 id="title-idea-page"></h1>
+  <p id="details-idea-page"></p>
+  <p id="content-idea-page"></p>
+  <h1>IDEA PAGE - TRANG ĐỌC MỘT KÈO CHI TIẾT</h1>
+  <h1>Các Button chuyển trang chính</h1>
+  <br>
+  <button class="main-view-btn">Quay lại Trang Chủ </button>
+  <br>
+  <button class="profile-page-btn">Xem Profile - Xem thằng chém gió là ai nào </button>
+  <br>
+  <button class="sign-in-btn">Log Out - Chán Vãi Out Thôi!</button>
 
-`;
+  <h1>Các chức năng chính</h1>
+  <p>- Gợi ý một số bài liên quan </p>
+  <p>- Thích</p>
+  <p>- Comment ý kiến</p>
+  <p>- Theo dõi</p>
 
-components.withdraw_page = `
+  <h1>DEMO</h1>
+  `
+  + 
+  //Footer
+  components.footer;
+components.deposit_page = 
+  //Header
+  `
+  <header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top heg">
+    <a class="navbar-brand main-view-btn" href="#"><img src="../ThocThom-Project/images/logo.png" alt="" class="logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item main-view-btn">
+          <a class="links nav-link " href="#"><span>MAIN</span><span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item links profile-page-btn">
+          <a class="links nav-link " href="#"><span>PROFILE</span><span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item links deposit-page-btn">
+          <a class="links nav-link active " href="#"><span>DEPOSIT</span><span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item links withdraw-page-btn">
+          <a class="links nav-link" href="#"><span>WITHDRAW</span><span class="sr-only">(current)</span></a>
+        </li>
+      </ul>   
+    </div>
+    <div class="form-inline mt-2 mt-md-0">
+    <a class="nav-link links" href="#" style="color:#d00000" id="sign-out-button"><span>SIGN OUT  </span><i class="fas fa-sign-out-alt"></i></a>
+            </div>
+  </nav>
+  </header>`
+  //End Header
+  +
+  //Main 
+  `
+  <h1>DEPOSIT PAGE - TRANG NẠP TIỀN</h1>
+  <h1>DEMO</h1>
+  <div class="container">
+  <div class="header">
+      <button class="main-view-btn">Trang Chủ</button>
+      <button id="sign-out-button">Thoát</button>
+  </div>
+  <form id="deposit-form">
+      <div class="input-wrapper">
+          <label for="depositAmount"><i class="fa fa-envelope"></i>Nhập số tiền cần nạp</label>
+          <input name="depositAmount" id="depositAmount" type="number" placeholder="Insert deposit amount" autocomplete='off' reqired />
+      </div>
+      <span id="deposit-amount-error"></span>
+      <button type="submit" id="deposit-apply-btn">Deposit</button>
+  </form>
+  </div>
+  <h1>END DEMO</h1>
+  <p>====================================================================</p>
+  <h1>Các Button chuyển trang chính</h1>
+  <br>
+  <button class="main-view-btn">Quay lại Trang Chủ </button>
+  <br>
+  <button class="sign-in-btn">Log Out - Chán Vãi Out Thôi!</button>
+
+  <h1>Các chức năng chính</h1>
+  <p>- Nạp tiền (kiểm tra số tiền rút có lớn hơn 0 hay không rồi mới cho rút) </p>
+
+  `
+  + 
+  //Footer
+  components.footer;
+
+components.withdraw_page = 
+//Header
+`
+<header>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top heg">
+  <a class="navbar-brand main-view-btn" href="#"><img src="../ThocThom-Project/images/logo.png" alt="" class="logo"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item main-view-btn">
+        <a class="links nav-link " href="#"><span>MAIN</span><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item links profile-page-btn">
+        <a class="links nav-link " href="#"><span>PROFILE</span><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item links deposit-page-btn">
+        <a class="links nav-link  " href="#"><span>DEPOSIT</span><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item links withdraw-page-btn">
+        <a class="links nav-link active" href="#"><span>WITHDRAW</span><span class="sr-only">(current)</span></a>
+      </li>
+    </ul>   
+  </div>
+  <div class="form-inline mt-2 mt-md-0">
+  <a class="nav-link links" href="#" style="color:#d00000" id="sign-out-button"><span>SIGN OUT  </span><i class="fas fa-sign-out-alt"></i></a>
+          </div>
+</nav>
+</header>`
+//End Header
++
+//Main 
+`
 <h1>WITHDRAW PAGE - TRANG RÚT TIỀN</h1>
 <h1>DEMO</h1>
 <div class="container">
@@ -798,7 +884,11 @@ components.withdraw_page = `
 <button class="sign-in-btn">Log Out - Chán Vãi Out Thôi!</button>
 <h1>Các chức năng chính</h1>
 <p>- Rút tiền (kiểm tra số tiền rút có lớn hơn số tài khoản đang có hay không rồi mới cho rút) </p>
-`;
+`
+//End Main
++ 
+//Footer
+components.footer;
 
 components.compose_page = `
 <h1>COMPOSE PAGE - TRANG ĐĂNG BÀI</h1>

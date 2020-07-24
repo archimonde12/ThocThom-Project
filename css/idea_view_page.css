@@ -19,13 +19,18 @@
     font-size: 17px;
 }
 .nav-item .active{
-    border-bottom: #ddbc95 2px solid;
+    border-bottom: #db9f54 2px solid;
+    font-size: 17px;
+    font-weight: bold;
     padding-bottom: 30px;
+    color:rgb(200, 200, 200);
 }
 
 .nav-item .links:hover{
     border-bottom: #ddbc95 2px solid;
     padding-bottom: 30px;
+    font-weight: bold;
+    transition: 0.05s;
 }
 .imagesP{
     width: 200px;

@@ -8,7 +8,9 @@ let model = {
     notifications: [],
     pendingIdeas: [],
     ideas: [],
-    funds: []
+    funds: [],
+    profileData:{},
+    ideaData:{}
 }
 
 model.saveCurrentUserData = function (userData) {
@@ -74,8 +76,8 @@ model.addLikeToIdeaHaveID = function (id, email) {
 }
 
 model.removeLikeToIdeaHaveId = function (id, email) {
-    temp = model.ideas[searchIdIndex(id, model.ideas)].likes.filter(item => item !== email);
-    model.ideas[searchIdIndex(id, model.ideas)].likes = temp;
+    t = model.ideas[searchIdIndex(id, model.ideas)].likes.filter(item => item !== email);
+    model.ideas[searchIdIndex(id, model.ideas)].likes = t;
     console.log(email + " đã unlike bài viết")
 }
 
@@ -116,7 +118,7 @@ model.addFollowToCurrentUser = function (Fundemail) {
 
 model.removeFollowerToFundHaveID = function (id, currentEmail) {
     let fundWithID = model.funds[searchIdIndex(id, model.funds)]
-    temp = fundWithID.follower.filter(item => item !== currentEmail);
+    let temp = fundWithID.follower.filter(item => item !== currentEmail);
     fundWithID.follower = temp;
     if (!fundWithID.follower.includes(currentEmail))
         console.log(currentEmail + " đã được loại bỏ khỏi danh sách Follower của " + fundWithID.email)
@@ -125,7 +127,7 @@ model.removeFollowerToFundHaveID = function (id, currentEmail) {
 }
 
 model.removeFollowToCurrentUser = function (Fundemail) {
-    temp = model.currentUserData.follow.filter(item => item !== Fundemail);
+    let temp = model.currentUserData.follow.filter(item => item !== Fundemail);
     model.currentUserData.follow = temp
     if (!model.currentUserData.follow.includes(Fundemail))
         console.log(Fundemail + " đã được loại bỏ khỏi danh sách Follow của " + model.currentUserData.email)
@@ -141,9 +143,9 @@ model.getFollowListOfCurrentUser = function () {
     return model.currentUserData.follow
 }
 
+//Xử lý chức năng đầu tư
+
 model.saveInvestDataToFund = function (idOfFund, dataReq) {
-    debugger;
-    console.log(dataReq)
     let targetFund = model.funds[searchIdIndex(idOfFund, model.funds)]
     //Check investors
     let isInvestorExist = false; // Biến kiểm tra nếu trong danh sách investor đã tồn tại email
@@ -158,7 +160,8 @@ model.saveInvestDataToFund = function (idOfFund, dataReq) {
         }
     }
     //Lưu biến tạm
-    let temp = targetFund.investors
+
+    temp = [...targetFund.investors]
 
     if (!isInvestorExist) {
         //Nếu chưa tồn tại thì đẩy thẳng dữ liệu vào 
@@ -170,20 +173,17 @@ model.saveInvestDataToFund = function (idOfFund, dataReq) {
 
     }
     //Lưu lại giá trị tại cache
-    debugger;
-    targetFund.investors = temp;
+    model.funds[searchIdIndex(idOfFund, model.funds)].investors = temp;
     console.log("Đã thực hiện lưu thông tin đầu tư ở cache của Fund");
 
 }
 
 model.saveInvestDataToUser =function (idOfFund,dataReq){
-    console.log(dataReq)
     let targetFund = model.funds[searchIdIndex(idOfFund, model.funds)]
     let newDataReq = {
         fundEmail:targetFund.email,
-        historyInvest:dataReq.historyInvest
+        historyInvest:[...dataReq.historyInvest]
     }
-    debugger;
     if(dataReq.email==model.currentUserData.email){
         //Kiểm tra việc đã đầu tư ở quỹ này chưa
     
@@ -197,9 +197,9 @@ model.saveInvestDataToUser =function (idOfFund,dataReq){
         }
     }
     //Lưu biến tạm
-    let temp = model.currentUserData.investAct;
+    temp = [...model.currentUserData.investAct];
     
-    debugger;
+
     //Nếu chưa đầu tư ở fund này bao giờ
     if(!isFundExist) {temp.push(newDataReq)}
     else {
@@ -207,4 +207,53 @@ model.saveInvestDataToUser =function (idOfFund,dataReq){
     }
     model.currentUserData.investAct = temp;
     }
+}
+
+model.getTotalInvestOnFund = function(idOfFund,emailInvestor){
+    let targetFund = model.funds[searchIdIndex(idOfFund, model.funds)]
+    for (let investor of targetFund.investors){
+        if(emailInvestor==investor.email){
+            for(let i=1;i<investor.historyInvest;i++){
+                investor.historyInvest.nowAmount
+            }
+        }
+    }
+}
+
+model.createNewInvestorData = function(emailInput){
+    return{
+        email:emailInput,
+        totalInvestBalace:0,
+        historyInvest:[{
+            initialInvestMoney:0,
+            investAt: new Date(),
+            comment:"",
+        }],
+        historyWithdraw:[{
+            withdrawAmount:0,
+            withdrawAt:new Date(),
+            comment:"",
+        }]
+    }
+}
+
+// model.calculateTotalInvest() = function(data){
+//  for(let i=1;i<data.historyInvest.length;i++){
+//     data.totalInvestBalace+=data.historyInvest[i].currentInvestMoney
+//  }
+//  for(i=1;i<data.historyWithdraw.length;i++){
+//     data.totalInvestBalace-=data.historyWithdraw[i].withdrawAmount
+//  }
+// }
+
+model.setProfileFundData=function(idFund){
+    let targetFund = model.funds[searchIdIndex(idFund, model.funds)]
+    model.profileData=targetFund;
+    console.log(idFund)
+}
+
+model.saveIdeaData=function(idIdea){
+    let targetIdea = model.ideas[searchIdIndex(idIdea, model.ideas)]
+    model.ideaData=targetIdea;
+    view.showPage("ideaViewPage")
 }

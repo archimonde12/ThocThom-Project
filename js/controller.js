@@ -426,9 +426,32 @@ controller.unFollowFund = async function (id) {
 //Form data request {email,initialMoney,}
 
 controller.investReq = function (idFund, dataReq) {
+    //Thực hiện lưu trữ ở cache
     model.saveInvestDataToFund(idFund, dataReq)
     model.saveInvestDataToUser(idFund, dataReq)
-    console.log("Kết quả đầu ra")
-    console.log(model.funds[searchIdIndex(idFund, model.funds)].investors)
-    console.log( model.currentUserData.investAct)
+    //Đẩy dữ liệu lên sever data
+    //a.Đẩy dữ liệu fund
+    let targetFundData = model.funds[searchIdIndex(idFund, model.funds)]
+    db.collection(KEY_USERS_COLLECTION).doc(idFund).update(targetFundData)
+    .then(function () {
+        console.log("Document successfully updated!");
+    })
+    .catch(function (error) {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+    })
+    //b.Đẩy dữ liệu user
+    let userData=model.currentUserData
+    db.collection(KEY_USERS_COLLECTION).doc(userData.id).update(userData)
+        .then(function () {
+            console.log("Document successfully updated!");
+        })
+        .catch(function (error) {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        })
+}
+
+controller.withDrawFundReq = function (idFund, dataReq) {
+    
 }
