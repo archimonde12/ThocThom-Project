@@ -11,6 +11,7 @@
 .flex-left {
     display: flex;
     margin-left: 10px;
+    justify-content: flex-start;
 }
 
 .flex-column {
@@ -31,8 +32,9 @@
 .body-main {
     margin-top: 100px;
     width: 1000px;
-    margin-left: 30px;
-    margin-right: 30px;
+    margin-left: 35px;
+    margin-right: 35px;
+    transition: width 2s;
 }
 
 .body-main>div {
@@ -45,7 +47,6 @@
     color: #131722;
     fill: #131722;
     transition: color .35s ease;
-    display: block;
     background-color: transparent;
     text-decoration: none;
     font-size: 30px;
@@ -114,7 +115,49 @@
 }
 
 .hover:hover {
-    cursor: pointer;
     background: #F0F3FA;
-    color: ffffff;
+}
+
+.filter-icon {
+    display: flex;
+    align-items: center;
+    border-radius: 22px;
+    border: 1px solid #e0e3eb;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    margin: 4px 0px 4px 0px;
+}
+
+.btn-icon {
+    color: blue;
+    width: 30;
+    height: 30;
+    cursor: pointer;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    border-radius: 20px;
+}
+
+.btn-search {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5px;
+}
+
+.btn-search>input {
+    outline: none;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid #e0e3eb;
+    margin-right: 5px;
+}
+
+.btn-search>button {
+    outline: none;
+    background-color: transparent;
+    border-radius: 22px;
+    border: 1px solid #e0e3eb;
 }
