@@ -50,5 +50,5 @@ var initSample = (function() {
         return !!CKEDITOR.plugins.get('wysiwygarea');
     }
 
-    document.getElementById("cke_1_contents").style.height = "250px";
+
 })();

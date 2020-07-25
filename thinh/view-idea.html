@@ -12,7 +12,6 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/yourcode.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/idea_view_page.css">
@@ -33,7 +32,7 @@
 
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
-         https://firebase.google.com/docs/web/setup#available-libraries -->
+             https://firebase.google.com/docs/web/setup#available-libraries -->
 
     <script>
         // Your web app's Firebase configuration
@@ -60,22 +59,21 @@
     <script src="./js/tester.js"></script>
 </head>
 
-
-<body id="body" class="flex-center">
+<body>
     <header>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top heg">
-            <a class="navbar-brand" href="#"><img src="../ThocThom-Project/images/logo.png" alt="" class="logo"></a>
+            <a class="navbar-brand" href="#"><img src="../images/logo.png" alt="" class="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+      <span class="navbar-toggler-icon"></span>
+    </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#"><span>HOME</span><span class="sr-only">(current)</span></a>
+                        <a class="nav-link home" href="#"><span>HOME</span><span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
 
-                        <a class="nav-link links" href="#"><span>ABOUT US</span></a>
+                        <a class="nav-link links" href="#"><span>MY ACCOUNTS</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link links" href="#"><span>SERVICES</span></a>
@@ -84,17 +82,21 @@
                         <a class="nav-link links" href="#"><span>CONSTACT US</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link links sign-in-btn" href="#"><span>SIGN IN</span></a>
+                        <a class="nav-link links" href="#"><span>NEW INVESTS</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link links active sign-up-btn" href="#"><span>SIGN UP</span></a>
+                        <a class="nav-link links" href="#"><span><i class="fas fa-sign-out-alt"></i>LOGOUT</span></a>
                     </li>
                 </ul>
+                <form class="form-inline mt-2 mt-md-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                </form>
             </div>
         </nav>
     </header>
-    <div id="viewIdea" class="view-idea fixed-top">
-        <div style="display: flex; justify-content: flex-end;"><button id="btnIdeaClose" class="bnt-close">X</button></div>
+    <div class="view-idea fixed-top">
+        <div style="display: flex; justify-content: flex-end;"><button class="bnt-close">X</button></div>
         <div class="flex-left">
             <div class="avatar-img">
                 <img src="https://s3.tradingview.com/userpics/8882424-Wls8_mid.png" alt="">
@@ -127,76 +129,6 @@
             đợi điểm chín muồi để mở vị thế Bán, thay vì đuổi theo đà rơi này. ACE Trader nhớ follow Finashark nhé. Mình sẽ luôn update các tín hiệu giao dịch chuẩn nhất cho mọi người.
         </div>
     </div>
-    <div id="ideaList" class="flex-left body-main">
-        <div style="margin-right: 10px;">
-            <div class=" flex-between">
-                <div class="content-header">Biên tập viên chọn</div>
-                <div class="filter-icon">
-                    Sắp xếp
-                    <span><button class="btn-icon hover"><i class="far fa-clock icon fa-2x"></i></button></span>
-                    <span><button class="btn-icon hover"><i class="far fa-thumbs-up icon fa-2x"></i></button></span>
-                </div>
-            </div>
-            <div class="btn-search"><input class="hover" id="search" type="text" placeholder="Search..">
-                <button class="hover" id="submit" type="submit"><i class="fa fa-search"></i></button>
-            </div>
-            <div class="flex-column">
-                <div id="ideaClick" class="hover" style="cursor: pointer;">
-                    <div class="title1 hover">
-                        GOLD - Nhịp lấy Đỉnh!!
-                    </div>
-                    <div class="content-idea-list" style="display: flex; align-items: center;">
-                        <span>XAUUSD</span><span>, 60</span><span class="icon-down" style="background-color: #26A69A;"><svg style="margin-right: 4px;" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H14V10H12V3.5L1.5 14L0 12.5L10.5 2H4V0Z" fill="currentColor"></path></svg>Giá Lên</span>
-                    </div>
-                    <div class="img-content flex-center">
-                        <img src="https://s3.tradingview.com/f/fGSiLbDw_mid.webp" alt="">
-                    </div>
-                    <div class="content-idea-list">
-                        LuTienSinh
-                    </div>
-                    <div class="content-idea-list">
-                        Mốc $1808 tối thứ 6 vừa rồi có phản ứng nhưng như tui đã đưa tin về vụ Trung tạm ngưng nhập 02 chuyến tàu nông sản Mĩ (cái này nhạy cảm vì Trung đang lũ lụt tè le mà ngưng nhập cho thấy chắc có gì đó ghê gớm lắm!!)khiến Cậu cứ cheo leo ở mốc $180
-                    </div>
-                    <div>
-                        like
-                    </div>
-                </div>
-                <div>
-
-                </div>
-            </div>
-        </div>
-        <div style="margin-left: 10px;">
-            <div class=" flex-between">
-                <div class="content-header">
-                    Tổng hợp tin tức
-                </div>
-                <div class="filter-icon">
-                    Sắp xếp
-                    <span><button class="btn-icon hover"><i class="far fa-clock icon fa-2x"></i></button></span>
-                    <span><button class="btn-icon hover"><i class="far fa-thumbs-up icon fa-2x"></i></button></span>
-                </div>
-            </div>
-            <div class="btn-search"><input class="hover" id="search" type="text" placeholder="Search..">
-                <button class="hover" id="submit" type="submit"><i class="fa fa-search "></i></button>
-            </div>
-            <div class="flex-column">
-                <div class="hover">
-                    <div class="title2">
-                        Tỷ phú Ấn Độ lần đầu lọt top 5 người giàu nhất hành tinh
-                    </div>
-                    <div class="content-idea-list">
-                        Trong nhiều năm qua, nhóm 5 người giàu nhất thế giới không có sự hiện diện của người châu Á. Tuy nhiên, điều đó vừa thay đổi.
-                    </div>
-                    <div class="content-idea-list">
-                        24-07-2020 - 15:48 PM | Tài chính quốc tế
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="mainview.js"></script>
 </body>
 
 </html>
