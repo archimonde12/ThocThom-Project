@@ -519,7 +519,7 @@ SIGN IN PAGE - TRANG ĐĂNG NHẬP
 components.main_view = components.headerWhenLogIn + `
 <div class="spaceForHeader"></div>
 <div class="main-flex-container">
-  <div class="left-main-page-container" style="flex-grow: 2">
+  <div class="left-main-page-container" style="flex-grow: 3">
   <div class="col-md-4 col-sm-4 col-xs-12 magazine-page ar-reverse">
         <div class="headline firstNegativeMargin"
           style="background:#F9F9F9;padding:10px 10px;width:315px;border:1px solid #EEEEEE;margin-top: 0px;float: left;">
@@ -608,7 +608,56 @@ components.main_view = components.headerWhenLogIn + `
           </select>
       </div>
     </div>
-    <div id="idea-list"></div>
+    <div class="flex-between body-main">
+    <div id="idea-list" style="margin-right: 10px;">
+            <div class="content-header">
+                Biên tập viên chọn
+            </div>
+            <div class="flex-column">
+                <div>
+                    <div class="title1 hover">
+                        GOLD - Nhịp lấy Đỉnh!!
+                    </div>
+                    <div class="content-idea">
+                        <span>XAUUSD</span><span>, 60</span><span>giá xuống</span>
+                    </div>
+                    <div class="img-content flex-center">
+                        <img src="https://s3.tradingview.com/f/fGSiLbDw_mid.webp" alt="">
+                    </div>
+                    <div class="content-idea">
+                        LuTienSinh
+                    </div>
+                    <div class="content-idea">
+                        Mốc $1808 tối thứ 6 vừa rồi có phản ứng nhưng như tui đã đưa tin về vụ Trung tạm ngưng nhập 02 chuyến tàu nông sản Mĩ (cái này nhạy cảm vì Trung đang lũ lụt tè le mà ngưng nhập cho thấy chắc có gì đó ghê gớm lắm!!)khiến Cậu cứ cheo leo ở mốc $180
+                    </div>
+                    <div>
+                        like
+                    </div>
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </div>
+        <div style="margin-left: 10px;">
+            <div class="content-header">
+                Tổng hợp tin tức
+            </div>
+            <div class="flex-column">
+                <div class="hover">
+                    <div class="title2">
+                        Tỷ phú Ấn Độ lần đầu lọt top 5 người giàu nhất hành tinh
+                    </div>
+                    <div class="content-idea">
+                        Trong nhiều năm qua, nhóm 5 người giàu nhất thế giới không có sự hiện diện của người châu Á. Tuy nhiên, điều đó vừa thay đổi.
+                    </div>
+                    <div class="content-idea">
+                        24-07-2020 - 15:48 PM | Tài chính quốc tế
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
   </div>  
 </div>
 <<<<<<< HEAD
@@ -994,3 +1043,4 @@ components.compose_page = `
 <p>- Đăng bài </p>
 <p>- Up ảnh vào bài </p>
 `;
+
