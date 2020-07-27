@@ -6,7 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THOC THOM PROJECT</title>
 
+    <!-- link css -->
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/yourcode.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/idea_view_page.css">
+    <link rel="stylesheet" href="../fonts/css/all.css">
+    <link rel="stylesheet" href="../css/sign_in.css">
+    <link rel="stylesheet" href="../css/signUp.css">
+    <link rel="stylesheet" href="../css/profile_page.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="shortcut icon" href="../images/title.png">
+    <link rel="stylesheet" href="mainview.css">
+    <link rel="stylesheet" href="view-idea.css">
+
+    <link rel="stylesheet" href="profile.css">
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-auth.js"></script>
@@ -16,7 +35,7 @@
 
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
+             https://firebase.google.com/docs/web/setup#available-libraries -->
 
     <script>
         // Your web app's Firebase configuration
@@ -40,178 +59,230 @@
     <script src="./js/view.js"></script>
     <script src="./js/controller.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/tester.js"></script>
 </head>
 
+
 <body>
-    <!-- FOR TEST -->
-    <!-- <button id="admin-page" class="admin-page-btn">admin page show</button>
-    <button id="compose-page" class="compose-page-btn" >compose page show</button>
-    <button id="deposit-page" class="deposit-page-btn">deposit page show</button>
-    <button id="idea-view-page" class="idea-view-page-btn">idea view page show</button>
-    <button id="main-view" class="main-view-btn">main view page show</button>
-    <button id="profile-page" class="profile-page-btn">profile page show</button>
-    <button id="sign-in" class="sign-in-btn">sign in page show</button>
-    <button id="sign-up" class="sign-up-btn">sign up page show</button>
-    <button id="withdraw-page" class="withdraw-page-btn">withdraw page show</button> -->
-    <!-- FOR TEST -->
+    <article style="margin-top: 70px;">
+        <div style="display: flex;">
+            <div style="margin-left: 50px;">
+                <a href="#published-charts">
+                    <img src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220,0,20,20%22%20width=%22171%22%20height=%22171%22%3E%3Crect%20height=%2220%22%20width=%2220%22%20fill=%22hsl%28171,25%25,50%25%29%22/%3E%3Ctext%20fill=%22white%22%20x=%2210%22%20y=%2214.8%22%20font-size=%2214%22%20font-family=%22Trebuchet%20MS,Arial,sans-serif%22%20text-anchor=%22middle%22%3ED%3C/text%3E%3C/svg%3E"
+                        alt="">
+                </a>
+            </div>
+            <div style="margin-left: 50px;">
+                <div>
+                    <span>
+					<h1>ducthinh1341993</h1>
+				    </span>
+                </div>
+                <div>
+                    <div style="margin-top: 20px;">
+                        <span>
+							<span ><svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" width="14px" height="14px"><path d="M7 0C3.15 0 0 3.15 0 7s3.15 7 7 7 7-3.15 7-7-3.15-7-7-7zm0 12.25c-2.888 0-5.25-2.363-5.25-5.25 0-2.888 2.362-5.25 5.25-5.25 2.887 0 5.25 2.362 5.25 5.25 0 2.887-2.363 5.25-5.25 5.25zm.25-8H6V8h3.75V6.75h-2.5v-2.5z" fill-rule="evenodd"></path></svg></span>                        Trực tuyến
+                        </span>
+                        <span>
+						<span ><svg viewBox="0 0 14 16" xmlns="http://www.w3.org/2000/svg" width="14px" height="16px"><path d="M10.75 9H7v3.75h3.75V9zM10 .75v1.5H4V.75H2.5v1.5h-.75c-.833 0-1.493.675-1.493 1.5L.25 14.25a1.5 1.5 0 0 0 1.5 1.5h10.5c.825 0 1.5-.675 1.5-1.5V3.75c0-.825-.675-1.5-1.5-1.5h-.75V.75H10zm2.25 13.5H1.75V6h10.5v8.25z" fill-rule="evenodd"></path></svg></span>                        Đã tham gia
+                        <time data-time="1594993411.0" data-force-ago-format="" title="20:43 - Tháng 7 17, 2020" data-ago-date-timer="32">8 ngày trước</time>
+                        </span>
+                    </div>
 
-    <div class="container profile" style="margin-top: 100px;">
-        <div class="row">
-            <div class="col-lg-12" style="border-bottom: 1px gray solid;">
-                <h5 class="pull-left">Welcome to myInvestor Area
-                    <br>
-                    <span style="font-weight: normal;font-size: 14px;">      
-                    Markets (SV) LTD
-                    </span>
-                </h5>
+                    <div style="margin-top: 20px;">
+                        <span style="margin-right: 20px;">
+						<span>0</span>
+                        <span><svg viewBox="0 0 16 15" xmlns="http://www.w3.org/2000/svg" width="16px" height="15px"><path d="M1.6 0C.72 0 .008.675.008 1.5L0 15l3.2-3h11.2c.88 0 1.6-.675 1.6-1.5v-9c0-.825-.72-1.5-1.6-1.5H1.6zm4.823 6.36L8.73 8.37c.38.332 1.004.265 1.286-.138l2.856-4.082c.245-.35.128-.814-.26-1.035-.39-.22-.905-.115-1.15.235L9.15 6.648 6.907 4.693c-.362-.315-.95-.272-1.25.09l-2.492 3.02c-.275.332-.198.802.17 1.05.37.246.892.177 1.167-.156l1.92-2.338z" fill-rule="evenodd"></path></svg></span>
+                        <span>Ý tưởng</span>
+                        </span>
+
+                        <span style="margin-right: 20px;">
+						<span>0</span>
+                        <span><svg viewBox="0 0 16 15" xmlns="http://www.w3.org/2000/svg" width="16px" height="15px"><path d="M0 14.66h2.91V5.864H0v8.796zm16-8.063c0-.806-.655-1.466-1.455-1.466h-4.59l.692-3.35.022-.232c0-.3-.126-.58-.32-.777L9.576 0 4.793 4.83c-.27.264-.43.63-.43 1.034v7.33c0 .806.655 1.466 1.455 1.466h6.546c.603 0 1.12-.367 1.338-.895l2.196-5.167c.066-.17.102-.345.102-.535v-1.4l-.007-.008.007-.058z" fill-rule="evenodd"></path></svg></span>
+                        <span>Thích</span>
+                        </span>
+
+                        <span style="margin-right: 20px;">
+						<span >0</span>
+                        <span><svg viewBox="0 0 16 10" xmlns="http://www.w3.org/2000/svg" width="16px" height="10px"><path d="M3.996 5C2.89 5 2 4.104 2 3s.89-2 1.996-2C5.102 1 6 1.896 6 3s-.898 2-2.004 2zm7-1C9.89 4 9 3.107 9 2s.888-2 1.997-2a2 2 0 0 1 0 4zM4.5 6C5.997 6 9 6.736 9 8.2V10H0V8.2C0 6.736 3.003 6 4.5 6zm6.27-1C12.51 5 16 5.975 16 7.917V10h-5.23V8.125c0-.708-.246-1.95-1.77-2.892.65-.15 1.277-.233 1.77-.233z" fill-rule="evenodd"></path></svg></span>
+                        <span>Người theo dõi</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: flex;margin: 0px 50px 0px 50px;height: 50px;background-color: royalblue;">
+            <div id='idea' class="tap">Ý tưởng</div>
+            <div class="tap">Người theo dõi</div>
+            <div class="tap">Đang theo dõi</div>
+            <div id="Edit" class="tap">Cài đặt</div>
+        </div>
+
+        <!-- người theo dõi, đang theo dõi -->
+        <div style="display: flex; justify-content: space-between; border: 1px solid #ddd; margin: 15px 50px 15px 50px; border-radius: 10px;">
+            <div style="display: flex; padding: 10px;">
+                <div>
+                    <a href="#published-charts">
+                        <img style="height: 80px; width: 80px;" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220,0,20,20%22%20width=%22171%22%20height=%22171%22%3E%3Crect%20height=%2220%22%20width=%2220%22%20fill=%22hsl%28171,25%25,50%25%29%22/%3E%3Ctext%20fill=%22white%22%20x=%2210%22%20y=%2214.8%22%20font-size=%2214%22%20font-family=%22Trebuchet%20MS,Arial,sans-serif%22%20text-anchor=%22middle%22%3ED%3C/text%3E%3C/svg%3E"
+                            alt="">
+                    </a>
+                </div>
+                <div style="margin-left: 20px;">
+                    <h5>ducthinh1341993</h5>
+                </div>
+            </div>
+            <div style="display: flex; padding: 10px;">
+                <button style="margin: 20px 20px 20px 0px; outline: none; border: 1px soild #ddd; border-radius: 10px; color: #00897B;">Theo dõi</button>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-8 col-sm-12 col-xs-12 margin-bottom-20">
-                <div class="row" style="text-align: center;margin-top: 5px;">
-                    <div class="col-md-3">
-                        <a href="" class="depositCoin"><img src="../images/bitcoin.png" alt=""></a>
+
+
+        <!-- show ý tưởng -->
+        <div id="ideaShow" style="display: flex; justify-content: center;">
+            <div>
+                <div style="display: flex; display: flex;justify-content: flex-end;width: 1000px;">
+                    <div class="btn-search"><input class="hover" id="search" type="text" placeholder="Search..">
+                        <button class="hover" id="submit" type="submit"><i class="fa fa-search"></i></button>
                     </div>
-                    <div class="col-md-3">
-                        <a href="" class="depositCoin"><img src="../images/bitcoincash.png" alt=""></a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="" class="depositCoin"><img src="../images/eth.png" alt=""></a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="" class="depositCoin"><img src="../images/usdtnew.png" alt=""></a>
-                    </div>
-                </div>
-                <!-- Mục mã đầu tư components -->
-                <div class="row" style="border: 1px rgb(192, 192, 192) solid;margin-top: 8px;margin-bottom: 8px;padding-bottom: 10px; border-radius: 3px;">
-                    <div class="col-md-12" style="text-align: center;">
-                        <h3 style="font-family: serif;font-size: 2.5rem;">Deposit USDT</h3>
-                        <img style="width: 259px;height: 259px;" src="../images/viUSDT.png" alt="">
-                        <div class="wallet" style="padding: 3px;border-radius: 5px;">
-                            <input disabled id="copyqr" value="0x11b4a4e966f5516fc2764be00f5158d4a6c1b5b3" style="font-weight: bold;font-size: 14px;border: none;width: 330px;background: none;"></input>
-                            <button onclick="myFunction()" style="display: inline;background:#a9a9a95c;border-radius: 3px;border: none;"><i><i style="margin: 6px;" class="far fa-clone"></i></i></button>
-                            <script>
-                                function myFunction() {
-                                    var copyText = document.getElementById("copyqr");
-                                    copyText.select();
-                                    copyText.setSelectionRange(0, 99999)
-                                    document.execCommand("copy");
-                                    alert("Already copy!" + copyText.value);
-                                }
-                            </script>
+                    <div class=" flex-between">
+                        <div class="filter-icon">
+                            Sắp xếp
+                            <span><button class="btn-icon hover"><i class="far fa-clock icon fa-2x"></i></button></span>
+                            <span><button class="btn-icon hover"><i class="far fa-thumbs-up icon fa-2x"></i></button></span>
                         </div>
                     </div>
-                    <!-- Mục mã đầu tư components -->
-                    <div class="col-lg-8">
-                        <span style="font-weight: bold;">Deposit fee:<span id="fee" style="color: #d69c55;"> 0.00</span> USDT</span>
-                        <p style="margin-top: 10px;"><i class="fas fa-info-circle" style="color: #308cd5;"></i> You must deposit greater than <span style="font-weight: bold;"> 1 USDT</span> to be credited.</p>
-                        <p><i class="fas fa-info-circle" style="color: #308cd5;"></i>This deposit address only accepts <span style="font-weight: bold;"> USDT </span>. Do not deposit other coins into it.</p>
+                </div>
+
+                <div id="ideaList" style="display: flex; flex-wrap: wrap; width: 1100px;">
+                    <div style=" width: 500px;">
+
+                        <div class="flex-column">
+                            <div id="ideaClick" class="hover" style="cursor: pointer;">
+                                <div class="title1 hover">
+                                    GOLD - Nhịp lấy Đỉnh!!
+                                </div>
+                                <div class="content-idea-list" style="display: flex; align-items: center;">
+                                    <span>XAUUSD</span><span>, 60</span><span class="icon-down" style="background-color: #26A69A;"><svg style="margin-right: 4px;" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H14V10H12V3.5L1.5 14L0 12.5L10.5 2H4V0Z" fill="currentColor"></path></svg>Giá Lên</span>
+                                </div>
+                                <div class="img-content flex-center">
+                                    <img src="https://s3.tradingview.com/f/fGSiLbDw_mid.webp" alt="">
+                                </div>
+                                <div class="content-idea-list">
+                                    LuTienSinh
+                                </div>
+                                <div class="content-idea-list">
+                                    Mốc $1808 tối thứ 6 vừa rồi có phản ứng nhưng như tui đã đưa tin về vụ Trung tạm ngưng nhập 02 chuyến tàu nông sản Mĩ (cái này nhạy cảm vì Trung đang lũ lụt tè le mà ngưng nhập cho thấy chắc có gì đó ghê gớm lắm!!)khiến Cậu cứ cheo leo ở mốc $180
+                                </div>
+                                <div>
+                                    like
+                                </div>
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="width: 500px;">
+                        <div class="flex-column">
+                            <div id="ideaClick" class="hover" style="cursor: pointer;">
+                                <div class="title1 hover">
+                                    GOLD - Nhịp lấy Đỉnh!!
+                                </div>
+                                <div class="content-idea-list" style="display: flex; align-items: center;">
+                                    <span>XAUUSD</span><span>, 60</span><span class="icon-down" style="background-color: #26A69A;"><svg style="margin-right: 4px;" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H14V10H12V3.5L1.5 14L0 12.5L10.5 2H4V0Z" fill="currentColor"></path></svg>Giá Lên</span>
+                                </div>
+                                <div class="img-content flex-center">
+                                    <img src="https://s3.tradingview.com/f/fGSiLbDw_mid.webp" alt="">
+                                </div>
+                                <div class="content-idea-list">
+                                    LuTienSinh
+                                </div>
+                                <div class="content-idea-list">
+                                    Mốc $1808 tối thứ 6 vừa rồi có phản ứng nhưng như tui đã đưa tin về vụ Trung tạm ngưng nhập 02 chuyến tàu nông sản Mĩ (cái này nhạy cảm vì Trung đang lũ lụt tè le mà ngưng nhập cho thấy chắc có gì đó ghê gớm lắm!!)khiến Cậu cứ cheo leo ở mốc $180
+                                </div>
+                                <div>
+                                    like
+                                </div>
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div style="width: 500px;">
+
+                        <div class="flex-column">
+                            <div id="ideaClick" class="hover" style="cursor: pointer;">
+                                <div class="title1 hover">
+                                    GOLD - Nhịp lấy Đỉnh!!
+                                </div>
+                                <div class="content-idea-list" style="display: flex; align-items: center;">
+                                    <span>XAUUSD</span><span>, 60</span><span class="icon-down" style="background-color: #26A69A;"><svg style="margin-right: 4px;" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H14V10H12V3.5L1.5 14L0 12.5L10.5 2H4V0Z" fill="currentColor"></path></svg>Giá Lên</span>
+                                </div>
+                                <div class="img-content flex-center">
+                                    <img src="https://s3.tradingview.com/f/fGSiLbDw_mid.webp" alt="">
+                                </div>
+                                <div class="content-idea-list">
+                                    LuTienSinh
+                                </div>
+                                <div class="content-idea-list">
+                                    Mốc $1808 tối thứ 6 vừa rồi có phản ứng nhưng như tui đã đưa tin về vụ Trung tạm ngưng nhập 02 chuyến tàu nông sản Mĩ (cái này nhạy cảm vì Trung đang lũ lụt tè le mà ngưng nhập cho thấy chắc có gì đó ghê gớm lắm!!)khiến Cậu cứ cheo leo ở mốc $180
+                                </div>
+                                <div>
+                                    like
+                                </div>
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
-            <div class="col-md-4 col-sm-4 col-xs-12 magazine-page ar-reverse">
-                <div class="headline firstNegativeMargin" style="background:#F9F9F9;padding:10px 10px;border:1px solid #EEEEEE;margin-top: 0px;float: left;margin-top: 20px;">
-                    <div class="myIdBox fullWidth" style="border-bottom:1px solid #EEEEEE;padding-bottom:10px;margin-bottom:5px">
-                        <div class="col-md-12" style="padding:7px 0px 0px 0px">
-
-                            <a href="/en/central/profile.html" id="editMyDetails" title="Edit Details">
-
-                                <img src="../images/avartar1.jpg" width="60" style="border:1px solid #CCCCCC">
-                                <a href="/en/central/profile.html" id="editMyDetails" title="Edit Details" class="color-red"><i class="fa fa-edit color-grown" style="font-size:18px;float: right;"></i></a>
-                            </a>
-                        </div>
-                        <div id="user-settings-text" class="col-md-8 col-sm-8 col-xs-8" style="padding:7px 0px 5px 10px;font-size:13px">
-                            <span>Hello&nbsp;</span>
-                            <span id="name-Investor"><b>Hero</b></span><br>
-                            <span>myInvestor ID:&nbsp;</span><span>30173210</span>
-                        </div>
-                    </div>
-                    <!---->
-                    <div class="row" style="width: 300px;">
-                        <div class="col-sm-6" style="padding:0px;font-size:16px !important;color: #333333;padding-left: 10px;">
-                            Balance:&nbsp;
-                        </div>
-                        <div class="col-sm-6" style="padding:0px;text-align:right">
-                            <input type="hidden" name="_xsrf" value="2|6a37f94e|37c42e4cce55c01031f414328ccd69aa|1594861975">
-                            <span class="wallet_balance" style="font-weight:bold;font-size:16px !important">0.0 USD</span> &nbsp;
-                            <i class="fa fa-sync refreshBalance" style="font-size:17px;cursor:pointer;color:#056D34"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="tradeMoney">
-                    <div class="magazine-sb-categories margin-bottom-5 fullWidth">
-
-                        <a href="#" class="btn btn-success trade">
-
-                            <b>Deposit</b></a>
-                    </div>
-                    <div class="magazine-sb-categories margin-bottom-5 fullWidth">
-
-                        <a href="#" class="btn btn-outline-secondary trade">
-
-                            <b>Withdraw</b></a>
-                    </div>
-
-                    <div class="magazine-sb-categories margin-bottom-20 fullWidth">
-
-                        <a href="#" class="btn btn-outline-info trade">
-
-                            <b>Transfer Funds</b></a>
-                    </div>
-                    <img src="../images/broker.png" style="width:315px;height: 268px;margin-top: 10px;" alt="">
-                </div>
-            </div>
-            <!-- <div class="col-lg-4"> -->
-            <!-- </div> -->
         </div>
-    </div>
-    <div class="footer">
-        <footer class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <span class="foorterName">ABOUT US</span>
-                    <img src="../images/logo.png" alt="">
-                    <p>Forex Services offered through Advisory Group. Insurance products and services are offered through the Insurance Group. Advisory Group and Insurance Group do business collectively as Financial Group. The aforementioned are affiliated
-                        companies.
-                    </p>
-                    <div class="icon">
-                        <a href=""><i class="fab fa-facebook-f"></i></a>
-                        <a href=""><i class="fab fa-twitter"></i></a>
-                        <a href=""><i class="fab fa-skype"></i></a>
-                        <a href=""><i class="fab fa-telegram-plane"></i></a>
+
+        <!-- show thông tin cá nhân -->
+        <div id="myInfor" style="justify-content: space-around; margin-top: 20px;display: flex;">
+            <div style="border: 1px solid #ddd; width: 580px; border-radius: 10px; ">
+                <div class="thong-tin">
+                    <div>
+                        <h5>THÔNG TIN CÁ NHÂN</h5>
+                    </div>
+                    <div>
+                        <div>Tên đăng nhập:</div>
+                        <span>ducthinh1341993</span>
+                    </div>
+                    <div>
+                        <div>Họ và Tên:</div>
+                        <input type="text" value="Trần Đức Thịnh">
+                    </div>
+                    <div>
+                        <div>Hình đại diện:</div>
+                        <img style="width: 80px;height: 80px;" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220,0,20,20%22%20width=%22171%22%20height=%22171%22%3E%3Crect%20height=%2220%22%20width=%2220%22%20fill=%22hsl%28171,25%25,50%25%29%22/%3E%3Ctext%20fill=%22white%22%20x=%2210%22%20y=%2214.8%22%20font-size=%2214%22%20font-family=%22Trebuchet%20MS,Arial,sans-serif%22%20text-anchor=%22middle%22%3ED%3C/text%3E%3C/svg%3E"
+                            alt="">
+                        <input type="file" name="" id="">
+                    </div>
+                    <div>
+                        <div>Điện thoại:</div>
+                        <input type="text" value="0358960896">
+                    </div>
+                    <div>
+                        <div>Địa chỉ:</div>
+                        <input type="text" value="Hà Nội">
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <span class="foorterName">OUR SERVICES</span>
-                    <ul id="menu-services" class="menu">
-                        <li id="menu-item-13" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-13"><a href="#">Investment management</a></li>
-                        <li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-32"><a href="#">Bonds &amp; Commodities</a></li>
-                        <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-31"><a href="#">Private Finance Solutions</a></li>
-                        <li id="menu-item-76" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-76"><a href="#">Tax and Trusts</a></li>
-                        <li id="menu-item-77" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-77"><a href="#">Banking services</a></li>
-                        <li id="menu-item-78" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-78"><a href="#">Financial Advisory &amp; Structuring</a></li>
-                        <li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-79"><a href="#">Insurance Solutions</a></li>
-                        <li id="menu-item-80" class="menu-item menu-item-type-post_type menu-item-object-services menu-item-80"><a href="#">Trades &amp; Stocks</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <span class="foorterName">RECENT NEWS</span>
-                    <ul id="menu-services" class="menux">
-                        <li> <a href="#">Underwriting And Agency Roles</a>
-                            <div class="post-date">August 30, 2020</div>
-                        </li>
-                        <li> <a href="#">A Look At Primary And Secondary Markets</a>
-                            <div class="post-date">August 30, 2020</div>
-                        </li>
-                        <li> <a href="#">How spot factoring helps resolve cash flow gaps</a>
-                            <div class="post-date">August 30, 2020</div>
-                        </li>
-                    </ul>
+                <div style="display: flex; justify-content: flex-end; margin: 5px 30px 5px 0px;">
+                    <button class="bnt-edit">Lưu thay đổi</button>
                 </div>
             </div>
-        </footer>
-        <p class="end">© 2020 Forex Theme by HeroFX.</p>
-    </div>
+        </div>
+    </article>
+    <script src="profile.js"></script>
 </body>
 
 </html>

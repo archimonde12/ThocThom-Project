@@ -41,6 +41,10 @@
     width: 500px;
 }
 
+.view-idea {
+    overflow: scroll;
+}
+
 .content-header {
     margin: 5px;
     font-size: 32px;
@@ -96,7 +100,6 @@
 
 .content-idea {
     display: -webkit-box;
-    overflow: hidden;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     line-height: 24px;
@@ -112,6 +115,7 @@
     font-family: Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -webkit-tap-highlight-color: transparent;
+    z-index: 9999
 }
 
 .hover:hover {
