@@ -3,6 +3,7 @@ const KEY_USERS_COLLECTION = "Users"
 const KEY_NOTI_COLLECTION = "Notifications"
 const KEY_PENDINGIDEA_COLLECTION = "PendingIdeas"
 const KEY_IDEA_COLLECTION = "Ideas"
+const KEY_NEWS_COLLECTION="News"
 let controller = {};
 
 controller.signUp = async function (name, email, password, typeOfAccountData, phoneNumberData, addressData) {
@@ -22,12 +23,12 @@ controller.signUp = async function (name, email, password, typeOfAccountData, ph
             address: addressData,
             avatarURL: "https://firebasestorage.googleapis.com/v0/b/thocthom-project.appspot.com/o/img%2FDefaut%2Fdefault-avatar.png?alt=media&token=55eec6a1-cb2f-4d0d-9bd2-564ef8b45eec"
         }
-        controller.CreateDataForNewAccount(other);
+        await controller.CreateDataForNewAccount(other);
         console.log(firebase.auth().currentUser.displayName)
         //Xác thực tài khoản
         //await firebase.auth().currentUser.sendEmailVerification()
         //Thông báo đăng kí thành công
-        view.setText('sign-up-success', 'an email verification has been sent')
+        // view.setText('sign-up-success', 'an email verification has been sent')
         view.showPage("mainView")
     } catch (error) {
         // document.getElementById('sign-up-error').innerHTML = error.message
@@ -51,7 +52,7 @@ controller.signIn = async function (email, password) {
 
 }
 
-controller.Compose = async function (title, content) {
+controller.Compose = async function (title, content,product,nameProduct,priceDirection,pricePredict,timePredict,imgURL) {
     //Khởi động
     view.setText('compose-error', '')
     view.setText('compose-success', '')
@@ -63,7 +64,14 @@ controller.Compose = async function (title, content) {
             content: content,
             author: model.currentUserData,
             createAt: new Date().toLocaleString(),
-            ideaImageURL:model.imgURL
+            ideaImageURL:imgURL,
+            predictData:{
+                productData:product,
+                nameProductData:nameProduct,
+                priceDirectionData:priceDirection,
+                pricePredictData:pricePredict,
+                timePredict:timePredict
+            }
         }
         //push lên pendingIdeas
         await db.collection(KEY_PENDINGIDEA_COLLECTION).add(newIdea)
@@ -71,7 +79,7 @@ controller.Compose = async function (title, content) {
                 console.log("Document written with ID: ", docRef.id);
             })
         //Thông báo thành công
-        view.setText('compose-success', 'Post your idea successfully,please wait for admin accpect!')
+        view.setText('compose-success', 'Bạn đã đăng bài thành công, hãy đợi sự kiểm duyệt của admin nhé!')
         view.setText('compose-btn', "Đăng thành công")
         await waitForSeconds(2)
         let currentEmail = firebase.auth().currentUser.email
@@ -82,6 +90,35 @@ controller.Compose = async function (title, content) {
         view.setActive('compose-btn', true)
     }
 
+}
+
+controller.NewsCompose = async function(title,content,link){
+     //Khởi động
+     view.setText('news-compose-error', '')
+     view.setText('news-compose-success', '')
+     view.setActive('news-compose-btn', false)
+     try {
+         //Lấy dữ liệu
+         let newNews = {
+             title: title,
+             content: content,
+             createAt: new Date().toLocaleString(),
+             linkURL:link,
+         }
+         //push lên pendingIdeas
+         await db.collection(KEY_NEWS_COLLECTION).add(newNews)
+             .then(function (docRef) {
+                 console.log("Document written with ID: ", docRef.id);
+             })
+         //Thông báo thành công
+         view.setText('news-compose-success', 'Đăng tin thành công')
+         view.setText('news-compose-btn', "Đăng thành công")
+         await waitForSeconds(2)
+         view.showPage("mainView")
+     } catch (error) {
+         view.setText('news-compose-error', error.message)
+         view.setActive('news-compose-btn', true)
+     }
 }
 
 controller.CreateDataForNewAccount = async function (otherData) {
@@ -99,6 +136,7 @@ controller.CreateDataForNewAccount = async function (otherData) {
         follow: [],
         follower: []
     }
+    console.log(newUser)
     try {
         await db.collection("Users").add(newUser)
             .then(function (docRef) {
@@ -144,10 +182,12 @@ controller.changeBalance = async function (change) {
     })
         .then(function () {
             console.log("Document successfully updated!");
+            view.setText("deposit-success",`Nạp tiền thành công! Tài khoản bạn được cộng thêm ${change}`)
         })
         .catch(function (error) {
             // The document probably doesn't exist.
             console.error("Error updating document: ", error);
+            view.setText("deposit-error","Nạp tiền thất bại! Vui lòng thử lại")
         });
     controller.loadUserInfomation()
 }

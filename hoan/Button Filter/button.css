@@ -1,0 +1,121 @@
+
+/* The border of this input */
+div.radio-btn-container{
+    border: 1px solid gray; 
+    width:60px;
+    height:25px;
+    padding:5px; 
+    border-radius:25px;
+}
+/* The container */
+.radio-input-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+  }
+  
+  /* Hide the browser's default radio button */
+  .radio-input-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    background-color: #eee 0;
+    border-radius: 50%;
+  }
+  .radio-input-container.left-side .checkmark{
+    left:0px;
+  }
+  .radio-input-container.right-side .checkmark{
+    left:35px;
+    top:-12px;
+  }
+
+  .radio-input-container.right-side .checkmark i{ 
+      position: absolute;
+      left:5px;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .radio-input-container.left-side:hover input ~ .checkmark {
+    position: absolute;
+    background-color: #ccc;
+    height: 35px;
+    width: 35px;
+    top:-5px;
+    left:-5px;
+  }
+
+  .radio-input-container.left-side:hover input ~ .checkmark i{
+    position: absolute;
+    top:6px;
+    left:5px;
+  }
+  
+  .radio-input-container.right-side:hover input ~ .checkmark {
+    position: absolute;
+    background-color: #ccc;
+    height: 35px;
+    width: 35px;
+    left:30px;
+    top:-17px;
+  }
+  .radio-input-container.right-side:hover input ~ .checkmark i {
+    top:5px;
+    left:10px;
+  }
+
+  
+  /* When the radio button is checked, add a gray background and change color to blue */
+  .radio-input-container input:checked ~ .checkmark {
+    background: rgb(224, 221, 221);
+    color:#1465a7;
+    top:-5px;
+    left:-5px;
+    height: 35px;
+    width: 35px;
+  }
+
+  .radio-input-container.left-side input:checked ~ .checkmark i {
+    position: absolute;
+    left:5px;
+    top:6px;
+   }
+
+  /* Chỉnh vị trí của input bên phải */
+  
+
+  .radio-input-container.right-side input:checked ~ .checkmark {
+    background: rgb(224, 221, 221);
+    color:#3c78aa;
+    top:-17px;
+    left:30px;
+    height: 35px;
+    width: 35px;
+  }
+
+  .radio-input-container.right-side input:checked ~ .checkmark i {
+    position: absolute;
+    top:5px;
+    left:10px;
+   }
+  .radio-input-container.right-side:hover input:checked ~ .checkmark i {
+   position: absolute;
+   color:#1465a7;
+   top:5px;
+   left:10px;
+  }
+  
+

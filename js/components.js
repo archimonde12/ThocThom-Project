@@ -574,6 +574,7 @@ components.main_view = components.headerWhenLogIn + `
           </div>
           <div id="compose-btn-wapper"></div>
           <div id="admin-page-btn-wapper"></div>
+          <div id="news-compose-btn-wapper"></div>
         </div>
       </div>
     <div class="info-container"> 
@@ -586,149 +587,65 @@ components.main_view = components.headerWhenLogIn + `
         </div>
     </div>
   </div>
-
-  <div style="flex-grow: 7">
-    <h3>Bài Đăng</h3>
-    <div id="search-and-filter-idea-container">
-      <div> Tìm kiếm theo
-          <select id="ideas-search-for">
-              <option style="text-align: center;">Tên tiêu đề</option>
-              <option style="text-align: center;">Tên tác giả</option>
-          </select>
-          <div style="display: inline-block;margin-left: 50%;"><input id="ideas-search" type="text"
-              placeholder="Search..">
-          <button id="ideas-submit" type="submit"><i class="fa fa-search"></i></button>
-      </div>
-      </div>
-      
-      <div>Sắp xếp theo
-          <select id="ideas-filter">
-              <option style="text-align: center;">Mới nhất</option>
-              <option style="text-align: center;">Lượt like nhiều nhất</option>
-          </select>
-      </div>
-    </div>
-    <div class="flex-between body-main">
-    <div id="idea-list" style="margin-right: 10px;">
-            <div class="content-header">
-                Biên tập viên chọn
-            </div>
-            <div class="flex-column">
-                <div>
-                    <div class="title1 hover">
-                        GOLD - Nhịp lấy Đỉnh!!
-                    </div>
-                    <div class="content-idea">
-                        <span>XAUUSD</span><span>, 60</span><span>giá xuống</span>
-                    </div>
-                    <div class="img-content flex-center">
-                        <img src="https://s3.tradingview.com/f/fGSiLbDw_mid.webp" alt="">
-                    </div>
-                    <div class="content-idea">
-                        LuTienSinh
-                    </div>
-                    <div class="content-idea">
-                        Mốc $1808 tối thứ 6 vừa rồi có phản ứng nhưng như tui đã đưa tin về vụ Trung tạm ngưng nhập 02 chuyến tàu nông sản Mĩ (cái này nhạy cảm vì Trung đang lũ lụt tè le mà ngưng nhập cho thấy chắc có gì đó ghê gớm lắm!!)khiến Cậu cứ cheo leo ở mốc $180
-                    </div>
-                    <div>
-                        like
-                    </div>
-                </div>
-                <div>
-
-                </div>
-            </div>
+  
+  <!-- Show ra các dự đoán và tin tức -->
+  <div style="flex-grow: 7" class="flex-left body-main" id="viewList">
+      <!-- (B-I) Phần chứa dự đoán-->
+      <div class="ideas-container" style="margin-right: 10px;">
+        <!-- (B-I-1) Tiêu đề, filter và thanh search -->
+        <div class="content-header">Dự Đoán Của Quỹ</div>
+        <div class=" flex-between">
+        <div class="radio-btn-container">
+            <label class="radio-input-container left-side">
+                <input id="date-filter" type="radio" name="radio" checked="checked" value="newFilter">
+                <span id="date-filter-btn" class="checkmark" title="Mới nhất"><i class="far fa-clock icon fa-1x"></i></span>
+            </label>
+            <label class="radio-input-container right-side">
+                <input id="like-filter" type="radio" name="radio" value="likeFilter">
+                <span id="like-filter-btn" class="checkmark" title="Nhiều người thích nhất"><i class="far fa-thumbs-up icon"></i></span>
+            </label>
         </div>
-        <div style="margin-left: 10px;">
-            <div class="content-header">
-                Tổng hợp tin tức
+        <div class="btn-search">
+            <input class="hover" id="ideas-search" type="text" placeholder="Tìm kiếm theo tiêu đề..">
+            <button class="hover" id="ideas-submit" type="submit"><i class="fa fa-search"></i></button>
+        </div>
+        </div>
+        <!-- (B-I-2) Nội dung của các dự đoán -->
+        <div id="idea-list"></div>
+      </div>  
+      <!-- (B-II)Phần chứa tin tức-->       
+      <div id="news-container" style="margin-left: 10px;"> 
+            <div class=" flex-between">
+                <div class="content-header">
+                    Tổng hợp tin tức
+                </div>
+                <div class="filter-icon">
+                    Sắp xếp
+                    <span><button class="btn-icon hover"><i class="far fa-clock icon fa-2x"></i></button></span>
+                    <span><button class="btn-icon hover"><i class="far fa-thumbs-up icon fa-2x"></i></button></span>
+                </div>
+            </div>
+            <div class="btn-search"><input class="hover" id="search" type="text" placeholder="Search..">
+                <button class="hover" id="submit" type="submit"><i class="fa fa-search "></i></button>
             </div>
             <div class="flex-column">
                 <div class="hover">
                     <div class="title2">
                         Tỷ phú Ấn Độ lần đầu lọt top 5 người giàu nhất hành tinh
                     </div>
-                    <div class="content-idea">
+                    <div class="content-idea-list">
                         Trong nhiều năm qua, nhóm 5 người giàu nhất thế giới không có sự hiện diện của người châu Á. Tuy nhiên, điều đó vừa thay đổi.
                     </div>
-                    <div class="content-idea">
+                    <div class="content-idea-list">
                         24-07-2020 - 15:48 PM | Tài chính quốc tế
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+      </div>
   </div>  
-</div>
-<<<<<<< HEAD
-<div id="idea-list">
-</div>
-</div>
-=======
+</div>  
 
-<<<<<<< HEAD
->>>>>>> 78817ff98b78e6bb6413af9f1e34f4bb8ace0fe1
-
-<div class="fund-info-container">
-<h3>Show all fund</h3>
-<div id="search-and-filter-fund-container">
-  <div> Tìm kiếm theo 
-      <select id="funds-search-for">
-            <option style="text-align: center;">Tên tiêu đề</option>
-            <option style="text-align: center;">Tên tác giả</option>     
-      </select>
-  </div>
-  <div style="display: inline-block;margin-left: 50%;"><input id="funds-search" type="text" placeholder="Search..">
-    <button id="submit" type="submit"><i class="fa fa-search"></i></button>
-  </div>
-  <div>Sắp xếp theo
-        <select id="funds-filter">
-            <option style="text-align: center;">Mới nhất</option>
-            <option style="text-align: center;">Lượt like</option>
-        </select>
-  </div>
 </div>
-<table>
-    <tr><td>Fund 1</td><td>Name 1</td><td>Result 1</td></tr>
-    <tr><td>Fund 2</td><td>Name 2</td><td>Result 2</td></tr>
-    <tr><td>Fund 3</td><td>Name 3</td><td>Result 3</td></tr>
-</table>
-</div>
-<h2>END DEMO</h2>
-<p>====================================================================</p>
-<h2>Các Button chuyển trang chính</h2>
-<br>
-<button class="idea-view-page-btn">Xem Kèo - Đề Về Bao Nhiêu Nào!</button>
-<br>
-<button class="sign-in-btn">Log Out - Chán Vãi Out Thôi!</button>
-<br>
-<button class="profile-page-btn">Xem Profile - Xem avatar đẹp trai không nào </button>
-<br>
-<button class="deposit-page-btn">Nạp Tiền - Nuôi Béo Quỹ Thôi!</button>
-<br>
-<button class="withdraw-page-btn">Rút Tiền - Quỹ như shit rút tiền về thôi</button>
-<p>Quỹ mới thấy cái này </p>
-<button class="compose-page-btn" >Đăng Bài - Dụ Gà Nào!</button>
-<p> Admin mới thấy cái này </p>
-<button class="admin-page-btn">Admin Page</button>
-
-<h1>Các chức năng chính</h1>
-<p>- Tìm kiếm kèo</p>
-<p>- Bộ lọc kèo</p>
-<p>- Tìm kiếm quỹ</p>
-<p>- Bộ lọc quỹ</p>
-<p>- Xem bài viết của những quỹ mình theo dõi </p>
-
-<h1>Các hiển thị chính</h1>
-<p>- Tên user hiện tại</p>
-<p>- Balance đang có </p>
-<p>- Danh sách các kèo</p>
-<p>- Bộ lọc kèo</p>
-<p>- Danh sách các quỹ</p>
-<p>- Bộ lọc quỹ</p>
-<p>- Danh sách các kèo của quỹ theo dõi</p>
-=======
->>>>>>> b7ac82510378e96d25a5a7cae294c3b8e773fbdf
 ` + components.footer;
 
 components.admin_page = `
@@ -909,33 +826,43 @@ components.deposit_page =
   +
   //Main 
   `
-  <h1>DEPOSIT PAGE - TRANG NẠP TIỀN</h1>
-  <h1>DEMO</h1>
-  <div class="container">
-  <div class="header">
-      <button class="main-view-btn">Trang Chủ</button>
-      <button id="sign-out-button">Thoát</button>
-  </div>
+  <div class="spaceForHeader"></div>
+  <div class="deposit-container">
+  <div class="deposit-form-container">
+  <h1>GIAO DIỆN NẠP TIỀN</h1>
   <form id="deposit-form">
-      <div class="input-wrapper">
-          <label for="depositAmount"><i class="fa fa-envelope"></i>Nhập số tiền cần nạp</label>
-          <input name="depositAmount" id="depositAmount" type="number" placeholder="Insert deposit amount" autocomplete='off' reqired />
+      <div class="deposit-input">
+          <p class="input-title">Nhập số tiền cần nạp</p> 
+          <input name="depositAmount" id="depositAmount" type="number" placeholder="Số tiền ..." autocomplete='off' reqired />
+          <br><span class="message-error" id="deposit-amount-error"></span>
       </div>
-      <span id="deposit-amount-error"></span>
-      <button type="submit" id="deposit-apply-btn">Deposit</button>
+      <div class="deposit-input">
+          <p class="input-title">Lựa chọn phương thức nạp tiền</p> 
+          <label>
+            <input type="radio" checked="checked" name="depositType">
+            Nạp Demo
+          </label><br>
+          <label >
+            <input type="radio" name="depositType">
+            Thẻ VISA <span class="message-error">(chưa hỗ trợ)</span>
+          </label><br>
+          <label>
+            <input type="radio" name="depositType">
+            Ngân hàng trực tuyến <span class="message-error">(chưa hỗ trợ)</span>
+          </label><br>
+          <label>
+            <input type="radio" name="depositType">
+            Ví điện tử <span class="message-error">(chưa hỗ trợ)</span>
+          </label>
+      </div>
+      
+      
+      <button class="deposit-submit-btn" type="submit" id="deposit-apply-btn">NẠP TIỀN</button>
+      <span class="message-success" id="deposit-success"></span>
+      <span class="message-error" id="deposit-error"></span>
   </form>
   </div>
-  <h1>END DEMO</h1>
-  <p>====================================================================</p>
-  <h1>Các Button chuyển trang chính</h1>
-  <br>
-  <button class="main-view-btn">Quay lại Trang Chủ </button>
-  <br>
-  <button class="sign-in-btn">Log Out - Chán Vãi Out Thôi!</button>
-
-  <h1>Các chức năng chính</h1>
-  <p>- Nạp tiền (kiểm tra số tiền rút có lớn hơn 0 hay không rồi mới cho rút) </p>
-
+  </div>
   `
   + 
   //Footer
@@ -975,31 +902,39 @@ components.withdraw_page =
 +
 //Main 
 `
-<h1>WITHDRAW PAGE - TRANG RÚT TIỀN</h1>
-<h1>DEMO</h1>
-<div class="container">
-<div class="header">
-    <button class="main-view-btn">Trang Chủ</button>
-    <button id="sign-out-button">Thoát</button>
+<div class="spaceForHeader"></div>
+<div class="withdraw-container">
+  <div class="withdraw-form-container">
+  <h1>GIAO DIỆN RÚT TIỀN</h1>
+  <form id="withdraw-form">
+      <div class="withdraw-input-wrapper">
+          <p class="input-title"Nhập số tiền cần rút</p> 
+          <input name="withdrawAmount" id="withdrawAmount" type="number" placeholder="Số tiền ..." autocomplete='off' reqired />
+      </div>
+      <div class="withdraw-input-wrapper">
+          <p class="input-title">Lựa chọn phương thức rút tiền</p> 
+          <label>
+            <input type="radio" checked="checked" name="depositType">
+            Nạp Demo
+          </label><br>
+          <label >
+            <input type="radio" name="depositType">
+            Thẻ VISA
+          </label><br>
+          <label>
+            <input type="radio" name="depositType">
+            Ngân hàng trực tuyến
+          </label><br>
+          <label>
+            <input type="radio" name="depositType">
+            Ví điện tử
+          </label>
+      </div>
+      <span id="withdraw-amount-error"></span>
+      <button class="withdraw-submit-btn" type="submit" id="withdraw-apply-btn">Rút tiền</button>
+  </form>
+  </div>
 </div>
-<form id="withdraw-form">
-    <div class="input-wrapper">
-        <label for="withdrawAmount"><i class="fa fa-envelope"></i>Nhập số tiền cần rút</label>
-        <input name="withdrawAmount" id="withdrawAmount" type="number" placeholder="Insert withdraw amount" autocomplete='off' reqired />
-    </div>
-    <span id="withdraw-amount-error"></span>
-    <button type="submit" id="withdraw-apply-btn">Withdraw</button>
-</form>
-</div>
-<h1>END DEMO</h1>
-<p>====================================================================</p>
-<h1>Các Button chuyển trang chính</h1>
-<br>
-<button class="main-view-btn">Quay lại Trang Chủ </button>
-<br>
-<button class="sign-in-btn">Log Out - Chán Vãi Out Thôi!</button>
-<h1>Các chức năng chính</h1>
-<p>- Rút tiền (kiểm tra số tiền rút có lớn hơn số tài khoản đang có hay không rồi mới cho rút) </p>
 `
 //End Main
 + 
@@ -1043,4 +978,3 @@ components.compose_page = `
 <p>- Đăng bài </p>
 <p>- Up ảnh vào bài </p>
 `;
-
