@@ -141,6 +141,21 @@ div.fund-post a:hover{
     text-decoration: underline;
 }
 
+/* Style news post */
+div.fund-post .title-news-post{
+    font-weight: bold;
+    font-size: large;
+    color: black;
+    cursor: pointer;
+}
+
+div.fund-post .content-news-post{
+    width: 100%;
+    white-space: pre-wrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
 /* Notification */
 
 .noti-container .badge{
@@ -213,6 +228,34 @@ div.withdraw-form-container{
 
 div.withdraw-form-container>form>.withdraw-input>label{
     max-width: 300px;
+}
+
+div.withdraw-form-container>form>.withdraw-submit-btn{
+    display: block;
+	margin: 40px auto 0px;
+    text-align: center;
+    background: rgb(245, 163, 56);
+    width: 100%;
+    border-radius: 3px;
+    box-shadow: 0 10px 20px -8px rgb;
+    padding: 10px 17px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: white;
+    text-decoration: none;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;  
+}
+
+div.withdraw-form-container>form>.withdraw-submit-btn:hover{
+    color:white;
+    background-color:rgb(218, 131, 17);
+}
+
+div.withdraw-form-container>form>.withdraw-submit-btn:disabled{
+    background-color:gray;
 }
 
 /* Style nút lọc thích và mới nhất */

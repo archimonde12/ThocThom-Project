@@ -112,7 +112,7 @@ controller.NewsCompose = async function(title,content,link){
              })
          //Thông báo thành công
          view.setText('news-compose-success', 'Đăng tin thành công')
-         view.setText('news-compose-btn', "Đăng thành công")
+         view.setText('news-compose-btn', "Đăng tin thành công")
          await waitForSeconds(2)
          view.showPage("mainView")
      } catch (error) {
@@ -362,7 +362,6 @@ controller.removeLike = async function (id) {
 
 }
 
-
 controller.loadInfomationOfUserByEmail = async function (email) {
     //load dữ liệu từ firebase
     try {
@@ -388,7 +387,6 @@ controller.changeInfomationUser = async function (data) {
             console.error("Error updating document: ", error);
         })
 }
-
 
 //Xử lý follow function
 //a) Load dữ liệu về cache
@@ -494,5 +492,21 @@ controller.investReq = function (idFund, dataReq) {
 }
 
 controller.withDrawFundReq = function (idFund, dataReq) {
-    
+}
+
+//Xử lý news
+
+controller.loadNews = async function(){
+    model.news = []
+    try {
+        let result = await firebase.firestore()
+            .collection(KEY_NEWS_COLLECTION) //nơi lấy dữ liệu
+            .get() //Thực hiện
+        for (let news of result.docs) {
+            model.saveNews(news);
+        }
+    }
+    catch (error) {
+        console.log(error)
+    }
 }

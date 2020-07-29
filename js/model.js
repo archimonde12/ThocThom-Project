@@ -64,6 +64,18 @@ model.saveIdea = function (ideaData) {
     model.ideas.push(newIdea);
 }
 
+model.saveNews = function (newsData){
+    let refinedNewsData = refineData(newsData);
+    let newNews = {
+        title:refinedNewsData.title,
+        content:refinedNewsData.content,
+        createdAt: refinedNewsData.createAt,
+        linkURL:refinedNewsData.linkURL,
+        id: newsData.id
+    }
+    model.news.push(newNews);
+}
+
 //Xử lý Like Function
 
 model.addLikeToIdeaHaveID = function (id, email) {

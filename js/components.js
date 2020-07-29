@@ -112,7 +112,7 @@ components.headerWhenLogIn = `
     </ul>   
   </div>
   <div class="form-inline mt-2 mt-md-0">
-  <a class="nav-link links" href="#" style="color:#d00000" id="sign-out-button"><span>SIGN OUT  </span><i class="fas fa-sign-out-alt"></i></a>
+  <a class="nav-link links" href="#" style="color:#d00000;margin-bottom: 20px;" id="sign-out-button"><span>ĐĂNG XUẤT </span><i class="fas fa-sign-out-alt"></i></a>
           </div>
 </nav>
 </header>`
@@ -208,24 +208,14 @@ components.sign_up_hung = `  <main role="main">
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#"><span>HOME</span><span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#"><span>TRANG CHỦ</span><span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-              
-            <a class="nav-link links" href="#"><span>ABOUT US</span></a>
+            <a class="nav-link links sign-in-btn" href="#"><span>ĐĂNG NHẬP</span></a>
           </li>
           <li class="nav-item">
-              <a class="nav-link links" href="#"><span>SERVICES</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link links" href="#"><span>CONSTACT US</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link links sign-in-btn" href="#"><span>SIGN IN</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link links active sign-up-btn" href="#"><span>SIGN UP</span></a>
-            </li>
+            <a class="nav-link links active sign-up-btn" href="#"><span>ĐĂNG KÝ</span></a>
+          </li>
         </ul>   
       </div>
     </nav>
@@ -343,23 +333,13 @@ components.sign_in_hung = `
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link home" href="#"><span>HOME</span><span class="sr-only">(current)</span></a>
+          <a class="nav-link home" href="#"><span>TRANG CHỦ</span><span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-
-          <a class="nav-link links" href="#"><span>ABOUT US</span></a>
+          <a class="nav-link links active sign-in-btn" href="#"><span>ĐĂNG NHẬP</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link links" href="#"><span>SERVICES</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link links" href="#"><span>CONSTACT US</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link links active sign-in-btn" href="#"><span>SIGN IN</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link links sign-up-btn" href="#"><span>SIGN UP</span></a>
+          <a class="nav-link links sign-up-btn" href="#"><span>ĐĂNG KÍ</span></a>
         </li>
       </ul>
     </div>
@@ -371,34 +351,34 @@ components.sign_in_hung = `
   <div class="col-lg-7">
     <div class="name"
       style="color: black;font-size: 28px;font-weight: bold;margin-bottom: 70px;font-family:initial;">
-      Login to myInvestor area
+      Chào mừng bạn quay trở lại!
     </div>
     <form style="border:1px rgba(128, 128, 128, 0.555) solid;padding: 30px;" id="signIn">
-      <div class="loginName" style="text-align: center;color: gray;font-size: 40px;">Log In</div>
+      <div class="loginName" style="text-align: center;color: gray;font-size: 40px;">ĐĂNG NHẬP</div>
       <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input name="email" type="email" placeholder="myInvestor email" class="form-control" id="exampleInputEmail1"
+        <label for="exampleInputEmail1">Địa Chỉ Email</label>
+        <input name="email" type="email" placeholder="Điền email của bạn ..." class="form-control" id="exampleInputEmail1"
           aria-describedby="emailHelp">
       </div>
       <span class="message-error warning" id="sign-in-email-error"></span>
       <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input name="password" type="password" placeholder="Password" class="form-control" id="exampleInputPassword1">
+        <label for="exampleInputPassword1">Mật Khẩu</label>
+        <input name="password" type="password" placeholder="Điền mật khẩu của bạn ..." class="form-control" id="exampleInputPassword1">
       </div>
       <span class="message-error warning" id="sign-in-password-error"></span>
       <div class="row summits">
         <div class="col-md-6">
-          <a href="" class="Forgot">Forgot password?</a>
+          
         </div>
         <div class="col-md-6">
-          <input name="login" id="sign-in-btn" value="Login" type="submit" class="success" style="float:right">
+          <input name="login" id="sign-in-btn" value="Đăng nhập" type="submit" class="success" style="float:right">
         </div>
         <div class="message-error warning" id="sign-in-error"></div>
       </div>
       <div class="col-md-12" id="register-box" style="background:#F9F9F9">
-        <h4>Not Registered?</h4>
-        <a class="btn btn-success sign-up-btn">Register</a><br>
-        <span id="warning" style="font-size: 11px;color:#999999">Trading Forex and CFDs is risky</span>
+        <h4>Bạn chưa đăng ký?</h4>
+        <a class="btn btn-success sign-up-btn">Đăng kí ngay</a><br>
+        <span id="warning" style="font-size: 11px;color:#999999">Đầu tư luôn tồn tại rủi ro!</span>
 
         <br clear="all"><br clear="all">
       </div>
@@ -408,7 +388,7 @@ components.sign_in_hung = `
   </div>
 </div>
 </div>
-<div class="footer">
+<div class="footer" style="margin-top:50px">
 <footer class="container">
   <div class="row">
     <div class="col-md-4">
@@ -615,34 +595,14 @@ components.main_view = components.headerWhenLogIn + `
       </div>  
       <!-- (B-II)Phần chứa tin tức-->       
       <div id="news-container" style="margin-left: 10px;"> 
-            <div class=" flex-between">
-                <div class="content-header">
-                    Tổng hợp tin tức
-                </div>
-                <div class="filter-icon">
-                    Sắp xếp
-                    <span><button class="btn-icon hover"><i class="far fa-clock icon fa-2x"></i></button></span>
-                    <span><button class="btn-icon hover"><i class="far fa-thumbs-up icon fa-2x"></i></button></span>
-                </div>
+        <div class=" flex-between">
+            <div class="content-header">
+              Tổng hợp tin tức
             </div>
-            <div class="btn-search"><input class="hover" id="search" type="text" placeholder="Search..">
-                <button class="hover" id="submit" type="submit"><i class="fa fa-search "></i></button>
-            </div>
-            <div class="flex-column">
-                <div class="hover">
-                    <div class="title2">
-                        Tỷ phú Ấn Độ lần đầu lọt top 5 người giàu nhất hành tinh
-                    </div>
-                    <div class="content-idea-list">
-                        Trong nhiều năm qua, nhóm 5 người giàu nhất thế giới không có sự hiện diện của người châu Á. Tuy nhiên, điều đó vừa thay đổi.
-                    </div>
-                    <div class="content-idea-list">
-                        24-07-2020 - 15:48 PM | Tài chính quốc tế
-                    </div>
-                </div>
-            </div>
-      </div>
-  </div>  
+        </div>
+        <!-- (B-I-2) Nội dung của các tin tức -->
+        <div id="news-list"></div>
+      </div>  
 </div>  
 
 </div>
@@ -700,7 +660,7 @@ components.profile_page =
       </ul>   
     </div>
     <div class="form-inline mt-2 mt-md-0">
-    <a class="nav-link links" href="#" style="color:#d00000" id="sign-out-button"><span>SIGN OUT  </span><i class="fas fa-sign-out-alt"></i></a>
+    <a class="nav-link links" href="#" style="color:#d00000;margin-bottom: 20px;" id="sign-out-button"><span>ĐĂNG XUẤT </span><i class="fas fa-sign-out-alt"></i></a>
             </div>
   </nav>
   </header>`
@@ -759,7 +719,7 @@ components.idea_view_page =
       </ul>   
     </div>
     <div class="form-inline mt-2 mt-md-0">
-    <a class="nav-link links" href="#" style="color:#d00000" id="sign-out-button"><span>SIGN OUT  </span><i class="fas fa-sign-out-alt"></i></a>
+    <a class="nav-link links" href="#" style="color:#d00000;margin-bottom: 20px;" id="sign-out-button"><span>ĐĂNG XUẤT </span><i class="fas fa-sign-out-alt"></i></a>
             </div>
   </nav>
   </header>`
@@ -818,7 +778,7 @@ components.deposit_page =
       </ul>   
     </div>
     <div class="form-inline mt-2 mt-md-0">
-    <a class="nav-link links" href="#" style="color:#d00000" id="sign-out-button"><span>SIGN OUT  </span><i class="fas fa-sign-out-alt"></i></a>
+    <a class="nav-link links" href="#" style="color:#d00000;margin-bottom: 20px;" id="sign-out-button"><span>ĐĂNG XUẤT </span><i class="fas fa-sign-out-alt"></i></a>
             </div>
   </nav>
   </header>`
@@ -855,8 +815,6 @@ components.deposit_page =
             Ví điện tử <span class="message-error">(chưa hỗ trợ)</span>
           </label>
       </div>
-      
-      
       <button class="deposit-submit-btn" type="submit" id="deposit-apply-btn">NẠP TIỀN</button>
       <span class="message-success" id="deposit-success"></span>
       <span class="message-error" id="deposit-error"></span>
@@ -894,7 +852,7 @@ components.withdraw_page =
     </ul>   
   </div>
   <div class="form-inline mt-2 mt-md-0">
-  <a class="nav-link links" href="#" style="color:#d00000" id="sign-out-button"><span>SIGN OUT  </span><i class="fas fa-sign-out-alt"></i></a>
+  <a class="nav-link links" href="#" style="color:#d00000;margin-bottom: 20px;" id="sign-out-button"><span>ĐĂNG XUẤT </span><i class="fas fa-sign-out-alt"></i></a>
           </div>
 </nav>
 </header>`
@@ -908,30 +866,30 @@ components.withdraw_page =
   <h1>GIAO DIỆN RÚT TIỀN</h1>
   <form id="withdraw-form">
       <div class="withdraw-input-wrapper">
-          <p class="input-title"Nhập số tiền cần rút</p> 
+          <p class="input-title">Nhập số tiền cần rút</p> 
           <input name="withdrawAmount" id="withdrawAmount" type="number" placeholder="Số tiền ..." autocomplete='off' reqired />
       </div>
       <div class="withdraw-input-wrapper">
           <p class="input-title">Lựa chọn phương thức rút tiền</p> 
           <label>
-            <input type="radio" checked="checked" name="depositType">
+            <input type="radio" checked="checked" name="withdrawType">
             Nạp Demo
           </label><br>
           <label >
-            <input type="radio" name="depositType">
-            Thẻ VISA
+            <input type="radio" name="withdrawType">
+            Thẻ VISA <span class="message-error">(chưa hỗ trợ)</span>
           </label><br>
           <label>
-            <input type="radio" name="depositType">
-            Ngân hàng trực tuyến
+            <input type="radio" name="withdrawType">
+            Ngân hàng trực tuyến <span class="message-error">(chưa hỗ trợ)</span>
           </label><br>
           <label>
-            <input type="radio" name="depositType">
-            Ví điện tử
+            <input type="radio" name="deposwithdrawTypeitType">
+            Ví điện tử <span class="message-error">(chưa hỗ trợ)</span>
           </label>
       </div>
       <span id="withdraw-amount-error"></span>
-      <button class="withdraw-submit-btn" type="submit" id="withdraw-apply-btn">Rút tiền</button>
+      <button class="withdraw-submit-btn" type="submit" id="withdraw-apply-btn">RÚT TIỀN</button>
   </form>
   </div>
 </div>

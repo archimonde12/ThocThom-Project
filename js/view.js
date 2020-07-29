@@ -71,9 +71,13 @@ view.showPage = async function (namePage) {
 
             await controller.loadUserNotification(); //Load all notification of current users
             await controller.loadIdeas() //Load all ideas
+            await controller.loadNews() //Load all ideas
             //Show info
             view.showNotificationWarning("noti-warning");
+            //Show Idea
             view.ideaFilter();
+            //Show News (Hiển thị tin tức)
+            view.showNews("news-list")
             //Xử lý search button
             let search = document.getElementById('ideas-search')
             let submit = document.getElementById('ideas-submit')
@@ -95,8 +99,8 @@ view.showPage = async function (namePage) {
             let likeFilterBtn = document.getElementById("like-filter-btn")
             dateFilterBtn.onclick = function () {
 
-                document.getElementById("date-filter-btn").checked = true;
-                document.getElementById("like-filter-btn").checked = false;
+                document.getElementById("date-filter").checked = true;
+                document.getElementById("like-filter").checked = false;
                 view.ideaFilter();
                 console.log("filter change")
                 view.setActive("like-filter-btn", true)
@@ -104,10 +108,8 @@ view.showPage = async function (namePage) {
             }
             likeFilterBtn.onclick = function () {
 
-                document.getElementById("date-filter-btn").checked = false;
-                document.getElementById("like-filter-btn").checked = true;
-                console.log("Like Filter:" + likeFilterBtn.checked)
-                console.log("Date Filter:" + dateFilterBtn.checked)
+                document.getElementById("date-filter").checked = false;
+                document.getElementById("like-filter").checked = true;
                 view.ideaFilter();
                 console.log("filter change")
                 view.setActive("like-filter-btn", false)
@@ -125,7 +127,6 @@ view.showPage = async function (namePage) {
             hideNotiBtn.onclick = function () {
                 view.setText("noti-list", "")
             }
-
 
             break;
         case 'adminPage':
@@ -501,9 +502,9 @@ view.showInfo = function () {
                         <span class="message-error" id="news-compose-link-error"></span>
                     </div>
                     <div style="display: flex; justify-content: flex-end;">
-                        <button class="compose-btn" type="submit">Đăng Tin</button>
-                        <div class="message-error" id="compose-error"></div>
-                        <div class="message-success" id="compose-success"></div>
+                        <button class="news-compose-btn" type="submit">Đăng Tin</button>
+                        <div class="message-error" id="news-compose-error"></div>
+                        <div class="message-success" id="news-compose-success"></div>
                     </div>
                 
                 </div>
@@ -513,11 +514,11 @@ view.showInfo = function () {
         `
         //Chèn vào HTML
         let newsComposeBtnWapper = document.getElementById("news-compose-btn-wapper")
-        newsComposeBtnWapper.innerHTML=newsComposeBtnHtml+newsComposeFormHtml;
+        newsComposeBtnWapper.innerHTML = newsComposeBtnHtml + newsComposeFormHtml;
         //Tạo chứng năng cho phần showNewsForm
         let newsComposeForm = document.getElementById('newsComposeForm')
         let newsComposeBtn = document.getElementById('showNewsForm')
-        
+
         newsComposeBtn.addEventListener('click', function () {
             newsComposeForm.style.display = 'initial';
         })
@@ -535,7 +536,22 @@ view.showInfo = function () {
             //Lấy dữ liệu từ form
             let title = newsForm.title.value.trim()
             let content = newsForm.content.value.trim()
-            let link = newsForm.link.value.trim()
+            let link = newsForm.linkURL.value.trim()
+            //Test
+            console.log("===NEWS COMPOSE FORM TEST===")
+            console.log("TITLE=" + title)
+            console.log("CONTENT=" + content)
+            console.log("LINK=" + link)
+            //Kiểm tra dữ liệu lấy từ form
+            let validateResult = [
+                view.validate(title != '', 'news-compose-title-error', 'Lỗi: Vui lòng điền tiêu đề'),
+                view.validate(content != '', 'news-compose-content-error', 'Lỗi: Vui lòng điền nội dụng'),
+                view.validate(link != '', 'news-compose-link-error', 'Lỗi: Giá đoán để trống'),
+            ]
+            if (isPassed(validateResult)) {
+                //Nếu pass gửi dữ liệu lên firebase qua controller
+                controller.NewsCompose(title, content, link)
+            }
         }
     }
     if (!model.currentUserData.other.avatarURL) {
@@ -589,7 +605,7 @@ view.showIdeas = function (tagID) {
                             </div>
                            
                             <div class="content-idea-list">
-                                <p class="content-fund-post">${idea.content.slice(0, 100)} ...<a name="${idea.id}" id="${idea.id + "-see-more-btn"}" class="see-more-idea-btn"> Xem thêm </button></a> </p>
+                                <p id="${idea.id + "-content"}" class="content-fund-post">${idea.content.slice(0, 100)}  </p>
                             </div>
                             <div>
                             ${idea.likes.includes(firebase.auth().currentUser.email) ? dislikeButton : likeButton}
@@ -597,6 +613,7 @@ view.showIdeas = function (tagID) {
                         </div>
                     </div>
             `
+            document.getElementById(idea.id + "-content").innerHTML = idea.content.slice(0, 100) + `...<a name="${idea.id}" id="${idea.id + "-see-more-btn"}" class="see-more-idea-btn"> Xem thêm </a>`
             ideaIDs.push(idea.id)
         }
         //Làm tất cả button trong ideas hoạt động
@@ -620,6 +637,38 @@ view.showIdeas = function (tagID) {
                 }
             }
         }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+view.showNews = function (tagID) {
+    let newIDs = [];
+    try {
+        //Khởi động
+        document.getElementById(tagID).innerHTML = ``
+        //Chèn ideas HTML vào
+        for (let news of model.news) {
+            //chèn ideas
+            document.getElementById(tagID).innerHTML += `
+                    <div class="flex-column">
+                        <div id="ideaClick" class="hover fund-post" style="cursor: pointer;">
+                            <div class="title1 hover">
+                                <p class="title-news-post" onclick="view.openNewTab('${news.linkURL}')">${news.title.toUpperCase()}</p> 
+                            </div>
+                            <div class="content-idea-list">
+                                <p id="${news.id + "-content"}" class="content-news-post">${news.content.slice(0, 100)} ...</p>
+                            </div>
+                            <div class="content-idea-list">
+                                <p class="author-fund-post"> - ${calculateTimeToNow(new Date(news.createdAt))}</p>
+                            </div>
+                        </div>
+                    </div>
+            `
+            newIDs.push(news.id)
+        }
+        //Làm tất cả button trong ideas hoạt động
+        
     } catch (error) {
         console.log(error)
     }
@@ -693,7 +742,6 @@ view.ideaFilter = function () {
 }
 
 view.ideaSearch = function (searchWay) {
-    console.log("Searching")
     let data = model.ideas
     let filterdata = []
     let search = document.getElementById("ideas-search")
@@ -716,8 +764,8 @@ view.ideaSearch = function (searchWay) {
                 }
             }
     }
-    view.showIdeas("idea-list", filterdata);
     model.ideas = filterdata;
+    view.showIdeas("idea-list");
 }
 
 //Hiển thị của Follow Function
@@ -771,4 +819,16 @@ view.makeFollowAndUnfollowBtnWork = function () {
             this.disabled = false;
         }
     }
+}
+
+view.redirect = function(url){
+    window.location.href=url;
+}
+
+view.reload = function(){
+    window.location.reload()
+}
+
+view.openNewTab = function(url){
+    window.open(url)
 }
