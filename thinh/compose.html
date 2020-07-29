@@ -4,17 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/idea_view_page.css">
     <link rel="stylesheet" href="../fonts/css/all.css">
     <link rel="stylesheet" href="../css/sign_in.css">
@@ -34,8 +27,7 @@
 <body>
     <!-- Nút ấn để show giao điện đăng bài -->
     <div>
-        <button id="showForm"
-            style="margin-left: 10px; color: white; background-color:#2B579A ; border-radius: 5px;">Thêm idea
+        <button id="showForm" style="margin-left: 10px; color: white; background-color:#2B579A ; border-radius: 5px;">Thêm idea
             mới</button>
     </div>
     <!-- Giao diện đăng bài -->
@@ -52,76 +44,76 @@
                     <div style="font-weight: bold; ">Thêm Idea Mới</div>
                     <div class="input-wrapper">
                         <div style="width: 100%;">
-                            <input style="width: 100%;border: 1px solid #2b579a;font-size:larger; font-weight: bold;"
-                                name="title" type="text" placeholder="Idea title" autocomplete='off' reqired />
+                            <input style="width: 100%;border: 1px solid #2b579a;font-size:larger; font-weight: bold;" name="title" type="text" placeholder="Idea title" autocomplete='off' reqired />
                         </div>
                     </div>
                     <span class="title-error" id="compose-title-error"></span>
                     <!-- Content Input -->
                     <div>
                         <div>
-                            <label style="font-weight: bold;" for="content">Content</label>
-                        </div>
-                        <div id="editor">
+                            <div>
+                                <label style="font-weight: bold;" for="content">Content</label>
+                            </div>
+                            <div id="editor">
 
+                            </div>
                         </div>
+                        <span class="content-error" id="compose-content-error"></span>
                     </div>
-                    <span class="content-error" id="compose-content-error"></span>
-                </div>
-                <div class="p-2 flex-shrink-1 bd-highlight" style="font-size: smaller; width: 400px;">
-                    <div style="background-color:white; padding: 5px; border-radius: 5px; margin-top: 45px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <label for="">Dự đoán giá:</label>
-                            <select name="" id="" style="height: 20px; width: 70px;">
+                    <div class="p-2 flex-shrink-1 bd-highlight" style="font-size: smaller; width: 400px;">
+                        <div style="background-color:white; padding: 5px; border-radius: 5px; margin-top: 45px;">
+                            <div style="display: flex; justify-content: space-between;">
+                                <label for="">Dự đoán giá:</label>
+                                <select name="" id="" style="height: 20px; width: 70px;">
                                 <option value="">vàng</option>
                             </select>
-                        </div>
-                        <div>
-                            <div style="display: flex; justify-content: space-between; margin-top: 20px;">
-                                <label>Tăng hay giảm:</label>
-                                <select name="" id="" style="height: 20px; width: 70px;">
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                                    <label>Tăng hay giảm:</label>
+                                    <select name="" id="" style="height: 20px; width: 70px;">
                                     <option value="">Tăng</option>
                                     <option value="">Giảm</option>
                                 </select>
+                                </div>
+                                <div>
+                                    <input style="width: 100px; margin-right: 5px; height: 25px;" type="number">USD/ounce
+                                </div>
                             </div>
-                            <div>
-                                <input style="width: 100px; margin-right: 5px; height: 25px;" type="number">USD/ounce
+                            <div style="margin-top: 20px;">
+                                <label for="birthday">Thời điểm dự đoán:</label>
+                                <input style="height: 25px;" type="date" name="birthday">
+                                <div style="margin-top: 5px;">
+                                    Sai số:<span></span>
+                                </div>
                             </div>
                         </div>
-                        <div style="margin-top: 20px;">
-                            <label for="birthday">Thời điểm dự đoán:</label>
-                            <input style="height: 25px;" type="date" name="birthday">
-                            <div style="margin-top: 5px;">
-                                Sai số:<span></span>
-                            </div>
+                        <div style="display: flex; justify-content: flex-end;">
+                            <button class="compose-btn" type="submit">Đăng bài</button>
                         </div>
+                        <div class="message-error" id="compose-error"></div>
+                        <div class="message-success" id="compose-success"></div>
                     </div>
-                    <div style="display: flex; justify-content: flex-end;">
-                        <button class="compose-btn" type="submit">Đăng bài</button>
-                    </div>
-                    <div class="message-error" id="compose-error"></div>
-                    <div class="message-success" id="compose-success"></div>
                 </div>
-            </div>
         </form>
-    </div>
+        </div>
 
-    <!-- Scripts -->
-    <script>
-        let newIdea = document.getElementById('newIdea')
-        let showForm = document.getElementById('showForm')
+        <!-- Scripts -->
+        <script>
+            let newIdea = document.getElementById('newIdea')
+            let showForm = document.getElementById('showForm')
 
-        showForm.addEventListener('click', function () {
-            newIdea.style.display = 'initial';
-            document.getElementById("cke_1_contents").style.height = "250px";
-        })
+            showForm.addEventListener('click', function() {
+                newIdea.style.display = 'initial';
+                document.getElementById("cke_1_contents").style.height = "250px";
+            })
 
-        let buttonClose = document.getElementById("buttonClose")
-        buttonClose.addEventListener('click', function () {
-            newIdea.style.display = 'none';
-        })
-        initSample()
-    </script>
+            let buttonClose = document.getElementById("buttonClose")
+            buttonClose.addEventListener('click', function() {
+                newIdea.style.display = 'none';
+            })
+            initSample()
+        </script>
 
 </body>
 
