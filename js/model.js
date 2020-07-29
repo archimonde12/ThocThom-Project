@@ -140,6 +140,9 @@ model.removeFollowToCurrentUser = function (Fundemail) {
 
 //Hàm lấy dữ liệu của Follow Function
 model.getFollowerListOfFundHaveID = function (idOfFund) {
+    if(model.funds[searchIdIndex(idOfFund, model.funds)]==undefined){
+        console.log("Bài đăng này không phải của quỹ")
+    }
     return model.funds[searchIdIndex(idOfFund, model.funds)].follower;
 }
 

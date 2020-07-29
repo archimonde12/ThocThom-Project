@@ -1,3 +1,14 @@
+/* CSS CHUNG */
+span.message-error{
+    color:red;
+    padding:1rem 0;
+}
+
+span.message-success{
+    color:green;
+    padding:1rem 0;
+}
+
 img.upload-image{
     width: 50px;
     border: 10px solid red;
@@ -8,6 +19,11 @@ div.avatar-container{
     height: 100px;
     border-radius: 99999999px;
     background-color: red;
+}
+
+form .input-title{
+    margin:1rem 0px;
+    font-weight: 600;
 }
 
 img.avatar-sm{
@@ -82,39 +98,38 @@ button.dislike-btn:hover{
 div.fund-post{
     border-bottom: 1px solid black;
     padding:20px 30px 10px 30px;
-    margin: 20px 50px 50px 50px;
 }
 
-div.fund-post>.img-fund-post{
-    width: 200px;
-    height: 200px;
+div.fund-post .img-fund-post{
+    max-width: 100%;
+    max-height: 200px;
 }
 
-div.fund-post>.title-fund-post{
+div.fund-post .title-fund-post{
     font-weight: bold;
     font-size: large;
     color: #1256a0;
     cursor: pointer;
 }
 
-div.fund-post>.title-fund-post:hover{
+div.fund-post .title-fund-post:hover{
     text-decoration: underline;
 }
 
-div.fund-post>.content-fund-post{
+div.fund-post .content-fund-post{
     width: 100%;
-    height: 80px;
+    height: 78px;
     white-space: pre-wrap;
     overflow: hidden !important;
     text-overflow: ellipsis;
 }
 
-div.fund-post>.author-fund-post{
+div.fund-post .author-fund-post{
     color:#adb5bd;
     font-size: small;
 }
 
-div.fund-post>.author-fund-post>.author{
+div.fund-post .author-fund-post>.author{
     font-weight: 700;
 }
 
@@ -137,4 +152,278 @@ div.fund-post a:hover{
     border-radius: 50%;
     background-color: red;
     color: white;
+}
+
+/* DEPOSIT PAGE CSS */
+div.deposit-container{
+    display:flex;
+    justify-content: center;
+    background-color:#eeeeee;
+}
+div.deposit-form-container{
+    margin:50px 0px;
+    padding:50px;
+    background-color:white;
+    border-radius: 10px;
+}
+
+div.deposit-form-container>form>.deposit-input>label{
+    max-width: 300px;
+}
+
+div.deposit-form-container>form>.deposit-submit-btn{
+    display: block;
+	margin: 40px auto 0px;
+    text-align: center;
+    background: rgb(245, 163, 56);
+    width: 100%;
+    border-radius: 3px;
+    box-shadow: 0 10px 20px -8px rgb;
+    padding: 10px 17px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: white;
+    text-decoration: none;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;  
+}
+
+div.deposit-form-container>form>.deposit-submit-btn:hover{
+    color:white;
+    background-color:rgb(218, 131, 17);
+}
+div.deposit-form-container>form>.deposit-submit-btn:disabled{
+    background-color:gray;
+}
+/* WITHDRAW PAGE CSS */
+
+div.withdraw-container{
+    display:flex;
+    justify-content: center;
+    background-color:#eeeeee;
+}
+div.withdraw-form-container{
+    margin:50px 0px;
+    padding:50px;
+    background-color:white;
+    border-radius: 10px;
+}
+
+div.withdraw-form-container>form>.withdraw-input>label{
+    max-width: 300px;
+}
+
+/* Style nút lọc thích và mới nhất */
+
+/* The border of this input */
+div.radio-btn-container{
+    border: 1px solid gray; 
+    width:72px;
+    height:37px;
+    padding:5px; 
+    border-radius:25px;
+}
+/* The container */
+.radio-input-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: center;
+  }
+  
+  /* Hide the browser's default radio button */
+  .radio-input-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    background-color: #eee 0;
+    border-radius: 50%;
+  }
+
+  .radio-input-container.left-side .checkmark i{
+    position: absolute;
+    left: -47.5px;
+    top: 1px;
+  }
+  .radio-input-container.right-side .checkmark{
+    height:35px;
+    width: 35px;
+    left:30px;
+    top:-17px;
+  }
+
+  .radio-input-container.right-side .checkmark i{ 
+      position: absolute;
+      left:10px;
+      top:5px;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .radio-input-container.left-side:hover input ~ .checkmark {
+    position: absolute;
+    background-color: #ccc;
+    height: 35px;
+    width: 35px;
+    top:-5px;
+    left:-5px;
+  }
+
+  .radio-input-container.left-side:hover input ~ .checkmark i{
+    position: absolute;
+    top:6px;
+    left:5px;
+  }
+  
+  .radio-input-container.right-side:hover input ~ .checkmark {
+    position: absolute;
+    background-color: #ccc;
+    height: 35px;
+    width: 35px;
+    left:30px;
+    top:-17px;
+  }
+  .radio-input-container.right-side:hover input ~ .checkmark i {
+    top:5px;
+    left:10px;
+  }
+
+  
+  /* When the radio button is checked, add a gray background and change color to blue */
+  .radio-input-container input:checked ~ .checkmark {
+    background: rgb(224, 221, 221);
+    color:#1465a7;
+    top:-5px;
+    left:-5px;
+    height: 35px;
+    width: 35px;
+  }
+
+  .radio-input-container.left-side input:checked ~ .checkmark i {
+    position: absolute;
+    left:5px;
+    top:6px;
+   }
+
+  /* Chỉnh vị trí của input bên phải */
+  
+
+  .radio-input-container.right-side input:checked ~ .checkmark {
+    background: rgb(224, 221, 221);
+    color:#3c78aa;
+    top:-17px;
+    left:30px;
+    height: 35px;
+    width: 35px;
+  }
+
+  .radio-input-container.right-side input:checked ~ .checkmark i {
+    position: absolute;
+    top:5px;
+    left:10px;
+   }
+  .radio-input-container.right-side:hover input:checked ~ .checkmark i {
+   position: absolute;
+   color:#1465a7;
+   top:5px;
+   left:10px;
+  }
+  /* Compose Form CSS */
+  button.compose-btn {
+    display: block;
+    text-align: center;
+    background: #4b89c4;
+    box-shadow: 0 5px 10px -4px #4b89c4;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    text-decoration: none;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+    margin-right: 10px;
+    border-radius: 5px;
+    padding: 7px 14px;
+    margin: 40px auto 0px;
+}
+
+button.compose-btn:hover {
+    background: #1e609e;
+    color: ffffff;
+}
+
+.compose-form-container {
+    display: none;
+    margin: 30px 50px 30px 50px;
+}
+
+
+/* .compose-form-container>form {
+    height: 500px;
+} */
+
+.input-image {
+    border-radius: 5px;
+    width: 350px;
+    height: 350px;
+    margin-right: 10px;
+    background-color: white;
+    margin-top: 45px;
+}
+
+.image-idea {
+    border-radius: 5px;
+    width: 300px;
+    height: 300px;
+    background-color: #CFCECE;
+    background-size: cover;
+    background-image: url('https://static.toiimg.com/photo/72975551.cms');
+}
+
+div.compose-form-container>form {
+    padding: 5px 10px 10px;
+    border: 5px solid #85ace7;
+    width: 100%;
+    background-color: #F1F1F1;
+    border-radius: 5px;
+}
+
+.border-blue {
+    border: 1px solid #2b579a;
+}
+
+div.compose-controller {
+    display: flex;
+    background-color: transparent;
+    justify-content: flex-end;
+    height: 30px;
+}
+
+div.compose-controller>button {
+    background-color: rgb(211, 7, 7);
+    height: 27px;
+    width: 27px;
+    text-align: center;
+    position: absolute;
+    right: 5px;
+    top:35px;
+    padding: 0px;
+    border-radius: 9999px;
+    color: white;
+    font-weight: bold;
+    outline: none;
 }
