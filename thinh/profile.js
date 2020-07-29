@@ -1,5 +1,11 @@
-let yTuong = document.getElementById('yTuong')
 let hienThi = document.getElementById('hienThi')
+
+let yTuong = document.getElementById('yTuong')
+let nguoiTheoDoi = document.getElementById('nguoiTheoDoi')
+let dangTheoDoi = document.getElementById('dangTheoDoi')
+let Edit = document.getElementById('Edit')
+
+
 yTuong.addEventListener('click', function() {
     hienThi.innerHTML = `<div id="ideaShow" style="display: flex; justify-content: center;flex-grow: 1;">
     <div>
@@ -108,8 +114,6 @@ yTuong.addEventListener('click', function() {
     </div>
 </div>`
 })
-
-let nguoiTheoDoi = document.getElementById('nguoiTheoDoi')
 nguoiTheoDoi.addEventListener('click', function() {
     hienThi.innerHTML = `        <div style="display: flex;flex-grow: 1; justify-content: space-between; border: 1px solid #ddd; margin: 15px 50px 15px 50px; border-radius: 10px;">
     <div style="display: flex; padding: 10px;">
@@ -128,8 +132,6 @@ nguoiTheoDoi.addEventListener('click', function() {
     </div>
 </div>`
 })
-
-let dangTheoDoi = document.getElementById('dangTheoDoi')
 dangTheoDoi.addEventListener('click', function() {
     hienThi.innerHTML = `        <div style="display: flex;flex-grow: 1; justify-content: space-between; border: 1px solid #ddd; margin: 15px 50px 15px 50px; border-radius: 10px;">
     <div style="display: flex; padding: 10px;">
@@ -148,8 +150,6 @@ dangTheoDoi.addEventListener('click', function() {
     </div>
 </div>`
 })
-
-let Edit = document.getElementById('Edit')
 Edit.addEventListener('click', function() {
     hienThi.innerHTML = `        <div style="justify-content: space-around; padding: 0px 350px 50px 350px; display: flex;">
     <form style=" padding-top: 40px;" id="signUp">

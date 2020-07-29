@@ -64,7 +64,7 @@ function searchIdIndex(id, array) {
     return found;
 }
 
-var initApp = function () {
+var initApp = function (id) {
 
     const fileButton = document.getElementById('fileButton');
 
@@ -207,3 +207,13 @@ function composeJS() {
     })
     initSample()
 }
+
+searchAvatar=function(email){
+    for(let userInfo of model.allUsersInfo){
+        if (userInfo.email==email) {
+            return userInfo.other.avatarURL
+        }
+    }
+}
+
+

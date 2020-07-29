@@ -376,6 +376,20 @@ controller.loadInfomationOfUserByEmail = async function (email) {
     }
 }
 
+controller.loadAllUsersData=async function(){
+    model.allUsersInfo = [];
+    try {
+        let result = await firebase.firestore()
+            .collection(KEY_USERS_COLLECTION) //nơi lấy dữ liệu
+            .get() //Thực hiện
+        for (let userInfo of result.docs) {
+            model.saveAllUsersInfomation(refineData(userInfo))
+        }
+
+    } catch (error) {
+        console.log(error)
+    }
+}
 controller.changeInfomationUser = async function (data) {
     model.saveCurrentUserData(data)
     db.collection(KEY_USERS_COLLECTION).doc(data.id).update(data)
@@ -508,5 +522,38 @@ controller.loadNews = async function(){
     }
     catch (error) {
         console.log(error)
+    }
+    model.news.reverse();
+}
+
+
+//Xử lý sửa hồ sơ thông tin
+
+controller.editProfile = async function(name, phoneNumberData, addressData,avatarURL){
+     //Khởi động
+    view.setText('edit-profile-error', '')
+    view.setText('edit-profile-success', '')
+    view.setActive('edit-profile-btn', false)
+     try {
+        await firebase.auth().currentUser.updateProfile({
+            displayName: name
+        })
+        let newOther = {
+            phone: phoneNumberData,
+            address: addressData,
+            avatarURL: avatarURL,
+            type:model.currentUserData.other.type
+        }
+        await db.collection("Users").doc(model.currentUserData.id).update({
+            name:name,
+            other:newOther
+        })
+        view.setText('edit-profile-btn', "Thay đổi thành công")
+    } catch (error) {
+        // document.getElementById('sign-up-error').innerHTML = error.message
+        view.setText('edit-profile-error', error.message)
+        view.setActive('edit-profile-btn', true)
+        console.log(error.message)
+        // console.log('kết thúc việc đăng ký tài khoản')   
     }
 }

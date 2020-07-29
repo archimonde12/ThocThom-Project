@@ -59,8 +59,7 @@ view.showPage = async function (namePage) {
         case 'mainView':
             content.innerHTML = components.main_view;
 
-            let signOutButton = document.getElementById("sign-out-button")
-            signOutButton.onclick = function () {
+            document.getElementById("sign-out-button").onclick = function () {
                 controller.signOut();
             }
 
@@ -138,7 +137,12 @@ view.showPage = async function (namePage) {
             view.showPendingIdeas("pending-idea-list");
             break;
         case 'profilePage':
+            
             content.innerHTML = components.profile_page;
+            
+            document.getElementById("sign-out-button").onclick = function () {
+                controller.signOut();
+            }
             view.MakeAllButtonSwitchPageWork();
             break;
         case 'composePage':
@@ -183,7 +187,11 @@ view.showPage = async function (namePage) {
             `
             break;
         case 'depositPage':
+            
             content.innerHTML = components.deposit_page;
+            document.getElementById("sign-out-button").onclick = function () {
+                controller.signOut();
+            }
             view.MakeAllButtonSwitchPageWork();
             //Xử lý form
             let formDeposit = document.getElementById("deposit-form");
@@ -209,6 +217,9 @@ view.showPage = async function (namePage) {
             break;
         case 'withdrawPage':
             content.innerHTML = components.withdraw_page;
+            document.getElementById("sign-out-button").onclick = function () {
+                controller.signOut();
+            }
             view.MakeAllButtonSwitchPageWork();
             //Xử lý form
             let formWithdraw = document.getElementById("withdraw-form");
@@ -237,12 +248,13 @@ view.showPage = async function (namePage) {
 }
 
 //Function dùng để thêm chức năng cho các button để chuyển sang page cần thiết theo class
-view.SetUpPageViewBtn = function (classBtn, namePage) { //input là <class> và <tên page> cần hiển thiển thị
+view.SetUpPageViewBtn = async function (classBtn, namePage) { //input là <class> và <tên page> cần hiển thiển thị
     let allBtn = document.getElementsByClassName(classBtn);
     if (allBtn.length > 0) {
         for (let index = 0; index < allBtn.length; index++) {
-            allBtn[index].onclick = function () {
-                view.showPage(namePage)
+            allBtn[index].onclick = async function () {
+                await view.showPage(namePage)
+                if (namePage == "profilePage") { view.showProfile(model.currentUserData.email) }
             }
         }
     }
@@ -668,7 +680,7 @@ view.showNews = function (tagID) {
             newIDs.push(news.id)
         }
         //Làm tất cả button trong ideas hoạt động
-        
+
     } catch (error) {
         console.log(error)
     }
@@ -715,12 +727,319 @@ view.showPendingIdeas = function (tagID) {
     }
 }
 
-view.showMyProfile = async function () {
-    //Lấy thông tin của current User
-    document.getElementById("profile-content").innerHTML = `Đây là profile của ${model.currentUserData.email}`
-    await controller.loadInfomationOfUserByEmail(model.currentUserData.email)
-    //Hiển thị thông tin
-    document.getElementById("profile-content").innerHTML += ``
+view.showProfile = async function (email) {
+    //Lấy dữ liệu
+    model.getAllIdeas(email)
+    await controller.loadAllUsersData()
+    //Định nghĩa các thẻ
+    let profileAvatar = document.getElementById("profile-avatar")
+    let profileName = document.getElementById("profile-name")
+    let profileFollowers = document.getElementById("profile-follower-numbers")
+    let profileIdeas = document.getElementById("profile-idea-numbers")
+    let profilePercent = document.getElementById("profile-guess-percent")
+    //Kiểm tra nếu email là user hiện tại
+    if (email == model.currentUserData.email) {
+        let allFollower=model.currentUserData.follower
+        let allFollow=model.currentUserData.follow
+        let typeAccount = model.currentUserData.other.type
+        //Hiển thị thông tin ban đầu
+        profileAvatar.src = model.currentUserData.other.avatarURL
+        profileName.innerHTML = `
+            ${model.currentUserData.name}
+            <br>
+            <span style="font-size:1rem;color: #787b86"> ${(model.currentUserData.other.type == "member") ? "THÀNH VIÊN" : (model.currentUserData.other.type == "fund") ? "QUỸ" : "ADMIN"}</span></h1>
+        `
+        if (typeAccount == "member" || typeAccount == "admin") {
+            profileFollowers.innerHTML = ``
+            profileIdeas.innerHTML = ``
+            profilePercent.innerHTML = ``
+        }
+        //Hiển thị Menu
+        let profileMenu = document.getElementById("profile-menu")
+        if (typeAccount == "member") {
+            profileMenu.innerHTML = `
+            <div id="dangTheoDoi" class="tap">Đang theo dõi</div>
+            <div id="Edit" class="tap">Cài đặt</div>
+            `
+        } else if (typeAccount == "fund") {
+            profileMenu.innerHTML = `
+            <div id='yTuong' class="tap">Ý tưởng</div>
+            <div id="nguoiTheoDoi" class="tap">Người theo dõi</div>
+            <div id="dangTheoDoi" class="tap">Đang theo dõi</div>
+            <div id="Edit" class="tap">Cài đặt</div>
+            `
+        } else if (typeAccount == "admin") {
+            profileMenu.innerHTML = `
+            `
+        }
+        //Hiển thị phần nội dung từng chức năng
+        let hienThi = document.getElementById('hienThi')
+
+        let yTuong = document.getElementById('yTuong')
+        let nguoiTheoDoi = document.getElementById('nguoiTheoDoi')
+        let dangTheoDoi = document.getElementById('dangTheoDoi')
+        let Edit = document.getElementById('Edit')
+        let arrayOfBtnID = ['yTuong', 'nguoiTheoDoi', 'dangTheoDoi', 'Edit']
+        if (yTuong != null) {
+            yTuong.addEventListener('click', function () {
+                hienThi.innerHTML = `<div id="ideaShow" style="display: flex; justify-content: center;flex-grow: 1;">
+                <div>
+                    <div style="display: flex; display: flex;justify-content: flex-end;width: 1000px;">
+                        <div class="btn-search"><input class="hover" id="search" type="text" placeholder="Search..">
+                            <button class="hover" id="submit" type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                        <div class=" flex-between">
+                            <div class="filter-icon">
+                                Sắp xếp
+                                <span><button class="btn-icon hover"><i class="far fa-clock icon fa-2x"></i></button></span>
+                                <span><button class="btn-icon hover"><i class="far fa-thumbs-up icon fa-2x"></i></button></span>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div id="ideaList" style="display: flex; flex-wrap: wrap; width: 1100px;">
+                        <div style=" width: 500px;">
+            
+                            <div class="flex-column">
+                                <div id="ideaClick" class="hover" style="cursor: pointer;">
+                                    <div class="title1 hover">
+                                        GOLD - Nhịp lấy Đỉnh!!
+                                    </div>
+                                    <div class="content-idea-list" style="display: flex; align-items: center;">
+                                        <span>XAUUSD</span><span>, 60</span><span class="icon-down" style="background-color: #26A69A;"><svg style="margin-right: 4px;" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H14V10H12V3.5L1.5 14L0 12.5L10.5 2H4V0Z" fill="currentColor"></path></svg>Giá Lên</span>
+                                    </div>
+                                    <div class="img-content flex-center">
+                                        <img src="https://s3.tradingview.com/f/fGSiLbDw_mid.webp" alt="">
+                                    </div>
+                                    <div class="content-idea-list">
+                                        LuTienSinh
+                                    </div>
+                                    <div class="content-idea-list">
+                                        Mốc $1808 tối thứ 6 vừa rồi có phản ứng nhưng như tui đã đưa tin về vụ Trung tạm ngưng nhập 02 chuyến tàu nông sản Mĩ (cái này nhạy cảm vì Trung đang lũ lụt tè le mà ngưng nhập cho thấy chắc có gì đó ghê gớm lắm!!)khiến Cậu cứ cheo leo ở mốc $180
+                                    </div>
+                                    <div>
+                                        like
+                                    </div>
+                                </div>
+                                <div>
+            
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div style="width: 500px;">
+                            <div class="flex-column">
+                                <div id="ideaClick" class="hover" style="cursor: pointer;">
+                                    <div class="title1 hover">
+                                        GOLD - Nhịp lấy Đỉnh!!
+                                    </div>
+                                    <div class="content-idea-list" style="display: flex; align-items: center;">
+                                        <span>XAUUSD</span><span>, 60</span><span class="icon-down" style="background-color: #26A69A;"><svg style="margin-right: 4px;" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H14V10H12V3.5L1.5 14L0 12.5L10.5 2H4V0Z" fill="currentColor"></path></svg>Giá Lên</span>
+                                    </div>
+                                    <div class="img-content flex-center">
+                                        <img src="https://s3.tradingview.com/f/fGSiLbDw_mid.webp" alt="">
+                                    </div>
+                                    <div class="content-idea-list">
+                                        LuTienSinh
+                                    </div>
+                                    <div class="content-idea-list">
+                                        Mốc $1808 tối thứ 6 vừa rồi có phản ứng nhưng như tui đã đưa tin về vụ Trung tạm ngưng nhập 02 chuyến tàu nông sản Mĩ (cái này nhạy cảm vì Trung đang lũ lụt tè le mà ngưng nhập cho thấy chắc có gì đó ghê gớm lắm!!)khiến Cậu cứ cheo leo ở mốc $180
+                                    </div>
+                                    <div>
+                                        like
+                                    </div>
+                                </div>
+                                <div>
+            
+                                </div>
+                            </div>
+                        </div>
+            
+            
+                        <div style="width: 500px;">
+            
+                            <div class="flex-column">
+                                <div id="ideaClick" class="hover" style="cursor: pointer;">
+                                    <div class="title1 hover">
+                                        GOLD - Nhịp lấy Đỉnh!!
+                                    </div>
+                                    <div class="content-idea-list" style="display: flex; align-items: center;">
+                                        <span>XAUUSD</span><span>, 60</span><span class="icon-down" style="background-color: #26A69A;"><svg style="margin-right: 4px;" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M4 0H14V10H12V3.5L1.5 14L0 12.5L10.5 2H4V0Z" fill="currentColor"></path></svg>Giá Lên</span>
+                                    </div>
+                                    <div class="img-content flex-center">
+                                        <img src="https://s3.tradingview.com/f/fGSiLbDw_mid.webp" alt="">
+                                    </div>
+                                    <div class="content-idea-list">
+                                        LuTienSinh
+                                    </div>
+                                    <div class="content-idea-list">
+                                        Mốc $1808 tối thứ 6 vừa rồi có phản ứng nhưng như tui đã đưa tin về vụ Trung tạm ngưng nhập 02 chuyến tàu nông sản Mĩ (cái này nhạy cảm vì Trung đang lũ lụt tè le mà ngưng nhập cho thấy chắc có gì đó ghê gớm lắm!!)khiến Cậu cứ cheo leo ở mốc $180
+                                    </div>
+                                    <div>
+                                        like
+                                    </div>
+                                </div>
+                                <div>
+            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>`
+                //Thay đổi màu của nút
+                view.changeColor(arrayOfBtnID, 'yTuong', "royalblue", "#1e609e")
+            })
+        }
+        if (nguoiTheoDoi != null) {
+            nguoiTheoDoi.addEventListener('click', function () {
+                hienThi.innerHTML=``
+                //Gán từng follwer vào
+                for(let follower of allFollower){
+                    let buttonFollow=`
+                    <div style="display: flex; padding: 10px;">
+                    <button onclick="await controller.followFund(${model.getUserDataByEmail(follower).id})" style="margin: 20px 20px 20px 0px; outline: none; border: 1px soild #ddd; border-radius: 10px; color: #00897B;">Theo dõi</button>
+                    </div>
+                    `
+                    hienThi.innerHTML += `        
+                        <div id="follower-container" style="display: flex;flex-grow: 1; justify-content: space-between; border: 1px solid #ddd; margin: 15px 50px 15px 50px; border-radius: 10px;">
+                            <div style="display: flex; padding: 10px;">
+                                <div>
+                                    <a href="#published-charts">
+                                        <img style="height: 80px; width: 80px;" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220,0,20,20%22%20width=%22171%22%20height=%22171%22%3E%3Crect%20height=%2220%22%20width=%2220%22%20fill=%22hsl%28171,25%25,50%25%29%22/%3E%3Ctext%20fill=%22white%22%20x=%2210%22%20y=%2214.8%22%20font-size=%2214%22%20font-family=%22Trebuchet%20MS,Arial,sans-serif%22%20text-anchor=%22middle%22%3ED%3C/text%3E%3C/svg%3E"
+                                            alt="">
+                                    </a>
+                                </div>
+                                <div style="margin-left: 20px;">
+                                    <h5>${follower}</h5>
+                                </div>
+                                ${model.getUserDataByEmail(follower).other.type=="fund"?buttonFollow:``}
+                            </div>
+                            
+                        </div>`
+                }
+                //Thay đổi màu của nút
+                view.changeColor(arrayOfBtnID, 'nguoiTheoDoi', "royalblue", "#1e609e")
+            })
+        }
+        if (dangTheoDoi != null) {
+            dangTheoDoi.addEventListener('click', function () {
+                hienThi.innerHTML = `        <div style="display: flex;flex-grow: 1; justify-content: space-between; border: 1px solid #ddd; margin: 15px 50px 15px 50px; border-radius: 10px;">
+                <div style="display: flex; padding: 10px;">
+                    <div>
+                        <a href="#published-charts">
+                            <img style="height: 80px; width: 80px;" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220,0,20,20%22%20width=%22171%22%20height=%22171%22%3E%3Crect%20height=%2220%22%20width=%2220%22%20fill=%22hsl%28171,25%25,50%25%29%22/%3E%3Ctext%20fill=%22white%22%20x=%2210%22%20y=%2214.8%22%20font-size=%2214%22%20font-family=%22Trebuchet%20MS,Arial,sans-serif%22%20text-anchor=%22middle%22%3ED%3C/text%3E%3C/svg%3E"
+                                alt="">
+                        </a>
+                    </div>
+                    <div style="margin-left: 20px;">
+                        <h5>ducthinh1341993</h5>
+                    </div>
+                </div>
+                <div style="display: flex; padding: 10px;">
+                    <button style="margin: 20px 20px 20px 0px; outline: none; border: 1px soild #ddd; border-radius: 10px; color: #00897B;">Huỷ theo dõi</button>
+                </div>
+            </div>`
+                //Thay đổi màu của nút
+                view.changeColor(arrayOfBtnID, 'dangTheoDoi', "royalblue", "#1e609e")
+            })
+        }
+        if (Edit != null) {
+            Edit.addEventListener('click', function () {
+                hienThi.innerHTML = `        <div style="justify-content: space-around; padding: 0px 350px 50px 350px; display: flex;">
+                <form style=" padding-top: 40px;" id="edit-profile-form">
+                    <h2 class="nameIf">Thông Tin Cá Nhân</h2>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <div>Hình đại diện:</div>
+                            <img id="photo-upload" style="width: 80px;height: 80px;" src=${model.currentUserData.other.avatarURL}
+                                alt="">
+                            <input type="file" name="" id="fileButton">
+                            <progress id="progressBar" value="0" max="100" style="width:300px;" hidden=true></progress>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="email"><span class="warning"></span>Địa Chỉ Email:</label>
+                            <span>${model.currentUserData.email}</span>
+                        </div>
+            
+                        <div class="form-group col-md-6">
+                            <label for="name"><span class="warning"></span>Tên Hiển Thị</label>
+                            <input name="name" type="text" class="form-control" id="" value=${model.currentUserData.name}>
+                            <span class="warning" id="name-error"></span>
+                        </div>
+            
+                        <div class="form-group col-md-6">
+                            <label><span class="warning"></span>Số Điện Thoại</label>
+                            <input name="phoneNumber" type="text" class="form-control" id="" value=${model.currentUserData.other.phone}>
+                            <span class="warning" id="phone-number-error"></span>
+                        </div>
+            
+                    </div>
+                    <div class="form-group">
+                        <label for="address"><span class="warning"></span>Địa Chỉ</label>
+                        <input name="address" type="text" class="form-control" id="inputAddress" value=${model.currentUserData.other.address}>
+                        <span class="warning" id="address-error"></span>
+                    </div>
+                    <div style="display: flex; justify-content: flex-end;margin-right: 50px;">
+                        <button id="edit-profile-btn" type="submit" class="success" style="float:right">Lưu</button>
+                        <span class="warning" id="edit-profile-error"></span>
+                        <span id="edit-profile-success"></span>
+                    </div>
+                </form>
+            </div>`
+                view.changeColor(arrayOfBtnID, 'Edit', "royalblue", "#1e609e")
+                //Chức năng upload ảnh
+                initApp()
+                //Chức năng Edit thông tin
+                let editProfileForm = document.getElementById("edit-profile-form")
+                editProfileForm.name.value=model.currentUserData.name
+                editProfileForm.address.value=model.currentUserData.other.address
+                editProfileForm.onsubmit = function (event) {
+                    //Đảm bảo trang không bị load lại
+                    event.preventDefault();
+                    console.log("submit")
+                    //Lấy dữ liệu từ form
+                    let name = editProfileForm.name.value.trim()
+                    let phone = editProfileForm.phoneNumber.value.trim()
+                    let address = editProfileForm.address.value.trim()
+                    let avatarURL = model.imgURL
+                    //Kiểm tra dữ liệu lấy từ form
+                    let validateResult = [
+                        view.validate(name != '', 'name-error', 'Lỗi: Tên đang để trống'),
+                        view.validate(phone != '', 'phone-number-error', 'Lỗi: Điện thoại đang để trống'),
+                        view.validate(address != '', 'address-error', 'Lỗi: Địa chỉ đang để trống'),
+                    ]
+                    if (isPassed(validateResult)) {
+                        //Nếu pass gửi dữ liệu lên firebase qua controller
+                        controller.editProfile(name, phone, address, avatarURL)
+                    }
+                }
+            })
+        }
+        Edit.click();
+    }
+    else {
+        //Hiển thị thông tin
+        profileAvatar.src = model.currentUserData.other.avatarURL
+        profileName.innerHTML = model.currentUserData.name
+        profileFollowers.innerHTML = `
+            <i class="fas fa-user-friends"></i>
+            ${model.currentUser.follower.length}
+            <br>
+            <span style="font-size:1rem">NGƯỜI THEO DÕI</span>
+            `
+        //Hiển thị số lượng bài đăng
+        profileIdeas.innerHTML = `
+            <i class="fas fa-edit"></i>
+            ${model.getNumIdeasCreateBy(email)}
+            <br>
+            <span style="font-size:1rem">BÀI VIẾT</span>
+            `
+        profilePercent.innerHTML = ``
+    }
+
+    //
 }
 
 view.showImg = function (tagID, imgURL) {
@@ -821,14 +1140,29 @@ view.makeFollowAndUnfollowBtnWork = function () {
     }
 }
 
-view.redirect = function(url){
-    window.location.href=url;
+
+//Chuyển trang
+view.redirect = function (url) {
+    window.location.href = url;
 }
 
-view.reload = function(){
+//Reload trang
+view.reload = function () {
     window.location.reload()
 }
 
-view.openNewTab = function(url){
+//Mở tab mới
+view.openNewTab = function (url) {
     window.open(url)
+}
+
+
+//Thay đổi màu
+view.changeColor = function (arrayOfID, docID, colorNormal, colorFocus) {
+    for (let ID of arrayOfID) {
+        if (document.getElementById(ID) != null) {
+            document.getElementById(ID).style.backgroundColor = colorNormal
+        }
+    }
+    document.getElementById(docID).style.backgroundColor = colorFocus
 }

@@ -668,27 +668,73 @@ components.profile_page =
   +
   //Main 
   `
-  <h1>PROFILE - TRANG THÔNG TIN TÀI KHOẢN</h1>
-  <h2>DEMO</h2>
-  <div class="header">
-  <button class="main-view-btn">Trang Chủ</button>
-  <button id="sign-out-button">Sign Out</button>
+  <div class="spaceForHeader"></div>
+  <div class="profile-container">
+      <div style="display: flex; background-color: #2A2E39;">
+          <div>
+              <a href="#published-charts"  style="padding: 20px 0px 20px 50px;">
+                  <img style="width:171px;height:171px" id="profile-avatar" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220,0,20,20%22%20width=%22171%22%20height=%22171%22%3E%3Crect%20height=%2220%22%20width=%2220%22%20fill=%22hsl%28171,25%25,50%25%29%22/%3E%3Ctext%20fill=%22white%22%20x=%2210%22%20y=%2214.8%22%20font-size=%2214%22%20font-family=%22Trebuchet%20MS,Arial,sans-serif%22%20text-anchor=%22middle%22%3ED%3C/text%3E%3C/svg%3E"
+                  alt="">
+              </a>
+          </div>
+          <div style="margin-left: 50px;">
+                  <div>
+                      <span>
+                          <h1 id="profile-name" style="color: white;padding: 50px;">
+                            ducthinh1341993
+                            <br>
+                            <span style="font-size:1rem;color: #787b86">THÀNH VIÊN</span></h1>
+                            </h1>
+                          
+                      </span>
+                  </div>
+            </div>
+            <div style="margin-right: 20px;">
+                  <div>
+                      <span>
+                          <h4 id="profile-follower-numbers" style="color: #787b86;padding: 50px 20px;">
+                            <i class="fas fa-user-friends"></i>
+                            100
+                            <br>
+                            <span style="font-size:1rem">NGƯỜI THEO DÕI</span>
+                          </h4>
+                      </span>
+                  </div>
+            </div>
+            <div style="margin-right: 20px;">
+                <div>
+                    <span>
+                        <h4 id="profile-idea-numbers" style="color: #787b86;padding: 50px 20px;">
+                          <i class="fas fa-edit"></i>
+                          100
+                          <br>
+                          <span style="font-size:1rem">BÀI VIẾT</span>
+                        </h4>
+                    </span>
+                </div>
+            </div>
+            <div style="margin-right: 20px;">
+                <div>
+                    <span>
+                        <h4 id="profile-guess-percent" style="color: #787b86;padding: 50px 20px;">
+                          <i class="fas fa-percent"></i>
+                          80
+                          <br>
+                          <span style="font-size:1rem">TỶ LỆ DỰ ĐOÁN ĐÚNG</span>
+                        </h4>
+                    </span>
+                </div>
+            </div>
+        </div>
+      <div id="profile-menu" style="display: flex;margin: 0px 0px 20px 0px;height: 50px;background-color: royalblue;">
+              <div id='yTuong' class="tap">Ý tưởng</div>
+              <div id="nguoiTheoDoi" class="tap">Người theo dõi</div>
+              <div id="dangTheoDoi" class="tap">Đang theo dõi</div>
+              <div id="Edit" class="tap">Cài đặt</div>
+      </div>
+      <div id="hienThi" style="display: flex; justify-content: center;">
+      </div>
   </div>
-  <div id="profile-content"></div>
-  <h2>END DEMO</h2>
-  <p>====================================================================</p>
-  <h1>Các Button chuyển trang chính</h1>
-  <br>
-  <button class="main-view-btn">Quay lại Trang Chủ </button>
-  <br>
-  <button class="sign-in-btn">Log Out - Chán Vãi Out Thôi!</button>
-  <h1>Các chức năng chính</h1>
-  <p>- Chỉnh sửa thông tin cá nhân (nếu là profile của mình) </p>
-  <p>- Đầu tư (Nếu đang xem profile của quỹ) </p>
-  <p>- Rút vốn (Nếu đang xem profile của quỹ) </p>
-  <p>- Theo dõi (Nếu đang xem profile của quỹ) </p>
-
-  <h1>DEMO</h1>
   `
   + 
   //Footer
@@ -728,26 +774,30 @@ components.idea_view_page =
   //Main 
   `
   <div class="spaceForHeader"></div>
-  <h1>MAIN/IDEAS/</h1>
-  <h1 id="title-idea-page"></h1>
-  <p id="details-idea-page"></p>
-  <p id="content-idea-page"></p>
-  <h1>IDEA PAGE - TRANG ĐỌC MỘT KÈO CHI TIẾT</h1>
-  <h1>Các Button chuyển trang chính</h1>
-  <br>
-  <button class="main-view-btn">Quay lại Trang Chủ </button>
-  <br>
-  <button class="profile-page-btn">Xem Profile - Xem thằng chém gió là ai nào </button>
-  <br>
-  <button class="sign-in-btn">Log Out - Chán Vãi Out Thôi!</button>
-
-  <h1>Các chức năng chính</h1>
-  <p>- Gợi ý một số bài liên quan </p>
-  <p>- Thích</p>
-  <p>- Comment ý kiến</p>
-  <p>- Theo dõi</p>
-
-  <h1>DEMO</h1>
+  <div class="profile-container">
+      <div style="display: flex; background-color: #2A2E39; margin-left: 50px; margin-right: 50px;">
+          <div>
+              <a href="#published-charts">
+                  <img id="profile-avatar" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220,0,20,20%22%20width=%22171%22%20height=%22171%22%3E%3Crect%20height=%2220%22%20width=%2220%22%20fill=%22hsl%28171,25%25,50%25%29%22/%3E%3Ctext%20fill=%22white%22%20x=%2210%22%20y=%2214.8%22%20font-size=%2214%22%20font-family=%22Trebuchet%20MS,Arial,sans-serif%22%20text-anchor=%22middle%22%3ED%3C/text%3E%3C/svg%3E"
+                  alt="">
+              </a>
+              </div>
+              <div style="margin-left: 50px;">
+                  <div>
+                      <span>
+                          <h1 id="profile-name" style="color: white;">ducthinh1341993</h1>
+                      </span>
+                  </div>
+              </div>
+          </div>
+          <div style="display: flex;margin: 0px 50px 20px 50px;height: 50px;background-color: royalblue;">
+              <div id='yTuong' class="tap">Ý tưởng</div>
+              <div id="nguoiTheoDoi" class="tap">Người theo dõi</div>
+              <div id="dangTheoDoi" class="tap">Đang theo dõi</div>
+              <div id="Edit" class="tap">Cài đặt</div>
+          </div>
+      </div>
+  </div>
   `
   + 
   //Footer

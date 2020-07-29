@@ -105,6 +105,11 @@ model.saveFundInfomation = function (fundsData) {
     model.funds.push(fundsData)
 }
 
+model.saveAllUsersInfomation = function (fundsData) {
+    model.allUsersInfo.push(fundsData)
+}
+
+
 //Xử lý follow và unfollow Function
 
 
@@ -275,4 +280,19 @@ model.saveIdeaData=function(idIdea){
     let targetIdea = model.ideas[searchIdIndex(idIdea, model.ideas)]
     model.ideaData=targetIdea;
     view.showPage("ideaViewPage")
+}
+
+model.getAllIdeas=function(email){
+    model.ideasOfProfile=[]
+    for(let idea of model.ideas){
+        if(idea.author.email==email){model.ideasOfProfile.push(idea)}
+    }
+}
+
+model.getUserDataByEmail=function(email){
+    for(let userInfo of model.allUsersInfo){
+        if (userInfo.email==email) {
+            return userInfo
+        }
+    }
 }

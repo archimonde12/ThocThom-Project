@@ -470,3 +470,48 @@ div.compose-controller>button {
     font-weight: bold;
     outline: none;
 }
+
+/* Style Profile */
+.tap {
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+    margin-left: 30px;
+    padding: 0px 20px 0px 20px;
+}
+
+.tap:hover {
+    background: #1e609e;
+}
+
+.thong-tin>div {
+    margin: 20px 20px 20px 40px;
+    display: flex;
+}
+
+.thong-tin>div>div {
+    width: 150px;
+}
+
+.thong-tin>div>input {
+    width: 250px;
+}
+
+.bnt-edit {
+    color: #fff;
+    border-color: #2196f3;
+    background-color: #2196f3;
+    fill: currentColor;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+.bnt-edit:hover {
+    background-color: #76bdf7;
+}
