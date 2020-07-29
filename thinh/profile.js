@@ -1,7 +1,8 @@
-let yTuong = document.getElementById('yTuong')
+let NutYTuong = document.getElementById('yTuong')
 let hienThi = document.getElementById('hienThi')
-yTuong.addEventListener('click', function() {
-    hienThi.innerHTML = `<div id="ideaShow" style="display: flex; justify-content: center;flex-grow: 1;">
+    //Tạo chức năng của nút Ý Tưởng
+NutYTuong.addEventListener('click', function() {
+        hienThi.innerHTML = `<div id="ideaShow" style="display: flex; justify-content: center;flex-grow: 1;">
     <div>
         <div style="display: flex; display: flex;justify-content: flex-end;width: 1000px;">
             <div class="btn-search"><input class="hover" id="search" type="text" placeholder="Search..">
@@ -107,10 +108,11 @@ yTuong.addEventListener('click', function() {
 
     </div>
 </div>`
-})
-
-let nguoiTheoDoi = document.getElementById('nguoiTheoDoi')
-nguoiTheoDoi.addEventListener('click', function() {
+        NutYTuong.style.backgroundColor = '#1E609E'
+    })
+    //Tạo chức năng của nút Người Theo Dõi
+let NutNguoiTheoDoi = document.getElementById('nguoiTheoDoi')
+NutNguoiTheoDoi.addEventListener('click', function() {
     hienThi.innerHTML = `        <div style="display: flex;flex-grow: 1; justify-content: space-between; border: 1px solid #ddd; margin: 15px 50px 15px 50px; border-radius: 10px;">
     <div style="display: flex; padding: 10px;">
         <div>
@@ -124,13 +126,15 @@ nguoiTheoDoi.addEventListener('click', function() {
         </div>
     </div>
     <div style="display: flex; padding: 10px;">
-        <button style="margin: 20px 20px 20px 0px; outline: none; border: 1px soild #ddd; border-radius: 10px; color: #00897B;">Theo dõi</button>
+        <button style="margin: 20px 20px 20px 0px; outline: none; border: 1px soild #ddd; border-radius: 10px; color: #00897B;">Theo dõi lại</button>
     </div>
 </div>`
+    NutNguoiTheoDoi.style.backgroundColor = '#1E609E'
 })
 
-let dangTheoDoi = document.getElementById('dangTheoDoi')
-dangTheoDoi.addEventListener('click', function() {
+//Tạo chức năng của nút Đang Theo Dõi
+let NutDangTheoDoi = document.getElementById('dangTheoDoi')
+NutDangTheoDoi.addEventListener('click', function() {
     hienThi.innerHTML = `        <div style="display: flex;flex-grow: 1; justify-content: space-between; border: 1px solid #ddd; margin: 15px 50px 15px 50px; border-radius: 10px;">
     <div style="display: flex; padding: 10px;">
         <div>
@@ -149,8 +153,9 @@ dangTheoDoi.addEventListener('click', function() {
 </div>`
 })
 
-let Edit = document.getElementById('Edit')
-Edit.addEventListener('click', function() {
+//Tạo chức năng của nút Sửa
+let NutEdit = document.getElementById('Edit')
+NutEdit.addEventListener('click', function() {
     hienThi.innerHTML = `        <div style="justify-content: space-around; padding: 0px 350px 50px 350px; display: flex;">
     <form style=" padding-top: 40px;" id="signUp">
         <h2 class="nameIf">Personal Details</h2>

@@ -1,0 +1,49 @@
+table,
+th,
+td {
+    text-align: center;
+}
+
+td {
+    border: 1px solid black;
+    font-size: 20px;
+}
+
+th {
+    border: 2px solid blue;
+    font-size: 20px;
+    background-color: cornflowerblue;
+    color: white;
+}
+
+td,
+th {
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.myButton {
+    box-shadow: 0px 0px 0px 2px #9fb4f2;
+    background: linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+    background-color: #7892c2;
+    border-radius: 10px;
+    border: 1px solid #4e6096;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    padding: 10px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #283966;
+    width: 125px;
+}
+
+.myButton:hover {
+    background: linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+    background-color: #476e9e;
+}
+
+.myButton:active {
+    position: relative;
+    top: 1px;
+}
