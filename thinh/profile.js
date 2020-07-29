@@ -151,38 +151,44 @@ dangTheoDoi.addEventListener('click', function() {
 
 let Edit = document.getElementById('Edit')
 Edit.addEventListener('click', function() {
-    hienThi.innerHTML = `<div id="myInfor" style="justify-content: space-around;flex-grow: 1; margin-top: 20px;display: flex;">
-    <div style="border: 1px solid #ddd; width: 580px; border-radius: 10px; ">
-        <div class="thong-tin">
-            <div>
-                <h5>THÔNG TIN CÁ NHÂN</h5>
-            </div>
-            <div>
-                <div>Tên đăng nhập:</div>
-                <span>ducthinh1341993</span>
-            </div>
-            <div>
-                <div>Họ và Tên:</div>
-                <input type="text" value="Trần Đức Thịnh">
-            </div>
-            <div>
+    hienThi.innerHTML = `        <div style="justify-content: space-around; padding: 0px 350px 50px 350px; display: flex;">
+    <form style=" padding-top: 40px;" id="signUp">
+        <h2 class="nameIf">Personal Details</h2>
+        <div class="form-row">
+            <div class="form-group col-md-12">
                 <div>Hình đại diện:</div>
                 <img style="width: 80px;height: 80px;" src="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220,0,20,20%22%20width=%22171%22%20height=%22171%22%3E%3Crect%20height=%2220%22%20width=%2220%22%20fill=%22hsl%28171,25%25,50%25%29%22/%3E%3Ctext%20fill=%22white%22%20x=%2210%22%20y=%2214.8%22%20font-size=%2214%22%20font-family=%22Trebuchet%20MS,Arial,sans-serif%22%20text-anchor=%22middle%22%3ED%3C/text%3E%3C/svg%3E"
                     alt="">
                 <input type="file" name="" id="">
             </div>
-            <div>
-                <div>Điện thoại:</div>
-                <input type="text" value="0358960896">
+            <div class="form-group col-md-12">
+                <label for="email"><span class="warning"></span>Email:</label>
+                <span>ducthinh1341993@gmail.com</span>
             </div>
-            <div>
-                <div>Địa chỉ:</div>
-                <input type="text" value="Hà Nội">
+
+            <div class="form-group col-md-6">
+                <label for="name"><span class="warning"></span>Display Name</label>
+                <input name="name" type="text" class="form-control" id="rePassword4">
+                <span class="warning" id="name-error"></span>
             </div>
+
+            <div class="form-group col-md-6">
+                <label><span class="warning"></span>Phone Number</label>
+                <input name="phoneNumber" type="text" class="form-control" id="rePassword4">
+                <span class="warning" id="phone-number-error"></span>
+            </div>
+
         </div>
-        <div style="display: flex; justify-content: flex-end; margin: 5px 30px 5px 0px;">
-            <button class="bnt-edit">Lưu thay đổi</button>
+        <div class="form-group">
+            <label for="address"><span class="warning"></span>Address</label>
+            <input name="address" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            <span class="warning" id="address-error"></span>
         </div>
-    </div>
+        <div style="display: flex; justify-content: flex-end;margin-right: 50px;">
+            <input name="login" id="sign-up-btn" value="Save" type="submit" class="success" style="float:right">
+            <span class="warning" id="sign-up-error"></span>
+            <span id="sign-up-success"></span>
+        </div>
+    </form>
 </div>`
 })
