@@ -98,16 +98,16 @@ components.headerWhenLogIn = `
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item main-view-btn">
-        <a class="links nav-link active" href="#"><span>MAIN</span><span class="sr-only">(current)</span></a>
+        <a class="links nav-link active" href="#"><span>TRANG CHỦ</span><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item links profile-page-btn">
-        <a class="links nav-link" href="#"><span>PROFILE</span><span class="sr-only">(current)</span></a>
+        <a class="links nav-link" href="#"><span>HỒ SƠ</span><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item links deposit-page-btn">
-        <a class="links nav-link " href="#"><span>DEPOSIT</span><span class="sr-only">(current)</span></a>
+        <a class="links nav-link " href="#"><span>NẠP TIỀN</span><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item links withdraw-page-btn">
-        <a class="links nav-link" href="#"><span>WITHDRAW</span><span class="sr-only">(current)</span></a>
+        <a class="links nav-link" href="#"><span>RÚT TIỀN</span><span class="sr-only">(current)</span></a>
       </li>
     </ul>   
   </div>
@@ -561,9 +561,9 @@ components.main_view = components.headerWhenLogIn + `
         <div class="noti-container">
             <span class="badge" id="noti-warning"></span>
             <h3>Notification </h3>
-            <button id="show-noti-btn">Show Notification</button>
+            <button id="show-noti-btn" class="Button-Notification">Show Notification</button>
             <div id="noti-list"></div>
-            <button id="hide-noti-btn">Hide Notification</button>
+            <button id="hide-noti-btn" class="Button-Notification">Hide Notification</button>
         </div>
     </div>
   </div>
@@ -634,9 +634,9 @@ components.admin_page = `
 <p>Hiển thị thông tin mới </p>
 `;
 
-components.profile_page = 
-  //Header
-  `
+components.profile_page =
+    //Header
+    `
   <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top heg">
     <a class="navbar-brand main-view-btn" href="#"><img src="../ThocThom-Project/images/logo.png" alt="" class="logo"></a>
@@ -769,10 +769,10 @@ components.idea_view_page =
             </div>
   </nav>
   </header>`
-  //End Header
-  +
-  //Main 
-  `
+    //End Header
+    +
+    //Main 
+    `
   <div class="spaceForHeader"></div>
   <div class="profile-container">
       <div style="display: flex; background-color: #2A2E39; margin-left: 50px; margin-right: 50px;">
@@ -832,10 +832,10 @@ components.deposit_page =
             </div>
   </nav>
   </header>`
-  //End Header
-  +
-  //Main 
-  `
+    //End Header
+    +
+    //Main 
+    `
   <div class="spaceForHeader"></div>
   <div class="deposit-container">
   <div class="deposit-form-container">
@@ -871,14 +871,13 @@ components.deposit_page =
   </form>
   </div>
   </div>
-  `
-  + 
-  //Footer
-  components.footer;
+  ` +
+    //Footer
+    components.footer;
 
-components.withdraw_page = 
-//Header
-`
+components.withdraw_page =
+    //Header
+    `
 <header>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top heg">
   <a class="navbar-brand main-view-btn" href="#"><img src="../ThocThom-Project/images/logo.png" alt="" class="logo"></a>
@@ -906,10 +905,10 @@ components.withdraw_page =
           </div>
 </nav>
 </header>`
-//End Header
-+
-//Main 
-`
+    //End Header
+    +
+    //Main 
+    `
 <div class="spaceForHeader"></div>
 <div class="withdraw-container">
   <div class="withdraw-form-container">
@@ -944,10 +943,10 @@ components.withdraw_page =
   </div>
 </div>
 `
-//End Main
-+ 
-//Footer
-components.footer;
+    //End Main
+    +
+    //Footer
+    components.footer;
 
 components.compose_page = `
 <h1>COMPOSE PAGE - TRANG ĐĂNG BÀI</h1>

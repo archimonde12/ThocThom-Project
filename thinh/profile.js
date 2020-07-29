@@ -128,9 +128,10 @@ nguoiTheoDoi.addEventListener('click', function() {
         </div>
     </div>
     <div style="display: flex; padding: 10px;">
-        <button style="margin: 20px 20px 20px 0px; outline: none; border: 1px soild #ddd; border-radius: 10px; color: #00897B;">Theo dõi</button>
+        <button style="margin: 20px 20px 20px 0px; outline: none; border: 1px soild #ddd; border-radius: 10px; color: #00897B;">Theo dõi lại</button>
     </div>
 </div>`
+    NutNguoiTheoDoi.style.backgroundColor = '#1E609E'
 })
 dangTheoDoi.addEventListener('click', function() {
     hienThi.innerHTML = `        <div style="display: flex;flex-grow: 1; justify-content: space-between; border: 1px solid #ddd; margin: 15px 50px 15px 50px; border-radius: 10px;">

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THOC THOM PROJECT</title>
+
+    <!-- link css -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/yourcode.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/idea_view_page.css">
+    <link rel="stylesheet" href="../fonts/css/all.css">
+    <link rel="stylesheet" href="../css/sign_in.css">
+    <link rel="stylesheet" href="../css/signUp.css">
+    <link rel="stylesheet" href="../css/profile_page.css">
+    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="shortcut icon" href="../images/title.png">
+    <link rel="stylesheet" href="mainview.css">
+    <link rel="stylesheet" href="view-idea.css">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-storage.js"></script>
+
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBOcF7oTDlTkJxESdFL5fldIc10bOiJULk",
+            authDomain: "thocthom-project.firebaseapp.com",
+            databaseURL: "https://thocthom-project.firebaseio.com",
+            projectId: "thocthom-project",
+            storageBucket: "thocthom-project.appspot.com",
+            messagingSenderId: "422845301830",
+            appId: "1:422845301830:web:d6e12b5e08d6a7d6853647"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <!-- Add scripts -->
+    <script src="./js/utils.js"></script>
+    <script src="./js/components.js"></script>
+    <script src="./js/model.js"></script>
+    <script src="./js/view.js"></script>
+    <script src="./js/controller.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/tester.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top heg">
+            <a class="navbar-brand" href="#"><img src="../ThocThom-Project/images/logo.png" alt="" class="logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#"><span>HOME</span><span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+
+                        <a class="nav-link links" href="#"><span>ABOUT US</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link links" href="#"><span>SERVICES</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link links" href="#"><span>CONSTACT US</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link links sign-in-btn" href="#"><span>SIGN IN</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link links active sign-up-btn" href="#"><span>SIGN UP</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- nội dung idea -->
+    <div style="display: flex; flex-direction: column; flex-grow: 1; margin: 100px 150px 50px 150px;">
+        <div class="flex-left">
+            <div class="avatar-img">
+                <img src="https://s3.tradingview.com/userpics/8882424-Wls8_mid.png" alt="">
+            </div>
+            <div>
+                <div style="display: flex; align-items: stretch;">
+                    <span class="title-idea">USDJPY - Cơ hội bán theo xu hướng xuất hiện.</span>
+                    <span class="icon-down"><svg style="margin-right: 4px;" width="14" height="14" viewBox="0 0 14 14"
+                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M14 4V14H4V12H10.5L0 1.5L1.5 0L12 10.5V4H14Z" fill="currentColor"></path>
+                    </svg>giá xuống</span>
+                </div>
+                <div class="flex-left sup-title">
+                    USD/ounce
+                </div>
+                <div class="flex-left sup-title">
+                    <span>Người đăng</span><span>time</span>
+                </div>
+            </div>
+        </div>
+        <div class="img-title">
+            <img src="https://www.freedigitalphotos.net/images/img/homepage/394230.jpg" alt="">
+        </div>
+        <div class="content-idea">
+            Xin chào ACE Trader, Tiếp diễn câu chuyện giảm giá từ đồng USD do kỳ vọng phía Mỹ sẽ bơm thêm tiền, hầu hết các cặp tỷ giá đều xác nhận một xu hướng mới. Nhưng trong số này, đồng USDJPY đang trở nên rất hấp dẫn khi được tác động từ yếu tố JPY tăng, do
+            đây được xem là tài sản trú ẩn an toàn. Theo đó, một cơ hội bán mới đang mở ra với cặp tỷ giá này. Finashark khuyến nghị Bán theo xu hướng, cụ thể: 1) Giá giảm thủng vùng hỗ trợ mạnh nhất. Đây là nền giá được gia cố rất vững thời gian qua.
+            2) Áp lực bán rất mạnh ngay tại thời điểm giá thủng hỗ trợ này, thể hiện qua tahnh khoản dội tăng so với những lần kiểm chứng trước đó. 3) RSI luôn nằm gọn trong kênh 60 - 20 của RSI . Đây là vùng của xu hướng giảm ( bearish markets) 3) Xuất
+            hiện liên tiếp 2 điểm bán với USDJPY . Chi tiết hơn: 3.1) Điểm bán đầu tiên xuất hiện khi RSI chạm kênh cản trên. Giá chạm MA và lao dốc ngay với thanh khoản tăng dội. 3.2) Cơ hội tham gia vào điểm bán thứ 2 xuất hiện khi RSI chạm biên cản
+            hỗ trợ mạnh tại mức 20. Theo đó, nhịp phục hồi kỹ thuật sẽ là cơ sở để tham gia bán theo xu hướng. Điểm bán kỳ vọng là khu vực giao thoa giữa 2 kênh RSI . Tương ứng với vùng giá 106.60 từ USDJPY . Tổng kết: nên bán theo xu hướng, bình tĩnh
+            đợi điểm chín muồi để mở vị thế Bán, thay vì đuổi theo đà rơi này. ACE Trader nhớ follow Finashark nhé. Mình sẽ luôn update các tín hiệu giao dịch chuẩn nhất cho mọi người.
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
